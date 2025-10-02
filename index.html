@@ -6,6 +6,21 @@
 <title>Repaso de Dinámica</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Script de MathJax para renderizar LaTeX -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 <style>
 body { font-family: 'Inter', sans-serif; }
 .quiz-container {
@@ -85,7 +100,7 @@ const quizData = [
     question: "En un movimiento de proyectil, despreciando la resistencia del aire, la componente horizontal de la velocidad...",
     options: [
       { text: "Aumenta con el tiempo.", isCorrect: false, rationale: "No hay fuerza horizontal, por lo tanto no hay aceleración horizontal." },
-      { text: "Permanece constante.", isCorrect: true, rationale: "Como no hay aceleración en el eje x (aₓ = 0), la velocidad horizontal no cambia." },
+      { text: "Permanece constante.", isCorrect: true, rationale: "Como no hay aceleración en el eje x ($a_x = 0$), la velocidad horizontal no cambia." },
       { text: "Disminuye con el tiempo.", isCorrect: false, rationale: "La gravedad solo actúa verticalmente." },
       { text: "Es siempre cero.", isCorrect: false, rationale: "Solo es cero si el proyectil se lanza verticalmente." }
     ]
@@ -93,8 +108,8 @@ const quizData = [
   {
     question: "Si el producto cruz de dos vectores no nulos, $\\vec{A} \\times \\vec{B}$, es igual al vector cero, se puede concluir que los vectores son:",
     options: [
-      { text: "Ortogonales (perpendiculares)", isCorrect: false, rationale: "Si fueran ortogonales, la magnitud del producto cruz sería máxima (|A||B|)." },
-      { text: "Paralelos", isCorrect: true, rationale: "La magnitud del producto cruz es |A||B|sin(θ). Es cero solo si sin(θ) = 0, lo que significa que el ángulo θ es 0° o 180°." },
+      { text: "Ortogonales (perpendiculares)", isCorrect: false, rationale: "Si fueran ortogonales, la magnitud del producto cruz sería máxima ($|A||B|$)." },
+      { text: "Paralelos", isCorrect: true, rationale: "La magnitud del producto cruz es $|A||B|\\sin(\\theta)$. Es cero solo si $\\sin(\\theta) = 0$, lo que significa que el ángulo $\\theta$ es 0° o 180°." },
       { text: "De igual magnitud", isCorrect: false, rationale: "La magnitud no determina el resultado del producto cruz." },
       { text: "Unitarios", isCorrect: false, rationale: "Que sean unitarios no implica que su producto cruz sea cero." }
     ]
@@ -112,7 +127,7 @@ const quizData = [
     question: "La velocidad instantánea se define como:",
     options: [
       { text: "El cambio total de posición dividido por el tiempo total.", isCorrect: false, rationale: "Esa es la definición de velocidad promedio." },
-      { text: "La derivada de la posición con respecto al tiempo (dx/dt).", isCorrect: true, rationale: "Mide la tasa de cambio de la posición en un instante específico." },
+      { text: "La derivada de la posición con respecto al tiempo ($dx/dt$).", isCorrect: true, rationale: "Mide la tasa de cambio de la posición en un instante específico." },
       { text: "La derivada de la aceleración con respecto al tiempo.", isCorrect: false, rationale: "Esa cantidad se conoce como 'jerk' o 'sacudida'." },
       { text: "La integral de la posición con respecto al tiempo.", isCorrect: false, rationale: "La integral no tiene una interpretación física directa en este contexto." }
     ]
@@ -120,9 +135,9 @@ const quizData = [
   {
     question: "¿Qué es la frecuencia en el Movimiento Circular Uniforme?",
     options: [
-      { text: "El tiempo para completar una vuelta.", isCorrect: false, rationale: "Eso es el periodo (T)." },
-      { text: "El número de vueltas por unidad de tiempo.", isCorrect: true, rationale: "La frecuencia (f) es el inverso del periodo (f = 1/T) y se mide en Hertz (Hz)." },
-      { text: "La velocidad angular del objeto.", isCorrect: false, rationale: "Está relacionada (ω=2πf), pero no es la definición." },
+      { text: "El tiempo para completar una vuelta.", isCorrect: false, rationale: "Eso es el periodo ($T$)." },
+      { text: "El número de vueltas por unidad de tiempo.", isCorrect: true, rationale: "La frecuencia ($f$) es el inverso del periodo ($f = 1/T$) y se mide en Hertz (Hz)." },
+      { text: "La velocidad angular del objeto.", isCorrect: false, rationale: "Está relacionada ($\\omega=2\\pi f$), pero no es la definición." },
       { text: "El radio de la trayectoria.", isCorrect: false, rationale: "El radio es una medida de distancia." }
     ]
   },
@@ -130,7 +145,7 @@ const quizData = [
     question: "Si la aceleración de una partícula es constante y negativa, y su velocidad inicial es positiva, la partícula...",
     options: [
       { text: "Acelera indefinidamente.", isCorrect: false, rationale: "La aceleración se opone a la velocidad inicial." },
-      { text: "Frena, se detiene y acelera en dirección opuesta.", isCorrect: true, rationale: "Una aceleración opuesta a la velocidad causa que el objeto frene hasta v=0, y luego comience a moverse en la dirección de la aceleración." },
+      { text: "Frena, se detiene y acelera en dirección opuesta.", isCorrect: true, rationale: "Una aceleración opuesta a la velocidad causa que el objeto frene hasta $v=0$, y luego comience a moverse en la dirección de la aceleración." },
       { text: "Se mueve con velocidad constante.", isCorrect: false, rationale: "La velocidad cambia debido a la aceleración." },
       { text: "Se detiene y permanece en reposo.", isCorrect: false, rationale: "La aceleración constante seguirá actuando sobre la partícula." }
     ]
@@ -157,7 +172,7 @@ const quizData = [
     question: "En el movimiento de un proyectil, ¿en qué punto de la trayectoria la rapidez es mínima?",
     options: [
       { text: "Justo al inicio.", isCorrect: false, rationale: "La rapidez inicial puede ser alta." },
-      { text: "En el punto más alto.", isCorrect: true, rationale: "En el punto más alto, la componente vertical de la velocidad es cero (vᵧ=0). La velocidad total es solo la componente horizontal (vₓ), que es constante, resultando en la rapidez mínima." },
+      { text: "En el punto más alto.", isCorrect: true, rationale: "En el punto más alto, la componente vertical de la velocidad es cero ($v_y=0$). La velocidad total es solo la componente horizontal ($v_x$), que es constante, resultando en la rapidez mínima." },
       { text: "Justo antes de tocar el suelo.", isCorrect: false, rationale: "Generalmente, la rapidez es máxima justo antes del impacto." },
       { text: "La rapidez es siempre constante.", isCorrect: false, rationale: "La rapidez cambia porque la componente vertical de la velocidad cambia." }
     ]
@@ -166,17 +181,17 @@ const quizData = [
   {
     question: "La posición de una partícula está dada por $x(t) = 4t^3 - 6t^2 + 2$. ¿Cuál es su aceleración en $t=2$ s?",
     options: [
-      { text: "32 m/s²", isCorrect: false, rationale: "Calculaste la velocidad, no la aceleración. v(t) = 12t² - 12t." },
-      { text: "36 m/s²", isCorrect: true, rationale: "v(t) = 12t² - 12t. Derivando de nuevo, a(t) = 24t - 12. En t=2, a(2) = 24(2) - 12 = 36 m/s²." },
+      { text: "32 m/s²", isCorrect: false, rationale: "Calculaste la velocidad, no la aceleración. $v(t) = 12t^2 - 12t$." },
+      { text: "36 m/s²", isCorrect: true, rationale: "$v(t) = 12t^2 - 12t$. Derivando de nuevo, $a(t) = 24t - 12$. En $t=2$, $a(2) = 24(2) - 12 = 36$ m/s²." },
       { text: "24 m/s²", isCorrect: false, rationale: "Revisa el cálculo de la segunda derivada." },
-      { text: "12 m/s²", isCorrect: false, rationale: "Asegúrate de sustituir t=2 en la ecuación de la aceleración." }
+      { text: "12 m/s²", isCorrect: false, rationale: "Asegúrate de sustituir $t=2$ en la ecuación de la aceleración." }
     ]
   },
   {
     question: "Calcula el producto escalar (punto) de los vectores $\\vec{A} = (2, -1, 3)$ y $\\vec{B} = (4, 5, -2)$.",
     options: [
       { text: "19", isCorrect: false, rationale: "Revisa los signos de la multiplicación." },
-      { text: "-3", isCorrect: true, rationale: "A·B = (2)(4) + (-1)(5) + (3)(-2) = 8 - 5 - 6 = -3." },
+      { text: "-3", isCorrect: true, rationale: "$\\vec{A} \\cdot \\vec{B} = (2)(4) + (-1)(5) + (3)(-2) = 8 - 5 - 6 = -3$." },
       { text: "7", isCorrect: false, rationale: "Parece que sumaste las componentes en lugar de multiplicarlas y luego sumar." },
       { text: "0", isCorrect: false, rationale: "El resultado no es cero, por lo tanto no son ortogonales." }
     ]
@@ -184,8 +199,8 @@ const quizData = [
   {
     question: "Se deja caer una pelota desde una altura de 45 m. ¿Cuánto tiempo tarda en llegar al suelo? (Usa $g \\approx 10$ m/s²)",
     options: [
-      { text: "4.5 s", isCorrect: false, rationale: "Recuerda que la fórmula es y = (1/2)gt², no y = gt." },
-      { text: "3 s", isCorrect: true, rationale: "Usando y = (1/2)gt², tenemos 45 = (1/2)(10)t². Esto simplifica a 45 = 5t², entonces t² = 9, y t = 3 s." },
+      { text: "4.5 s", isCorrect: false, rationale: "Recuerda que la fórmula es $y = (1/2)gt^2$, no $y = gt$." },
+      { text: "3 s", isCorrect: true, rationale: "Usando $y = (1/2)gt^2$, tenemos $45 = (1/2)(10)t^2$. Esto simplifica a $45 = 5t^2$, entonces $t^2 = 9$, y $t = 3$ s." },
       { text: "9 s", isCorrect: false, rationale: "Asegúrate de sacar la raíz cuadrada al final." },
       { text: "2 s", isCorrect: false, rationale: "El tiempo de caída es mayor." }
     ]
@@ -194,7 +209,7 @@ const quizData = [
     question: "¿Cuál es la magnitud del vector $\\vec{v} = (3, 0, -4)$?",
     options: [
       { text: "7", isCorrect: false, rationale: "No es la suma de las magnitudes de las componentes (3+4)." },
-      { text: "5", isCorrect: true, rationale: "|v| = √(3² + 0² + (-4)²) = √(9 + 0 + 16) = √25 = 5." },
+      { text: "5", isCorrect: true, rationale: "$|\\vec{v}| = \\sqrt{3^2 + 0^2 + (-4)^2} = \\sqrt{9 + 0 + 16} = \\sqrt{25} = 5$." },
       { text: "25", isCorrect: false, rationale: "Olvidaste sacar la raíz cuadrada del resultado." },
       { text: "1", isCorrect: false, rationale: "El vector no es unitario." }
     ]
@@ -202,16 +217,16 @@ const quizData = [
   {
     question: "Un atleta corre a una rapidez constante de 8 m/s en una pista circular de 16 m de radio. ¿Cuál es su aceleración centrípeta?",
     options: [
-      { text: "2 m/s²", isCorrect: false, rationale: "La fórmula es a = v²/R. Parece que dividiste R/v." },
-      { text: "4 m/s²", isCorrect: true, rationale: "a = v²/R = (8 m/s)² / 16 m = 64 m²/s² / 16 m = 4 m/s²." },
-      { text: "0.5 m/s²", isCorrect: false, rationale: "Parece que dividiste v/R." },
-      { text: "128 m/s²", isCorrect: false, rationale: "Parece que multiplicaste v² por R." }
+      { text: "2 m/s²", isCorrect: false, rationale: "La fórmula es $a = v^2/R$. Parece que dividiste $R/v$." },
+      { text: "4 m/s²", isCorrect: true, rationale: "$a = v^2/R = (8 \\text{ m/s})^2 / 16 \\text{ m} = 64 \\text{ m}^2/\\text{s}^2 / 16 \\text{ m} = 4$ m/s²." },
+      { text: "0.5 m/s²", isCorrect: false, rationale: "Parece que dividiste $v/R$." },
+      { text: "128 m/s²", isCorrect: false, rationale: "Parece que multiplicaste $v^2$ por $R$." }
     ]
   },
   {
     question: "Un auto viaja a 108 km/h. ¿Cuál es su velocidad en m/s?",
     options: [
-        { text: "30 m/s", isCorrect: true, rationale: "Para convertir km/h a m/s, se divide entre 3.6. 108 / 3.6 = 30 m/s." },
+        { text: "30 m/s", isCorrect: true, rationale: "Para convertir km/h a m/s, se divide entre 3.6. $108 / 3.6 = 30$ m/s." },
         { text: "3.6 m/s", isCorrect: false, rationale: "Esta es la constante de conversión, no el resultado." },
         { text: "388.8 m/s", isCorrect: false, rationale: "Parece que multiplicaste por 3.6 en lugar de dividir." },
         { text: "108 m/s", isCorrect: false, rationale: "Las unidades son diferentes, el valor numérico debe cambiar." }
@@ -220,34 +235,34 @@ const quizData = [
   {
     question: "Un disco de 0.5 m de radio gira a una frecuencia de 2 Hz. ¿Cuál es la rapidez de un punto en el borde del disco?",
     options: [
-        { text: "π m/s", isCorrect: false, rationale: "La fórmula es v = 2πRf. Faltó un factor de 2." },
-        { text: "1 m/s", isCorrect: false, rationale: "Este cálculo omite el factor 2π." },
-        { text: "2π m/s", isCorrect: true, rationale: "La rapidez se calcula con v = 2πRf. Sustituyendo: v = 2 * π * (0.5 m) * (2 Hz) = 2π m/s ≈ 6.28 m/s." },
-        { text: "4π m/s", isCorrect: false, rationale: "Revisa la multiplicación, parece que hay un factor extra." }
+        { text: "$\\pi$ m/s", isCorrect: false, rationale: "La fórmula es $v = 2\\pi Rf$. Faltó un factor de 2." },
+        { text: "1 m/s", isCorrect: false, rationale: "Este cálculo omite el factor $2\\pi$." },
+        { text: "$2\\pi$ m/s", isCorrect: true, rationale: "La rapidez se calcula con $v = 2\\pi Rf$. Sustituyendo: $v = 2 \\cdot \\pi \\cdot (0.5 \\text{ m}) \\cdot (2 \\text{ Hz}) = 2\\pi$ m/s $\\approx 6.28$ m/s." },
+        { text: "$4\\pi$ m/s", isCorrect: false, rationale: "Revisa la multiplicación, parece que hay un factor extra." }
     ]
   },
   {
-    question: "Se lanza una flecha con v₀=50 m/s y un ángulo de 37°. ¿Altura máxima? (Usa g≈10 m/s², sen(37°)≈0.6)",
+    question: "Se lanza una flecha con $v_0=50$ m/s y un ángulo de 37°. ¿Altura máxima? (Usa $g\\approx10$ m/s², $\\sin(37°)\\approx0.6$)",
     options: [
         { text: "30 m", isCorrect: false, rationale: "Esa es la velocidad vertical inicial, no la altura máxima." },
         { text: "90 m", isCorrect: false, rationale: "Parece que olvidaste dividir entre 2 en la fórmula de altura máxima." },
         { text: "125 m", isCorrect: false, rationale: "Este sería el resultado si se usara la velocidad total en la fórmula." },
-        { text: "45 m", isCorrect: true, rationale: "v₀ᵧ = 50*sen(37°)≈30 m/s. La altura máxima es h = v₀ᵧ² / (2g) = (30)² / (2*10) = 900 / 20 = 45 m." }
+        { text: "45 m", isCorrect: true, rationale: "$v_{0y} = 50 \\cdot \\sin(37°) \\approx 30$ m/s. La altura máxima es $h = v_{0y}^2 / (2g) = (30)^2 / (2 \\cdot 10) = 900 / 20 = 45$ m." }
     ]
   },
   {
-    question: "Si v(t) = 10 - 2t y x(0)=5, ¿cuál es la posición x en t=3 s?",
+    question: "Si $v(t) = 10 - 2t$ y $x(0)=5$, ¿cuál es la posición $x$ en $t=3$ s?",
     options: [
         { text: "30 m", isCorrect: false, rationale: "Este valor no toma en cuenta la desaceleración ni la posición inicial." },
         { text: "21 m", isCorrect: false, rationale: "Revisa la integración y la constante de integración." },
-        { text: "26 m", isCorrect: true, rationale: "x(t)=∫(10-2t)dt = 10t-t²+C. Con x(0)=5, C=5. Entonces x(t)=10t-t²+5. x(3)=10(3)-(3)²+5 = 30-9+5=26 m." },
+        { text: "26 m", isCorrect: true, rationale: "$x(t)=\\int(10-2t)dt = 10t-t^2+C$. Con $x(0)=5$, $C=5$. Entonces $x(t)=10t-t^2+5$. $x(3)=10(3)-(3)^2+5 = 30-9+5=26$ m." },
         { text: "15 m", isCorrect: false, rationale: "Asegúrate de sumar la constante de integración C=5." }
     ]
   },
   {
     question: "Calcula el producto vectorial de $\\vec{A} = (1, 2, 0)$ y $\\vec{B} = (0, 3, 4)$.",
     options: [
-        { text: "(8, -4, 3)", isCorrect: true, rationale: "Usando el determinante: i(8-0) - j(4-0) + k(3-0) = 8i - 4j + 3k." },
+        { text: "(8, -4, 3)", isCorrect: true, rationale: "Usando el determinante: $\\hat{i}(8-0) - \\hat{j}(4-0) + \\hat{k}(3-0) = 8\\hat{i} - 4\\hat{j} + 3\\hat{k}$." },
         { text: "(-8, 4, -3)", isCorrect: false, rationale: "Revisa los signos del cálculo del determinante." },
         { text: "(3, 4, 8)", isCorrect: false, rationale: "El orden de las componentes es incorrecto." },
         { text: "11", isCorrect: false, rationale: "El resultado de un producto cruz es un vector, no un escalar." }
@@ -267,6 +282,13 @@ const resultsContainer = document.getElementById('results-container');
 const scoreText = document.getElementById('score-text');
 const restartBtn = document.getElementById('restart-btn');
 const questionContainer = document.getElementById('question-container');
+
+// FIX: Helper function to safely call MathJax
+function typesetNewMath() {
+  if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+    window.MathJax.typesetPromise();
+  }
+}
 
 function startQuiz() {
   currentQuestionIndex = 0;
@@ -294,6 +316,9 @@ function showQuestion() {
     btn.addEventListener('click', () => selectAnswer(btn, option));
     answerOptionsContainer.appendChild(btn);
   });
+  
+  // Le pedimos a MathJax que busque y renderice el nuevo contenido
+  typesetNewMath();
 }
 
 function resetState() {
@@ -317,6 +342,7 @@ function selectAnswer(button, option) {
   }
   rationaleText.innerHTML = `<strong>Justificación:</strong> ${option.rationale}`;
   nextBtn.classList.remove('hidden');
+  typesetNewMath();
 }
 
 function showResults() {
