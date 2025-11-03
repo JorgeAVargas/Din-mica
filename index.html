@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Interactivo: Leyes de Newton y Energía</title>
+    <title>Quiz: Leyes de Newton y Aplicaciones</title>
     <!-- Incluimos Tailwind CSS para un diseño moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -107,8 +107,8 @@
 <body class="p-4 md:p-8">
     <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         <header class="bg-gradient-to-r from-blue-700 to-blue-900 p-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-white">Quiz Interactivo: Leyes de Newton y Energía</h1>
-            <p class="text-lg text-blue-200 mt-2">Basado en los Capítulos 5 y 6 de Sears-Zemansky</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-white">Quiz Interactivo: Leyes de Newton (Cap. 4 y 5)</h1>
+            <p class="text-lg text-blue-200 mt-2">Basado en el temario de Sears-Zemansky</p>
         </header>
 
         <!-- Pestañas de Navegación -->
@@ -132,9 +132,83 @@
                         </defs>
                     </svg>
 
-                    <!-- 1. Reposo en Plano Inclinado -->
+                    <!-- 1. Libro en Reposo (Cap 4) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">1. Reposo en Plano Inclinado</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">1. Libro en Reposo sobre Mesa</h3>
+                        <div class="dcl-svg-container">
+                            <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="30" y="50" width="40" height="20" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <!-- Fuerza Normal (n) -->
+                                <line x1="50" y1="50" x2="50" y2="10" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-blue-500"/>
+                                <text x="55" y="15" fill="currentColor" font-size="10" class="text-blue-500">$\vec{n}$</text>
+                                <!-- Peso (mg) -->
+                                <line x1="50" y1="70" x2="50" y2="110" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="55" y="110" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
+                            </svg>
+                        </div>
+                        <p class="p-4 text-gray-700"><strong>Análisis (1ª Ley de Newton):</strong> El libro está en equilibrio. La fuerza normal $\vec{n}$ (hacia arriba) ejercida por la mesa es igual en magnitud y opuesta al peso $m\vec{g}$ (hacia abajo). $\Sigma F_y = n - mg = 0$.</p>
+                    </div>
+                    
+                    <!-- 2. Par Acción-Reacción (Cap 4) -->
+                    <div class="dcl-card">
+                        <h3 class="text-lg font-semibold p-4 border-b">2. Par Acción-Reacción (3ª Ley)</h3>
+                        <div class="dcl-svg-container">
+                            <svg viewBox="0 0 150 200" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="75" cy="120" r="50" fill="#e0e7ff"/>
+                                <text x="75" y="125" font-size="12" fill="#1d4ed8" text-anchor="middle">Tierra</text>
+                                <rect x="65" y="20" width="20" height="15" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <!-- Fuerza de la Tierra sobre la manzana -->
+                                <line x1="75" y1="35" x2="75" y2="70" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="80" y="60" fill="currentColor" font-size="10" class="text-red-500">$\vec{F}_{T \to M}$ (Peso)</text>
+                                <!-- Fuerza de la manzana sobre la Tierra -->
+                                <line x1="75" y1="90" x2="75" y2="55" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-orange-500"/>
+                                <text x="80" y="80" fill="currentColor" font-size="10" class="text-orange-500">$\vec{F}_{M \to T}$</text>
+                            </svg>
+                        </div>
+                        <p class="p-4 text-gray-700"><strong>Análisis (3ª Ley de Newton):</strong> La Tierra jala a la manzana (Peso, $\vec{F}_{T \to M}$). La manzana jala a la Tierra ($\vec{F}_{M \to T}$). Este es un par acción-reacción. Actúan sobre cuerpos diferentes. $F_{T \to M} = -F_{M \to T}$.</p>
+                    </div>
+
+                    <!-- 3. Bloque Acelerando (Cap 4) -->
+                    <div class="dcl-card">
+                        <h3 class="text-lg font-semibold p-4 border-b">3. Bloque Acelerando (2ª Ley)</h3>
+                        <div class="dcl-svg-container">
+                            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="40" y="70" width="40" height="20" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <!-- Fuerzas -->
+                                <line x1="60" y1="70" x2="60" y2="20" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-blue-500"/>
+                                <text x="65" y="25" fill="currentColor" font-size="10" class="text-blue-500">$\vec{n}$</text>
+                                <line x1="60" y1="90" x2="60" y2="140" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="65" y="145" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
+                                <line x1="80" y1="80" x2="140" y2="80" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-orange-500"/>
+                                <text x="145" y="78" fill="currentColor" font-size="10" class="text-orange-500">$\vec{F}$</text>
+                                <!-- Aceleración -->
+                                <line x1="60" y1="50" x2="120" y2="50" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700"/>
+                                <text x="125" y="48" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
+                            </svg>
+                        </div>
+                        <p class="p-4 text-gray-700"><strong>Análisis (2ª Ley de Newton):</strong> En el eje Y, $\Sigma F_y = n - mg = 0$. En el eje X, hay una fuerza neta. $\Sigma F_x = F = ma_x$. La fuerza $\vec{F}$ causa la aceleración $\vec{a}$.</p>
+                    </div>
+
+                    <!-- 4. Gimnasta Colgando (Cap 5) -->
+                    <div class="dcl-card">
+                        <h3 class="text-lg font-semibold p-4 border-b">4. Gimnasta Colgando (Equilibrio)</h3>
+                        <div class="dcl-svg-container">
+                            <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="35" y="50" width="30" height="30" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <!-- Tensión (T) -->
+                                <line x1="50" y1="50" x2="50" y2="10" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-purple-500"/>
+                                <text x="55" y="15" fill="currentColor" font-size="10" class="text-purple-500">$\vec{T}$</text>
+                                <!-- Peso (mg) -->
+                                <line x1="50" y1="80" x2="50" y2="120" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="55" y="120" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
+                            </svg>
+                        </div>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.1 - Equilibrio):</strong> La gimnasta está en reposo, así que $\Sigma \vec{F} = 0$. La tensión $\vec{T}$ de la cuerda (hacia arriba) debe ser igual en magnitud a su peso $m\vec{g}$ (hacia abajo). $\Sigma F_y = T - mg = 0$.</p>
+                    </div>
+
+                    <!-- 5. Reposo en Plano Inclinado (Cap 5) -->
+                    <div class="dcl-card">
+                        <h3 class="text-lg font-semibold p-4 border-b">5. Reposo en Plano Inclinado</h3>
                         <div class="dcl-svg-container">
                             <svg viewBox="-10 -15 170 170" xmlns="http://www.w3.org/2000/svg">
                                 <g transform="rotate(-30 75 75)">
@@ -149,12 +223,12 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Equilibrio):</strong> $\vec{n}$ es perpendicular a la rampa. $\vec{f}_s$ (fricción estática) apunta cuesta arriba, oponiéndose al deslizamiento y equilibrando a $mg \sin\alpha$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Equilibrio):</strong> $\vec{n}$ es perpendicular a la rampa. $\vec{f}_s$ (fricción estática) apunta cuesta arriba, oponiéndose al deslizamiento y equilibrando a $mg \sin\alpha$.</p>
                     </div>
 
-                    <!-- 2. Deslizando Cuesta Abajo (con fricción) -->
+                    <!-- 6. Deslizando Cuesta Abajo (Cap 5) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">2. Deslizando Cuesta Abajo</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">6. Deslizando Cuesta Abajo</h3>
                         <div class="dcl-svg-container">
                              <svg viewBox="-10 -15 170 170" xmlns="http://www.w3.org/2000/svg">
                                 <g transform="rotate(-30 75 75)">
@@ -173,36 +247,12 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Dinámica):</strong> $\vec{f}_k$ (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto, apunta *cuesta arriba*. La fuerza neta $mg \sin\alpha - f_k$ produce la aceleración $\vec{a}$.</p>
-                    </div>
-                    
-                    <!-- 3. Deslizando Cuesta Arriba (con fricción) -->
-                    <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">3. Deslizando Cuesta Arriba</h3>
-                        <div class="dcl-svg-container">
-                             <svg viewBox="-10 -15 170 170" xmlns="http://www.w3.org/2000/svg">
-                                <g transform="rotate(-30 75 75)">
-                                    <rect x="50" y="50" width="50" height="25" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
-                                </g>
-                                <!-- Vector Aceleración -->
-                                <line x1="30" y1="52" x2="65" y2="32" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700" transform="rotate(180 75 62.5)"/>
-                                <text x="120" y="94" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
-                                <!-- Fuerzas -->
-                                <line x1="75" y1="62.5" x2="75" y2="120" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
-                                <text x="80" y="118" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
-                                <line x1="75" y1="62.5" x2="40" y2="18" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-blue-500"/>
-                                <text x="32" y="15" fill="currentColor" font-size="10" class="text-blue-500">$\vec{n}$</text>
-                                <line x1="75" y1="62.5" x2="32" y2="37" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-green-500"/>
-                                <text x="25" y="34" fill="currentColor" font-size="10" class="text-green-500">$\vec{f}_k$</text>
-                                <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Dinámica):</strong> $\vec{f}_k$ se opone al movimiento (cuesta arriba), por lo tanto, apunta *cuesta abajo*. Tanto la fricción como la gravedad ($mg \sin\alpha$) frenan el bloque.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Dinámica):</strong> $\vec{f}_k$ (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto, apunta *cuesta arriba*. La fuerza neta $mg \sin\alpha - f_k$ produce la aceleración $\vec{a}$.</p>
                     </div>
 
-                    <!-- 4. Elevador Acelerando Hacia Arriba -->
+                    <!-- 7. Elevador Acelerando Hacia Arriba (Cap 5) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">4. Elevador Acelerando Hacia Arriba</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">7. Elevador Acelerando Hacia Arriba</h3>
                         <div class="dcl-svg-container">
                             <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="35" y="50" width="30" height="30" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
@@ -217,59 +267,38 @@
                                 <text x="10" y="45" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Dinámica):</strong> La fuerza hacia arriba ($\vec{T}$ o $\vec{n}$) debe ser *mayor* que el peso ($m\vec{g}$) para proporcionar una aceleración neta hacia arriba. $\Sigma F_y = T - mg = ma_y$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica):</strong> La fuerza hacia arriba ($\vec{T}$ o $\vec{n}$) debe ser *mayor* que el peso ($m\vec{g}$) para proporcionar una aceleración neta hacia arriba. $\Sigma F_y = T - mg = ma_y$.</p>
                     </div>
 
-                    <!-- 5. Elevador Acelerando Hacia Abajo -->
+                    <!-- 8. Máquina de Atwood (Cap 5) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">5. Elevador Acelerando Hacia Abajo</h3>
-                        <div class="dcl-svg-container">
-                            <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="35" y="50" width="30" height="30" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
-                                <!-- Tensión (T) - CORTA -->
-                                <line x1="50" y1="50" x2="50" y2="10" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-blue-500"/>
-                                <text x="55" y="15" fill="currentColor" font-size="10" class="text-blue-500">$\vec{T}$ (o $\vec{n}$)</text>
-                                <!-- Peso (mg) - LARGA -->
-                                <line x1="50" y1="80" x2="50" y2="140" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
-                                <text x="55" y="140" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
-                                <!-- Aceleración -->
-                                <line x1="15" y1="100" x2="15" y2="130" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700"/>
-                                <text x="10" y="95" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
-                            </svg>
-                        </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Dinámica):</strong> El peso ($m\vec{g}$) es *mayor* que la fuerza hacia arriba ($\vec{T}$ o $\vec{n}$) para proporcionar una aceleración neta hacia abajo. $\Sigma F_y = T - mg = -ma_y$.</p>
-                    </div>
-                    
-                    <!-- 6. Péndulo Cónico -->
-                    <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">6. Péndulo Cónico</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">8. Máquina de Atwood</h3>
                         <div class="dcl-svg-container">
                             <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Ejes -->
-                                <line x1="80" y1="0" x2="80" y2="160" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4"/>
-                                <line x1="0" y1="80" x2="160" y2="80" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4"/>
-                                <!-- Masa -->
-                                <circle cx="80" cy="80" r="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
-                                <!-- Fuerzas -->
-                                <!-- Peso (mg) -->
-                                <line x1="80" y1="90" x2="80" y2="140" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
-                                <text x="85" y="140" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
-                                <!-- Tensión (T) -->
-                                <line x1="80" y1="80" x2="40" y2="20" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-purple-500"/>
-                                <text x="35" y="15" fill="currentColor" font-size="10" class="text-purple-500">$\vec{T}$</text>
-                                <!-- Componentes -->
-                                <line x1="80" y1="80" x2="40" y2="80" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4"/>
-                                <line x1="40" y1="80" x2="40" y2="20" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4"/>
-                                <text x="45" y="95" fill="currentColor" font-size="9" class="text-purple-500">$T \sin\beta$</text>
-                                <text x="25" y="50" fill="currentColor" font-size="9" class="text-purple-500">$T \cos\beta$</text>
+                                <!-- m1 -->
+                                <rect x="30" y="70" width="30" height="30" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <line x1="45" y1="70" x2="45" y2="30" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-purple-500"/>
+                                <text x="50" y="35" fill="currentColor" font-size="10" class="text-purple-500">$\vec{T}$</text>
+                                <line x1="45" y1="100" x2="45" y2="140" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="50" y="140" fill="currentColor" font-size="10" class="text-red-500">$m_1\vec{g}$</text>
+                                <line x1="15" y1="60" x2="15" y2="30" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700"/>
+                                <text x="10" y="75" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
+                                <!-- m2 -->
+                                <rect x="100" y="80" width="30" height="30" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
+                                <line x1="115" y1="80" x2="115" y2="40" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-purple-500"/>
+                                <text x="120" y="45" fill="currentColor" font-size="10" class="text-purple-500">$\vec{T}$</text>
+                                <line x1="115" y1="110" x2="115" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
+                                <text x="120" y="150" fill="currentColor" font-size="10" class="text-red-500">$m_2\vec{g}$</text>
+                                <line x1="140" y1="120" x2="140" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700"/>
+                                <text x="135" y="115" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}$</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Mov. Circular):</strong> La componente vertical $T \cos\beta$ equilibra el peso $m\vec{g}$. La componente horizontal $T \sin\beta$ apunta al centro y proporciona la fuerza centrípeta $mv^2/R$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica, $m_2 > m_1$):</strong> Dos DCL. $\vec{T}$ es la misma. $\vec{a}$ tiene la misma magnitud. $m_2$ acelera hacia abajo ($m_2 g - T = m_2 a$). $m_1$ acelera hacia arriba ($T - m_1 g = m_1 a$).</p>
                     </div>
 
-                    <!-- 7. Auto en Curva Plana -->
+                    <!-- 9. Auto en Curva Plana (Cap 5) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">7. Auto en Curva Plana (DCL)</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">9. Auto en Curva Plana (DCL)</h3>
                         <div class="dcl-svg-container">
                             <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="60" y="70" width="40" height="20" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
@@ -285,12 +314,12 @@
                                 <text x="15" y="48" fill="currentColor" font-size="10" class="text-gray-700">$\vec{a}_{rad}$</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Mov. Circular):</strong> DCL visto desde atrás. $\vec{n}$ y $m\vec{g}$ se cancelan. La $\vec{f}_s$ (fricción estática) apunta al centro de la curva y es la única fuerza que proporciona la aceleración centrípeta $a_{rad}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> DCL visto desde atrás. $\vec{n}$ y $m\vec{g}$ se cancelan. La $\vec{f}_s$ (fricción estática) apunta al centro de la curva y proporciona la $a_{rad}$.</p>
                     </div>
 
-                    <!-- 8. Auto en Curva Peraltada -->
+                    <!-- 10. Auto en Curva Peraltada (Cap 5) -->
                     <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">8. Auto en Curva Peraltada (DCL)</h3>
+                        <h3 class="text-lg font-semibold p-4 border-b">10. Auto en Curva Peraltada (DCL)</h3>
                         <div class="dcl-svg-container">
                             <svg viewBox="-10 -10 170 170" xmlns="http://www.w3.org/2000/svg">
                                 <g transform="rotate(-25 75 75)">
@@ -309,31 +338,9 @@
                                 <line x1="0" y1="130" x2="150" y2="60" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Mov. Circular):</strong> Sin fricción. La $\vec{n}$ es perpendicular a la rampa. $n \cos\beta$ equilibra a $m\vec{g}$. $n \sin\beta$ apunta al centro y proporciona la $a_{rad}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> Sin fricción. La $\vec{n}$ es perpendicular a la rampa. $n \cos\beta$ equilibra a $m\vec{g}$. $n \sin\beta$ apunta al centro y proporciona la $a_{rad}$.</p>
                     </div>
 
-                    <!-- 9. Trabajo: Fuerza en Ángulo -->
-                    <div class="dcl-card">
-                        <h3 class="text-lg font-semibold p-4 border-b">9. Trabajo de Fuerza en Ángulo</h3>
-                        <div class="dcl-svg-container">
-                            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="20" y="80" width="40" height="20" fill="#f3f4f6" stroke="#6b7280" stroke-width="1"/>
-                                <!-- Fuerzas -->
-                                <line x1="40" y1="100" x2="40" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-red-500"/>
-                                <text x="45" y="150" fill="currentColor" font-size="10" class="text-red-500">$m\vec{g}$</text>
-                                <line x1="40" y1="80" x2="40" y2="30" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-blue-500"/>
-                                <text x="45" y="35" fill="currentColor" font-size="10" class="text-blue-500">$\vec{n}$</text>
-                                <line x1="20" y1="90" x2="0" y2="90" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-green-500"/>
-                                <text x="-5" y="85" fill="currentColor" font-size="10" class="text-green-500">$\vec{f}_k$</text>
-                                <line x1="40" y1="80" x2="100" y2="50" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-orange-500"/>
-                                <text x="105" y="50" fill="currentColor" font-size="10" class="text-orange-500">$\vec{F}$</text>
-                                <!-- Desplazamiento -->
-                                <line x1="60" y1="90" x2="140" y2="90" stroke="currentColor" stroke-width="2" marker-end="url(#arrowhead)" class="text-gray-700"/>
-                                <text x="145" y="90" fill="currentColor" font-size="10" class="text-gray-700">$\vec{s}$</text>
-                            </svg>
-                        </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Trabajo):</strong> $W_{net} = W_n + W_g + W_F + W_f$. $W_n = 0$ y $W_g = 0$ (perpendiculares a $\vec{s}$). $W_F = (F \cos\phi)s$ (positivo). $W_f = -f_k s$ (negativo).</p>
-                    </div>
                 </div>
             </div>
 
@@ -356,137 +363,133 @@
     <script>
         // --- Lógica de Pestañas ---
         function showTab(event, tabName) {
-            // Ocultar todo el contenido
             let tabContents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].style.display = "none";
             }
-            // Quitar clase 'active' de todos los botones
             let tabButtons = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < tabButtons.length; i++) {
                 tabButtons[i].className = tabButtons[i].className.replace(" active", "");
             }
-            // Mostrar la pestaña seleccionada y marcar el botón como activo
             document.getElementById(tabName).style.display = "block";
             event.currentTarget.className += " active";
         }
-        // Mostrar la primera pestaña por defecto
         document.getElementById('dcl').style.display = "block";
 
-        // --- Datos del Quiz ---
+        // --- Datos del Quiz (Capítulos 4 y 5) ---
         const quizTeoricoData = [
             {
-                question: "1. Un objeto está en una báscula dentro de un elevador que se mueve hacia abajo y está frenando. La lectura de la báscula (peso aparente) es:",
-                options: ["Igual a su peso real (mg)", "Mayor que su peso real", "Menor que su peso real", "Cero"],
-                answer: 1 // Índice de la respuesta correcta (B)
+                question: "1. (Cap 4) ¿Cuál es la definición de un 'marco de referencia inercial'?",
+                options: ["Un marco donde la aceleración siempre es $g$.", "Un marco de referencia que no se está moviendo.", "Un marco donde un objeto sin fuerza neta sobre él se mueve con velocidad constante.", "Un marco de referencia que acelera."],
+                answer: 2 // C
             },
             {
-                question: "2. En el escenario de la Pregunta 1, ¿cuál es la dirección de la aceleración neta del objeto?",
-                options: ["Hacia arriba", "Hacia abajo", "Cero", "Depende de la velocidad"],
-                answer: 0 // Índice A
+                question: "2. (Cap 4) Un objeto se mueve en línea recta con velocidad constante. ¿Cuál es la fuerza neta sobre el objeto?",
+                options: ["Positiva", "Negativa", "Cero", "Depende de su masa"],
+                answer: 2 // Cero
             },
             {
-                question: "3. Un auto toma una curva en una carretera plana (sin peralte) a velocidad constante. La fuerza centrípeta que mantiene al auto en la curva es proporcionada por:",
+                question: "3. (Cap 4) La 'masa' de un objeto es una medida cuantitativa de su...",
+                options: ["Peso", "Inercia", "Fuerza gravitacional", "Volumen"],
+                answer: 1 // Inercia
+            },
+            {
+                question: "4. (Cap 4) Usted empuja una pared con 50 N de fuerza. ¿Cuál es la fuerza de reacción (3ª Ley de Newton)?",
+                options: ["La pared ejerce 50 N sobre usted.", "El piso ejerce 50 N sobre usted.", "Su peso, que es 50 N.", "No hay reacción si la pared no se mueve."],
+                answer: 0 // A
+            },
+            {
+                question: "5. (Cap 5) Un objeto está en una báscula dentro de un elevador que se mueve hacia abajo y está *frenando*. La lectura de la báscula (peso aparente) es:",
+                options: ["Igual a su peso real ($mg$)", "Mayor que su peso real", "Menor que su peso real", "Cero"],
+                answer: 1 // Mayor
+            },
+            {
+                question: "6. (Cap 5) ¿Cuándo es correcto usar la fórmula $f_s = \\mu_s n$?",
+                options: ["Siempre que haya fricción estática", "Solo en el instante justo antes de que el objeto comience a moverse", "En cualquier momento en que el objeto esté en reposo", "Nunca, es solo una aproximación"],
+                answer: 1 // Solo en el instante...
+            },
+            {
+                question: "7. (Cap 5) Un bloque desliza cuesta arriba por un plano inclinado rugoso. ¿En qué dirección apunta la fuerza de fricción cinética?",
+                options: ["Cuesta arriba", "Cuesta abajo", "Perpendicular a la rampa", "Hacia el centro de la Tierra"],
+                answer: 1 // Cuesta abajo
+            },
+            {
+                question: "8. (Cap 5) Un auto toma una curva en una carretera plana (sin peralte) a velocidad constante. La fuerza centrípeta es proporcionada por:",
                 options: ["La fuerza normal", "La fuerza de fricción cinética", "La fuerza de fricción estática", "La componente horizontal del peso"],
-                answer: 2 // Índice C
+                answer: 2 // Fricción estática
             },
             {
-                question: "4. Si el auto de la Pregunta 3 toma la curva demasiado rápido, derrapa. ¿Por qué la fuerza de fricción estática tiene un valor máximo?",
-                options: ["Porque la fuerza normal disminuye con la velocidad", "Porque $f_s$ depende de $v^2$", "Porque $\\mu_s n$ es un límite que depende de las superficies y la fuerza normal", "Porque la fricción se convierte en cinética, la cual es siempre menor"],
-                answer: 2 // Índice C
+                question: "9. (Cap 5) Un auto toma una curva peraltada a la 'rapidez ideal' (sin fricción). ¿Qué fuerza proporciona la aceleración centrípeta?",
+                options: ["La fricción estática", "La componente horizontal de la fuerza normal", "La fuerza de gravedad", "El peso del auto"],
+                answer: 1 // Componente horizontal de la normal
             },
             {
-                question: "5. El Teorema del Trabajo y la Energía establece que:",
-                options: ["El trabajo realizado por la gravedad es igual al cambio en la energía cinética", "El trabajo realizado por las fuerzas no conservativas es igual al cambio en la energía cinética", "El trabajo *neto* (total) realizado sobre un objeto es igual al cambio en su energía cinética", "La fuerza neta es igual al cambio en la energía cinética"],
-                answer: 2 // Índice C
-            },
-            {
-                question: "6. Usted levanta un libro pesado desde el piso hasta un estante a velocidad constante. El trabajo realizado por la fuerza de gravedad sobre el libro es:",
-                options: ["Positivo", "Negativo", "Cero", "Depende de la trayectoria"],
-                answer: 1 // Índice B
-            },
-            {
-                question: "7. Un bloque se desliza sobre una superficie rugosa y se detiene. El trabajo realizado por la fuerza de fricción es:",
-                options: ["Positivo", "Negativo", "Cero", "Igual al cambio en la energía potencial"],
-                answer: 1 // Índice B
-            },
-            {
-                question: "8. ¿Cuál de las siguientes es una fuerza *no conservativa*?",
-                options: ["La fuerza de gravedad", "La fuerza de un resorte ideal", "La fuerza de fricción", "La fuerza eléctrica"],
-                answer: 2 // Índice C
-            },
-            {
-                question: "9. Un motor levanta un objeto de 10 N a una velocidad constante de 2 m/s. La potencia instantánea suministrada por el motor es:",
-                options: ["5 W", "10 W", "20 W", "200 W"],
-                answer: 2 // Índice C
-            },
-            {
-                question: "10. Usted estira un resorte ideal una distancia $x$. El trabajo realizado *por el resorte* sobre su mano es:",
-                options: ["$+kx$", "$-kx$", "$+\\frac{1}{2}kx^2$", "$-\\frac{1}{2}kx^2$"],
-                answer: 3 // Índice D
+                question: "10. (Cap 5) Un objeto cae en el aire y alcanza su velocidad terminal. En ese momento, la fuerza neta sobre el objeto es:",
+                options: ["Igual a su peso", "Mayor que su peso", "Cero", "Igual a la resistencia del aire"],
+                answer: 2 // Cero
             }
         ];
 
         const quizProblemasData = [
             {
-                question: "1. (Equilibrio) Un semáforo de 100 N cuelga de dos cables que forman un ángulo de $45^\\circ$ con la vertical. ¿Cuál es la tensión $T$ en cada cable?",
+                question: "1. (Cap 4.1) Tres fuerzas actúan sobre un objeto: $\\vec{F}_1 = (20\\hat{i}) \\text{ N}$, $\\vec{F}_2 = (30\\hat{j}) \\text{ N}$ y $\\vec{F}_3$. El objeto está en equilibrio. ¿Cuál es $\\vec{F}_3$?",
+                options: ["$(-20\\hat{i} - 30\\hat{j}) \\text{ N}$", "$(20\\hat{i} - 30\\hat{j}) \\text{ N}$", "$(50\\hat{i}) \\text{ N}$", "$(36\\hat{j}) \\text{ N}$"],
+                answer: 0, // A
+                explanation: "Equilibrio (1ª Ley) significa $\\Sigma \\vec{F} = 0$. $\\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 = 0$. $(20\\hat{i} + 30\\hat{j}) + \\vec{F}_3 = 0 \\implies \\vec{F}_3 = (-20\\hat{i} - 30\\hat{j}) \\text{ N}$."
+            },
+            {
+                question: "2. (Cap 4.4) Un objeto de masa 10 kg pesa 98 N en la Tierra. ¿Cuál es su peso en la Luna, donde $g_{Luna} \\approx 1.62$ m/s²?",
+                options: ["$98$ N", "$1.62$ N", "$16.2$ N", "$9.8$ N"],
+                answer: 2, // C
+                explanation: "La masa ($m=10$ kg) es constante. El peso es $W = mg$. En la Luna, $W_{Luna} = m g_{Luna} = (10 \\text{ kg})(1.62 \\text{ m/s}²) = 16.2$ N."
+            },
+            {
+                question: "3. (Cap 4.3) Una fuerza neta constante de 20 N actúa sobre un bloque de 5 kg que parte del reposo. ¿Cuál es su rapidez después de 3 segundos?",
+                options: ["$4$ m/s", "$12$ m/s", "$15$ m/s", "$60$ m/s"],
+                answer: 1, // B
+                explanation: "2ª Ley: $a = F_{neta} / m = 20 \\text{ N} / 5 \\text{ kg} = 4$ m/s². Cinemática: $v_f = v_i + at = 0 + (4 \\text{ m/s}²)(3 \\text{ s}) = 12$ m/s."
+            },
+            {
+                question: "4. (Cap 5.1) Un semáforo de 100 N cuelga de dos cables que forman un ángulo de $45^\\circ$ con la vertical. ¿Cuál es la tensión $T$ en cada cable?",
                 options: ["50.0 N", "70.7 N", "100 N", "141.4 N"],
                 answer: 1, // B
                 explanation: "Equilibrio: $\\Sigma F_y = 0 \\implies T\\cos(45^\\circ) + T\\cos(45^\\circ) - 100 \\text{ N} = 0$. $2T(0.707) = 100 \\text{ N} \\implies T = 70.7$ N."
             },
             {
-                question: "2. (Plano Inclinado) Un bloque de 20 N está en reposo en una rampa inclinada $30^\\circ$. La fuerza de fricción estática que actúa sobre el bloque es:",
-                options: ["20 N", "17.3 N", "10 N", "0 N"],
-                answer: 2, // C
-                explanation: "Equilibrio: $\\Sigma F_x = 0$. $f_s$ debe equilibrar la componente del peso paralela a la rampa: $f_s = mg \\sin(30^\\circ) = (20 \\text{ N})(0.5) = 10$ N."
-            },
-            {
-                question: "3. (Máquina de Atwood) Dos masas, $m_1 = 2.0$ kg y $m_2 = 3.0$ kg, están conectadas por una cuerda sobre una polea sin fricción. ¿Cuál es la aceleración $a$ del sistema? ($g = 9.8$ m/s²)",
+                question: "5. (Cap 5.2) Una Máquina de Atwood tiene masas $m_1 = 2.0$ kg y $m_2 = 3.0$ kg. ¿Cuál es la aceleración $a$ del sistema? ($g = 9.8$ m/s²)",
                 options: ["$9.8$ m/s²", "$4.9$ m/s²", "$2.0$ m/s²", "$1.96$ m/s²"],
                 answer: 3, // D
                 explanation: "$\\Sigma F_{ext} = m_{total}a \\implies m_2 g - m_1 g = (m_1 + m_2)a$. $(3-2)(9.8) = (3+2)a \\implies 9.8 = 5a \\implies a = 1.96$ m/s²."
             },
             {
-                question: "4. (Fricción Estática) Un bloque de 25 kg está en una rampa. Si $\\mu_s = 0.35$, ¿cuál es el ángulo *máximo* $\\alpha$ de la rampa antes de que el bloque deslice?",
-                options: ["$15.5^\\circ$", "$19.3^\\circ$", "$20.5^\\circ$", "$35.0^\\circ$"],
-                answer: 1, // B
-                explanation: "En el ángulo máximo, $mg \\sin\\alpha = f_{s,max} = \\mu_s n = \\mu_s mg \\cos\\alpha$. $\\tan\\alpha = \\mu_s$. $\\alpha = \\arctan(0.35) = 19.3^\\circ$."
+                question: "6. (Cap 5.3) Un bloque de 20 N está en reposo en una rampa inclinada $30^\\circ$. La fuerza de fricción estática que actúa sobre el bloque es:",
+                options: ["20 N", "17.3 N", "10 N", "0 N"],
+                answer: 2, // C
+                explanation: "Equilibrio: $\\Sigma F_x = 0$. $f_s$ debe equilibrar la componente del peso paralela a la rampa: $f_s = mg \\sin(30^\\circ) = (20 \\text{ N})(0.5) = 10$ N."
             },
             {
-                question: "5. (Fricción Cinética) Un bloque de 50 N se desliza cuesta abajo por una rampa a $30^\\circ$. Si $\\mu_k = 0.20$, ¿cuál es la aceleración $a_x$ del bloque? ($g = 9.8$ m/s²)",
+                question: "7. (Cap 5.3) Un bloque de 50 N se desliza cuesta abajo por una rampa a $30^\\circ$. Si $\\mu_k = 0.20$, ¿cuál es la aceleración $a_x$ del bloque? ($g = 9.8$ m/s²)",
                 options: ["$4.90$ m/s²", "$4.04$ m/s²", "$3.20$ m/s²", "$2.50$ m/s²"],
                 answer: 2, // C
                 explanation: "$n = mg \\cos(30^\\circ) = 50(0.866) = 43.3$ N. $f_k = \\mu_k n = 0.2(43.3) = 8.66$ N. $\\Sigma F_x = mg \\sin(30^\\circ) - f_k = ma_x$. $50(0.5) - 8.66 = (50/9.8)a_x \\implies 16.34 = 5.1 a_x \\implies a_x \\approx 3.20$ m/s²."
             },
             {
-                question: "6. (Movimiento Circular) Un auto toma una curva plana de $220$ m de radio. Si $\\mu_s = 0.80$, ¿cuál es la $v_{max}$ sin derrapar? ($g = 9.8$ m/s²)",
+                question: "8. (Cap 5.4) Un auto toma una curva plana de $220$ m de radio. Si $\\mu_s = 0.80$, ¿cuál es la $v_{max}$ sin derrapar? ($g = 9.8$ m/s²)",
                 options: ["$29.7$ m/s", "$41.6$ m/s", "$176.4$ m/s", "$1728$ m/s"],
                 answer: 1, // B
                 explanation: "$f_s = mv^2/R = \\mu_s n = \\mu_s mg$. $v = \\sqrt{\\mu_s g R} = \\sqrt{0.80 \\cdot 9.8 \\cdot 220} = \\sqrt{1724.8} \\approx 41.6$ m/s."
             },
             {
-                question: "7. (Cálculo de Trabajo) Un obrero empuja una caja de 30 kg una distancia de 4.5 m con una fuerza horizontal constante de 220 N. El $\\mu_k = 0.25$. ¿Cuál es el trabajo *total* ($W_{net}$) realizado? ($g = 9.8$ m/s²)",
-                options: ["$990$ J", "$659$ J", "$331$ J", "$-331$ J"],
-                answer: 1, // B
-                explanation: "$W_F = (220 \\text{ N})(4.5 \\text{ m}) = 990$ J. $n = mg = 294$ N. $f_k = \\mu_k n = (0.25)(294) = 73.5$ N. $W_f = -f_k s = -(73.5)(4.5) = -330.75$ J. $W_{net} = 990 - 330.75 = 659.25$ J."
-            },
-            {
-                question: "8. (Teorema W-K) Un trineo de 8.0 kg se mueve a 4.0 m/s. 2.50 m más adelante, su rapidez es de 6.0 m/s. ¿Cuál fue la fuerza neta $F_{net}$ constante?",
-                options: ["$16.0$ N", "$32.0$ N", "$40.0$ N", "$80.0$ N"],
-                answer: 1, // B
-                explanation: "$W_{net} = \\Delta K = \\frac{1}{2}m(v_f^2 - v_i^2) = \\frac{1}{2}(8.0)(6^2 - 4^2) = 4(20) = 80$ J. $W_{net} = F_{net} \\cdot s \\implies 80 \\text{ J} = F_{net} (2.50 \\text{ m}) \\implies F_{net} = 32.0$ N."
-            },
-            {
-                question: "9. (Trabajo y Resortes) Se requieren 12.0 J de trabajo para estirar un resorte 3.0 cm (0.03 m) desde su equilibrio. ¿Cuál es la constante $k$ del resorte?",
-                options: ["$400$ N/m", "$4,000$ N/m", "$26,667$ N/m", "$80,000$ N/m"],
+                question: "9. (Cap 5.2) Un elevador de 800 kg baja a 10.0 m/s y se detiene en 25.0 m con aceleración constante. ¿Cuál es la tensión $T$ en el cable mientras frena?",
+                options: ["$7840$ N", "$6240$ N", "$9440$ N", "$1600$ N"],
                 answer: 2, // C
-                explanation: "$W = \\frac{1}{2}kx^2 \\implies 12.0 \\text{ J} = \\frac{1}{2}k(0.03 \\text{ m})^2 \\implies k = 24.0 / 0.0009 = 26,667$ N/m."
+                explanation: "Calcular $a_y$: $v_f^2 = v_i^2 + 2as \\implies 0 = (-10)^2 + 2a_y(-25) \\implies -100 = -50a_y \\implies a_y = +2.0$ m/s² (hacia arriba). $\\Sigma F_y = T - mg = ma_y \\implies T = m(g+a_y) = 800(9.8+2.0) = 9440$ N."
             },
             {
-                question: "10. (Potencia) Un motor debe levantar un elevador de 1000 kg (peso $\\approx 9800$ N) a velocidad constante de 2.0 m/s. ¿Qué potencia mínima debe suministrar?",
-                options: ["$4.9$ kW", "$9.8$ kW", "$19.6$ kW", "$49.0$ kW"],
+                question: "10. (Cap 5.4) Un péndulo cónico tiene $L=1.2$ m y $\\beta=25^\\circ$ (con la vertical). ¿Cuál es el periodo $T$ (tiempo por revolución)? ($g=9.8$ m/s²)",
+                options: ["$1.55$ s", "$1.80$ s", "$2.09$ s", "$2.21$ s"],
                 answer: 2, // C
-                explanation: "$F_{motor} = mg = (1000)(9.8) = 9800$ N. $P = Fv = (9800 \\text{ N})(2.0 \\text{ m/s}) = 19600$ W = 19.6 kW."
+                explanation: "$T = 2\\pi \\sqrt{L \\cos\\beta / g} = 2\\pi \\sqrt{1.2 \\cos(25^\\circ) / 9.8} = 2\\pi \\sqrt{0.1109} = 2.09$ s."
             }
         ];
 
