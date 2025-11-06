@@ -121,7 +121,7 @@
         <main class="p-6 md:p-10">
             <!-- Contenido Pestaña 1: Galería de DCL -->
             <div id="dcl" class="tab-content active">
-                <p class="text-gray-700 mb-6">Analiza cada escenario y compáralo con el DCL dibujado. Las fuerzas clave están codificadas por color: <span class="text-red-500 font-medium">Peso (mg)</span>, <span class="text-blue-500 font-medium">Normal (n)</span>, <span class="text-green-500 font-medium">Fricción (f)</span>, <span class="text-purple-500 font-medium">Tensión (T)</span>, <span class="text-orange-500 font-medium">Aplicada (F)</span>.</p>
+                <p class="text-gray-700 mb-6">Analiza cada escenario y compáralo con el DCL dibujado. Las fuerzas clave están codificadas por color: <span class="text-red-500 font-medium">Peso (mg)</span>, <span class="text-blue-500 font-medium">Normal / Tensión</span>, <span class="text-green-500 font-medium">Fricción</span>.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Definición de flecha para SVGs -->
                     <svg width="0" height="0" style="position:absolute">
@@ -146,7 +146,7 @@
                                 <text x="55" y="110" fill="currentColor" font-size="10" class="text-red-500">mg</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (1ª Ley de Newton):</strong> El libro está en equilibrio. La fuerza normal $\vec{n}$ (hacia arriba) ejercida por la mesa es igual en magnitud y opuesta al peso $m\vec{g}$ (hacia abajo). $\Sigma F_y = n - mg = 0$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (1ª Ley de Newton):</strong> El libro está en equilibrio. La fuerza normal <span>$\vec{n}$</span> (hacia arriba) ejercida por la mesa es igual en magnitud al peso <span>$m\vec{g}$</span>.</p>
                     </div>
                     
                     <!-- 2. Par Acción-Reacción (Cap 4) -->
@@ -165,7 +165,7 @@
                                 <text x="80" y="80" fill="currentColor" font-size="10" class="text-orange-500">-F_g (Reacción)</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (3ª Ley de Newton):</strong> La Tierra jala a la manzana (Peso, $\vec{F}_{T \to M}$). La manzana jala a la Tierra ($\vec{F}_{M \to T}$). Este es un par acción-reacción. Actúan sobre cuerpos diferentes. $F_{T \to M} = -F_{M \to T}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (3ª Ley de Newton):</strong> La Tierra jala a la manzana (Peso, <span>$\vec{F}_{T \to M}$</span>). La manzana jala a la Tierra (<span>$\vec{F}_{M \to T}$</span>) con igual magnitud y sentido opuesto.</p>
                     </div>
 
                     <!-- 3. Bloque Acelerando (Cap 4) -->
@@ -186,7 +186,7 @@
                                 <text x="125" y="48" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (2ª Ley de Newton):</strong> En el eje Y, $\Sigma F_y = n - mg = 0$. En el eje X, hay una fuerza neta. $\Sigma F_x = F = ma_x$. La fuerza $\vec{F}$ causa la aceleración $\vec{a}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (2ª Ley de Newton):</strong> En el eje Y, <span>$\Sigma F_y = n - mg = 0$</span>. En el eje X, hay una fuerza neta: <span>$\Sigma F_x = F = ma_x$</span>.</p>
                     </div>
 
                     <!-- 4. Gimnasta Colgando (Cap 5) -->
@@ -203,7 +203,7 @@
                                 <text x="55" y="120" fill="currentColor" font-size="10" class="text-red-500">mg</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.1 - Equilibrio):</strong> La gimnasta está en reposo, así que $\Sigma \vec{F} = 0$. La tensión $\vec{T}$ de la cuerda (hacia arriba) debe ser igual en magnitud a su peso $m\vec{g}$ (hacia abajo). $\Sigma F_y = T - mg = 0$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.1 - Equilibrio):</strong> La gimnasta está en reposo, así que <span>$\Sigma \vec{F} = 0$</span>. La tensión <span>$\vec{T}$</span> de la cuerda equilibra al peso <span>$m\vec{g}$</span>.</p>
                     </div>
 
                     <!-- 5. Reposo en Plano Inclinado (Cap 5) -->
@@ -223,7 +223,7 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Equilibrio):</strong> $\vec{n}$ es perpendicular a la rampa. $\vec{f}_s$ (fricción estática) apunta cuesta arriba, oponiéndose al deslizamiento y equilibrando a $mg \sin\alpha$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Equilibrio):</strong> <span>$\vec{n}$</span> es perpendicular a la rampa. <span>$\vec{f}_s$</span> (fricción estática) apunta cuesta arriba equilibrando la componente paralela del peso.</p>
                     </div>
 
                     <!-- 6. Deslizando Cuesta Abajo (Cap 5) -->
@@ -247,7 +247,7 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Dinámica):</strong> $\vec{f}_k$ (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto, apunta *cuesta arriba*. La fuerza neta $mg \sin\alpha - f_k$ produce la aceleración $\vec{a}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Dinámica):</strong> <span>$\vec{f}_k$</span> (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto apunta cuesta arriba en este dibujo.</p>
                     </div>
 
                     <!-- 7. Elevador Acelerando Hacia Arriba (Cap 5) -->
@@ -267,7 +267,7 @@
                                 <text x="10" y="45" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica):</strong> La fuerza hacia arriba ($\vec{T}$ o $\vec{n}$) debe ser *mayor* que el peso ($m\vec{g}$) para proporcionar una aceleración neta hacia arriba. $\Sigma F_y = T - mg = ma_y$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica):</strong> La fuerza hacia arriba (<span>$\vec{T}$</span> o <span>$\vec{n}$</span>) debe ser <em>mayor</em> que el peso (<span>$m\vec{g}$</span>) para producir aceleración hacia arriba.</p>
                     </div>
 
                     <!-- 8. Máquina de Atwood (Cap 5) -->
@@ -293,7 +293,7 @@
                                 <text x="135" y="115" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica, $m_2 > m_1$):</strong> Dos DCL. $\vec{T}$ es la misma. $\vec{a}$ tiene la misma magnitud. $m_2$ acelera hacia abajo ($m_2 g - T = m_2 a$). $m_1$ acelera hacia arriba ($T - m_1 g = m_1 a$).</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica, $m_2 > m_1$):</strong> Dos DCL. <span>$\vec{T}$</span> es la misma en la cuerda. <span>$\vec{a}$</span> tiene la misma magnitud pero sentidos opuestos para cada masa.</p>
                     </div>
 
                     <!-- 9. Auto en Curva Plana (Cap 5) -->
@@ -314,7 +314,7 @@
                                 <text x="15" y="48" fill="currentColor" font-size="10" class="text-gray-700">a_rad</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> DCL visto desde atrás. $\vec{n}$ y $m\vec{g}$ se cancelan. La $\vec{f}_s$ (fricción estática) apunta al centro de la curva y proporciona la $a_{rad}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> DCL visto desde atrás. <span>$\vec{n}$</span> y <span>$m\vec{g}$</span> se cancelan verticalmente; la fuerza centrípeta viene de <span>$\vec{f}_s$</span> (fricción estática) horizontalmente.</p>
                     </div>
 
                     <!-- 10. Auto en Curva Peraltada (Cap 5) -->
@@ -338,7 +338,7 @@
                                 <line x1="0" y1="130" x2="150" y2="60" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> Sin fricción. La $\vec{n}$ es perpendicular a la rampa. $n \cos\beta$ equilibra a $m\vec{g}$. $n \sin\beta$ apunta al centro y proporciona la $a_{rad}$.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> Sin fricción. La <span>$\vec{n}$</span> es perpendicular a la rampa. <span>$n \cos\beta$</span> equilibra la componente radial del peso.</p>
                     </div>
 
                 </div>
@@ -361,6 +361,17 @@
     </div>
 
     <script>
+        // --- CONFIGURACIÓN DE MathJax (activar $ ... $ como delimitador inline) ---
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+
         // --- Lógica de Pestañas ---
         function showTab(event, tabName) {
             let tabContents = document.getElementsByClassName("tab-content");
@@ -380,7 +391,7 @@
         const quizTeoricoData = [
             {
                 question: "1. (Cap 4) ¿Cuál es la definición de un 'marco de referencia inercial'?",
-                options: ["Un marco donde la aceleración siempre es $g$.", "Un marco de referencia que no se está moviendo.", "Un marco donde un objeto sin fuerza neta sobre él se mueve con velocidad constante.", "Un marco de referencia que acelera."],
+                options: ["Un marco donde la aceleración siempre es $g$.", "Un marco de referencia que no se está moviendo.", "Un marco donde un objeto sin fuerza neta sobre él se mueve con velocidad constante."],
                 answer: 2 // C
             },
             {
@@ -405,7 +416,7 @@
             },
             {
                 question: "6. (Cap 5) ¿Cuándo es correcto usar la fórmula $f_s = \\mu_s n$?",
-                options: ["Siempre que haya fricción estática", "Solo en el instante justo antes de que el objeto comience a moverse", "En cualquier momento en que el objeto esté en reposo", "Nunca, es solo una aproximación"],
+                options: ["Siempre que haya fricción estática", "Solo en el instante justo antes de que el objeto comience a moverse", "En cualquier momento en que el objeto esté en reposo", "Nunca"],
                 answer: 1 // Solo en el instante...
             },
             {
@@ -435,7 +446,7 @@
                 question: "1. (Cap 4.1) Tres fuerzas actúan sobre un objeto: $\\vec{F}_1 = (20\\hat{i}) \\text{ N}$, $\\vec{F}_2 = (30\\hat{j}) \\text{ N}$ y $\\vec{F}_3$. El objeto está en equilibrio. ¿Cuál es $\\vec{F}_3$?",
                 options: ["$(-20\\hat{i} - 30\\hat{j}) \\text{ N}$", "$(20\\hat{i} - 30\\hat{j}) \\text{ N}$", "$(50\\hat{i}) \\text{ N}$", "$(36\\hat{j}) \\text{ N}$"],
                 answer: 0, // A
-                explanation: "Equilibrio (1ª Ley) significa $\\Sigma \\vec{F} = 0$. $\\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 = 0$. $(20\\hat{i} + 30\\hat{j}) + \\vec{F}_3 = 0 \\implies \\vec{F}_3 = (-20\\hat{i} - 30\\hat{j}) \\text{ N}$."
+                explanation: "Equilibrio (1ª Ley) significa $\\Sigma \\vec{F} = 0$. $\\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 = 0$. $(20\\hat{i} + 30\\hat{j}) + \\vec{F}_3 = 0 \\implies \\vec{F}_3 = (-20\\hat{i} - 30\\hat{j})$ N."
             },
             {
                 question: "2. (Cap 4.4) Un objeto de masa 10 kg pesa 98 N en la Tierra. ¿Cuál es su peso en la Luna, donde $g_{Luna} \\approx 1.62$ m/s²?",
@@ -471,33 +482,52 @@
                 question: "7. (Cap 5.3) Un bloque de 50 N se desliza cuesta abajo por una rampa a $30^\\circ$. Si $\\mu_k = 0.20$, ¿cuál es la aceleración $a_x$ del bloque? ($g = 9.8$ m/s²)",
                 options: ["$4.90$ m/s²", "$4.04$ m/s²", "$3.20$ m/s²", "$2.50$ m/s²"],
                 answer: 2, // C
-                explanation: "$n = mg \\cos(30^\\circ) = 50(0.866) = 43.3$ N. $f_k = \\mu_k n = 0.2(43.3) = 8.66$ N. $\\Sigma F_x = mg \\sin(30^\\circ) - f_k = ma_x$. $50(0.5) - 8.66 = (50/9.8)a_x \\implies 16.34 = 5.1 a_x \\implies a_x \\approx 3.20$ m/s²."
+                explanation: "n = mg \\cos(30^\\circ) = 50(0.866) = 43.3 N. f_k = \\mu_k n = 0.2(43.3) = 8.66 N. \\Sigma F_x = mg \\sin(30^\\circ) - f_k = ma_x. (50)(0.5) - 8.66 = (50/9.8)a_x => a_x ≈ 3.20 m/s²."
             },
             {
                 question: "8. (Cap 5.4) Un auto toma una curva plana de $220$ m de radio. Si $\\mu_s = 0.80$, ¿cuál es la $v_{max}$ sin derrapar? ($g = 9.8$ m/s²)",
                 options: ["$29.7$ m/s", "$41.6$ m/s", "$176.4$ m/s", "$1728$ m/s"],
                 answer: 1, // B
-                explanation: "$f_s = mv^2/R = \\mu_s n = \\mu_s mg$. $v = \\sqrt{\\mu_s g R} = \\sqrt{0.80 \\cdot 9.8 \\cdot 220} = \\sqrt{1724.8} \\approx 41.6$ m/s."
+                explanation: "f_s = mv^2/R = \\mu_s n = \\mu_s mg. v = \\sqrt{\\mu_s g R} = \\sqrt{0.80 \\cdot 9.8 \\cdot 220} = \\sqrt{1724.8} \\approx 41.6 m/s."
             },
             {
                 question: "9. (Cap 5.2) Un elevador de 800 kg baja a 10.0 m/s y se detiene en 25.0 m con aceleración constante. ¿Cuál es la tensión $T$ en el cable mientras frena?",
                 options: ["$7840$ N", "$6240$ N", "$9440$ N", "$1600$ N"],
                 answer: 2, // C
-                explanation: "Calcular $a_y$: $v_f^2 = v_i^2 + 2as \\implies 0 = (-10)^2 + 2a_y(-25) \\implies -100 = -50a_y \\implies a_y = +2.0$ m/s² (hacia arriba). $\\Sigma F_y = T - mg = ma_y \\implies T = m(g+a_y) = 800(9.8+2.0) = 9440$ N."
+                explanation: "Calcular a: v_f^2 = v_i^2 + 2 a s => 0 = ( -10 )^2 + 2 a (-25) => a = +2.0 m/s² (hacia arriba). \\Sigma F_y = T - mg = ma_y => T = m(g + a) = 800(9.8 + 2.0) = 9440 N."
             },
             {
                 question: "10. (Cap 5.4) Un péndulo cónico tiene $L=1.2$ m y $\\beta=25^\\circ$ (con la vertical). ¿Cuál es el periodo $T$ (tiempo por revolución)? ($g=9.8$ m/s²)",
                 options: ["$1.55$ s", "$1.80$ s", "$2.09$ s", "$2.21$ s"],
                 answer: 2, // C
-                explanation: "$T = 2\\pi \\sqrt{L \\cos\\beta / g} = 2\\pi \\sqrt{1.2 \\cos(25^\\circ) / 9.8} = 2\\pi \\sqrt{0.1109} = 2.09$ s."
+                explanation: "T = 2\\pi \\sqrt{L \\cos\\beta / g} = 2\\pi \\sqrt{1.2 \\cos(25^\\circ) / 9.8} = 2\\pi \\sqrt{0.1109} = 2.09 s."
             }
         ];
+
+        // --- Helper para renderizar matemáticas con MathJax cuando esté disponible ---
+        function renderMath(element) {
+            if (window.MathJax && MathJax.typesetPromise) {
+                try {
+                    if (element) {
+                        return MathJax.typesetPromise([element]).catch((err) => console.warn('MathJax render error:', err));
+                    } else {
+                        return MathJax.typesetPromise().catch((err) => console.warn('MathJax render error:', err));
+                    }
+                } catch (e) {
+                    console.warn('MathJax error:', e);
+                }
+            }
+            return Promise.resolve();
+        }
 
         // --- Lógica del Quiz ---
         document.addEventListener('DOMContentLoaded', () => {
             // Cargar los quizzes
             buildQuiz(quizTeoricoData, 'quiz-teorico-container', 'teorico');
             buildQuiz(quizProblemasData, 'quiz-problemas-container', 'problemas');
+
+            // Intentar renderizar cualquier LaTeX ya presente (DCL, preguntas, opciones)
+            renderMath();
 
             // Asignar eventos a los botones de revisión
             document.getElementById('submit-teorico').addEventListener('click', () => {
@@ -507,10 +537,14 @@
                 checkAnswers(quizProblemasData, 'quiz-problemas-container', 'results-problemas', 'problemas');
             });
 
-            // Cargar MathJax para renderizar LaTeX
+            // Cargar MathJax para renderizar LaTeX (se usa window.MathJax configurado arriba)
             let script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
             script.async = true;
+            script.onload = () => {
+                // Forzar renderizado una vez MathJax esté cargado
+                renderMath();
+            };
             document.head.appendChild(script);
         });
 
@@ -532,6 +566,9 @@
                 questionDiv.innerHTML = `<p>${item.question}</p>${optionsHtml}<div class="feedback-container mt-2"></div>`;
                 container.appendChild(questionDiv);
             });
+
+            // Renderizar LaTeX dentro de las preguntas y opciones recién añadidas
+            renderMath(container);
         }
 
         function checkAnswers(quizData, containerId, resultsId, quizName) {
@@ -568,10 +605,8 @@
                         explanationEl.innerHTML = `<strong>Explicación:</strong> ${item.explanation}`;
                         feedbackContainer.appendChild(explanationEl);
                         
-                        // Pedir a MathJax que vuelva a renderizar el nuevo contenido
-                        if (window.MathJax) {
-                            MathJax.typesetPromise([feedbackContainer]);
-                        }
+                        // Renderizar LaTeX dentro de la explicación
+                        renderMath(explanationEl);
                     }
 
                 } else {
@@ -591,8 +626,10 @@
             } else {
                 resultsContainer.classList.add('bg-yellow-100', 'text-yellow-700');
             }
+
+            // Asegurarse de renderizar cualquier TeX añadido en los resultados
+            renderMath(resultsContainer);
         }
     </script>
 </body>
 </html>
-
