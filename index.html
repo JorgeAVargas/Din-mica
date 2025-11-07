@@ -6,6 +6,22 @@
     <title>Quiz: Leyes de Newton y Aplicaciones</title>
     <!-- Incluimos Tailwind CSS para un diseño moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- SCRIPT DE MATHJAX (para renderizar LaTeX) -->
+    <script>
+        // Configuración de MathJax para usar $...$ como delimitador
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <style>
         /* Fuente Inter para un look limpio */
         body {
@@ -146,7 +162,7 @@
                                 <text x="55" y="110" fill="currentColor" font-size="10" class="text-red-500">mg</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (1ª Ley de Newton):</strong> El libro está en equilibrio. La fuerza normal <span>$\vec{n}$</span> (hacia arriba) ejercida por la mesa es igual en magnitud al peso <span>$m\vec{g}$</span>.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (1ª Ley de Newton):</strong> El libro está en equilibrio. La fuerza normal $\vec{n}$ (hacia arriba) ejercida por la mesa es igual en magnitud al peso $m\vec{g}$.</p>
                     </div>
                     
                     <!-- 2. Par Acción-Reacción (Cap 4) -->
@@ -165,7 +181,7 @@
                                 <text x="80" y="80" fill="currentColor" font-size="10" class="text-orange-500">-F_g (Reacción)</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (3ª Ley de Newton):</strong> La Tierra jala a la manzana (Peso, <span>$\vec{F}_{T \to M}$</span>). La manzana jala a la Tierra (<span>$\vec{F}_{M \to T}$</span>) con igual magnitud y sentido opuesto.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (3ª Ley de Newton):</strong> La Tierra jala a la manzana (Peso, $\vec{F}_{T \to M}$). La manzana jala a la Tierra ($\vec{F}_{M \to T}$) con igual magnitud y sentido opuesto.</p>
                     </div>
 
                     <!-- 3. Bloque Acelerando (Cap 4) -->
@@ -186,7 +202,7 @@
                                 <text x="125" y="48" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (2ª Ley de Newton):</strong> En el eje Y, <span>$\Sigma F_y = n - mg = 0$</span>. En el eje X, hay una fuerza neta: <span>$\Sigma F_x = F = ma_x$</span>.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (2ª Ley de Newton):</strong> En el eje Y, $\Sigma F_y = n - mg = 0$. En el eje X, hay una fuerza neta: $\Sigma F_x = F = ma_x$.</p>
                     </div>
 
                     <!-- 4. Gimnasta Colgando (Cap 5) -->
@@ -203,7 +219,7 @@
                                 <text x="55" y="120" fill="currentColor" font-size="10" class="text-red-500">mg</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.1 - Equilibrio):</strong> La gimnasta está en reposo, así que <span>$\Sigma \vec{F} = 0$</span>. La tensión <span>$\vec{T}$</span> de la cuerda equilibra al peso <span>$m\vec{g}$</span>.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.1 - Equilibrio):</strong> La gimnasta está en reposo, así que $\Sigma \vec{F} = 0$. La tensión $\vec{T}$ de la cuerda equilibra al peso $m\vec{g}$.</p>
                     </div>
 
                     <!-- 5. Reposo en Plano Inclinado (Cap 5) -->
@@ -223,7 +239,7 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Equilibrio):</strong> <span>$\vec{n}$</span> es perpendicular a la rampa. <span>$\vec{f}_s$</span> (fricción estática) apunta cuesta arriba equilibrando la componente paralela del peso.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Equilibrio):</strong> $\vec{n}$ es perpendicular a la rampa. $\vec{f}_s$ (fricción estática) apunta cuesta arriba equilibrando la componente paralela del peso.</p>
                     </div>
 
                     <!-- 6. Deslizando Cuesta Abajo (Cap 5) -->
@@ -247,7 +263,7 @@
                                 <line x1="5" y1="139" x2="155" y2="52" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Dinámica):</strong> <span>$\vec{f}_k$</span> (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto apunta cuesta arriba en este dibujo.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.3 - Dinámica):</strong> $\vec{f}_k$ (fricción cinética) se opone al movimiento (cuesta abajo), por lo tanto apunta cuesta arriba en este dibujo.</p>
                     </div>
 
                     <!-- 7. Elevador Acelerando Hacia Arriba (Cap 5) -->
@@ -267,7 +283,7 @@
                                 <text x="10" y="45" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica):</strong> La fuerza hacia arriba (<span>$\vec{T}$</span> o <span>$\vec{n}$</span>) debe ser <em>mayor</em> que el peso (<span>$m\vec{g}$</span>) para producir aceleración hacia arriba.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica):</strong> La fuerza hacia arriba ($\vec{T}$ o $\vec{n}$) debe ser <em>mayor</em> que el peso ($m\vec{g}$) para producir aceleración hacia arriba.</p>
                     </div>
 
                     <!-- 8. Máquina de Atwood (Cap 5) -->
@@ -293,7 +309,7 @@
                                 <text x="135" y="115" fill="currentColor" font-size="10" class="text-gray-700">a</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica, $m_2 > m_1$):</strong> Dos DCL. <span>$\vec{T}$</span> es la misma en la cuerda. <span>$\vec{a}$</span> tiene la misma magnitud pero sentidos opuestos para cada masa.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.2 - Dinámica, $m_2 > m_1$):</strong> Dos DCL. $\vec{T}$ es la misma en la cuerda. $\vec{a}$ tiene la misma magnitud pero sentidos opuestos para cada masa.</p>
                     </div>
 
                     <!-- 9. Auto en Curva Plana (Cap 5) -->
@@ -314,7 +330,7 @@
                                 <text x="15" y="48" fill="currentColor" font-size="10" class="text-gray-700">a_rad</text>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> DCL visto desde atrás. <span>$\vec{n}$</span> y <span>$m\vec{g}$</span> se cancelan verticalmente; la fuerza centrípeta viene de <span>$\vec{f}_s$</span> (fricción estática) horizontalmente.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> DCL visto desde atrás. $\vec{n}$ y $m\vec{g}$ se cancelan verticalmente; la fuerza centrípeta viene de $\vec{f}_s$ (fricción estática) horizontalmente.</p>
                     </div>
 
                     <!-- 10. Auto en Curva Peraltada (Cap 5) -->
@@ -338,7 +354,7 @@
                                 <line x1="0" y1="130" x2="150" y2="60" stroke="#374151" stroke-width="2"/>
                             </svg>
                         </div>
-                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> Sin fricción. La <span>$\vec{n}$</span> es perpendicular a la rampa. <span>$n \cos\beta$</span> equilibra la componente radial del peso.</p>
+                        <p class="p-4 text-gray-700"><strong>Análisis (Cap 5.4 - Mov. Circular):</strong> Sin fricción. La $\vec{n}$ es perpendicular a la rampa. $n \cos\beta$ equilibra la componente radial del peso.</p>
                     </div>
 
                 </div>
@@ -361,16 +377,21 @@
     </div>
 
     <script>
-        // --- CONFIGURACIÓN DE MathJax (activar $ ... $ como delimitador inline) ---
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                processEscapes: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        // --- Helper para renderizar matemáticas con MathJax cuando esté disponible ---
+        function renderMath(element) {
+            if (window.MathJax && MathJax.typesetPromise) {
+                try {
+                    if (element) {
+                        return MathJax.typesetPromise([element]).catch((err) => console.warn('MathJax render error:', err));
+                    } else {
+                        return MathJax.typesetPromise().catch((err) => console.warn('MathJax render error:', err));
+                    }
+                } catch (e) {
+                    console.warn('MathJax error:', e);
+                }
             }
-        };
+            return Promise.resolve();
+        }
 
         // --- Lógica de Pestañas ---
         function showTab(event, tabName) {
@@ -504,29 +525,13 @@
             }
         ];
 
-        // --- Helper para renderizar matemáticas con MathJax cuando esté disponible ---
-        function renderMath(element) {
-            if (window.MathJax && MathJax.typesetPromise) {
-                try {
-                    if (element) {
-                        return MathJax.typesetPromise([element]).catch((err) => console.warn('MathJax render error:', err));
-                    } else {
-                        return MathJax.typesetPromise().catch((err) => console.warn('MathJax render error:', err));
-                    }
-                } catch (e) {
-                    console.warn('MathJax error:', e);
-                }
-            }
-            return Promise.resolve();
-        }
-
         // --- Lógica del Quiz ---
         document.addEventListener('DOMContentLoaded', () => {
             // Cargar los quizzes
             buildQuiz(quizTeoricoData, 'quiz-teorico-container', 'teorico');
             buildQuiz(quizProblemasData, 'quiz-problemas-container', 'problemas');
 
-            // Intentar renderizar cualquier LaTeX ya presente (DCL, preguntas, opciones)
+             // Renderizar todo el documento después de que el DOM esté listo
             renderMath();
 
             // Asignar eventos a los botones de revisión
@@ -536,16 +541,6 @@
             document.getElementById('submit-problemas').addEventListener('click', () => {
                 checkAnswers(quizProblemasData, 'quiz-problemas-container', 'results-problemas', 'problemas');
             });
-
-            // Cargar MathJax para renderizar LaTeX (se usa window.MathJax configurado arriba)
-            let script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-            script.async = true;
-            script.onload = () => {
-                // Forzar renderizado una vez MathJax esté cargado
-                renderMath();
-            };
-            document.head.appendChild(script);
         });
 
         function buildQuiz(quizData, containerId, quizName) {
@@ -566,14 +561,12 @@
                 questionDiv.innerHTML = `<p>${item.question}</p>${optionsHtml}<div class="feedback-container mt-2"></div>`;
                 container.appendChild(questionDiv);
             });
-
-            // Renderizar LaTeX dentro de las preguntas y opciones recién añadidas
-            renderMath(container);
         }
 
         function checkAnswers(quizData, containerId, resultsId, quizName) {
             let score = 0;
             const questions = document.getElementById(containerId).getElementsByClassName('quiz-question');
+            const renderPromises = []; // Arreglo para promesas de renderizado
             
             quizData.forEach((item, index) => {
                 const qDiv = questions[index];
@@ -605,8 +598,8 @@
                         explanationEl.innerHTML = `<strong>Explicación:</strong> ${item.explanation}`;
                         feedbackContainer.appendChild(explanationEl);
                         
-                        // Renderizar LaTeX dentro de la explicación
-                        renderMath(explanationEl);
+                        // Añadir la promesa de renderizado al arreglo
+                        renderPromises.push(renderMath(explanationEl));
                     }
 
                 } else {
@@ -617,18 +610,18 @@
                 }
             });
 
-            const resultsContainer = document.getElementById(resultsId);
-            resultsContainer.innerHTML = `Tu puntuación: ${score} de ${quizData.length}`;
-            resultsContainer.className = 'mt-6 text-xl font-bold p-4 rounded-lg text-center';
-            
-            if (score === quizData.length) {
-                resultsContainer.classList.add('bg-green-100', 'text-green-700');
-            } else {
-                resultsContainer.classList.add('bg-yellow-100', 'text-yellow-700');
-            }
-
-            // Asegurarse de renderizar cualquier TeX añadido en los resultados
-            renderMath(resultsContainer);
+            // Esperar a que todo el LaTeX de las explicaciones se renderice
+            Promise.all(renderPromises).then(() => {
+                const resultsContainer = document.getElementById(resultsId);
+                resultsContainer.innerHTML = `Tu puntuación: ${score} de ${quizData.length}`;
+                resultsContainer.className = 'mt-6 text-xl font-bold p-4 rounded-lg text-center';
+                
+                if (score === quizData.length) {
+                    resultsContainer.classList.add('bg-green-100', 'text-green-700');
+                } else {
+                    resultsContainer.classList.add('bg-yellow-100', 'text-yellow-700');
+                }
+            });
         }
     </script>
 </body>
