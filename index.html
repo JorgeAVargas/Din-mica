@@ -3,99 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica de Dinámica: Energía (Nivel Sears-Zemansky)</title>
+    <title>Entrenamiento Completo: Energía y Dinámica</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
-            --primary-color: #0056b3;
+            --primary-color: #004085; /* Azul oscuro académico */
             --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --accent-color: #e74c3c;
+            --accent-color: #c82333; /* Rojo para énfasis */
+            --correct-color: #28a745; /* Verde para respuestas */
+            --text-color: #212529;
         }
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: #f4f4f4;
+            background-color: #e9ecef;
             margin: 0;
             padding: 20px;
         }
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             background: white;
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
             padding-bottom: 20px;
         }
-        h1 {
-            color: var(--primary-color);
-            margin: 0;
+        h1 { color: var(--primary-color); margin: 0; }
+        h2.section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 50px;
+            margin-bottom: 20px;
         }
-        h2 {
-            color: #2c3e50;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 10px;
-            margin-top: 40px;
-        }
+        /* Estilos para las tarjetas de preguntas */
         .problem-card {
-            background: var(--secondary-color);
-            border: 1px solid #ddd;
+            background: white;
+            border-left: 5px solid var(--primary-color);
             border-radius: 5px;
             padding: 20px;
-            margin-bottom: 25px;
-            transition: transform 0.2s;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
         .problem-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .problem-title {
+        .problem-type-tag {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            background: #e2e6ea;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #6c757d;
             font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            display: block;
         }
-        .btn-solution {
+        .problem-statement {
+            font-weight: 500;
+            font-size: 1.05em;
+            margin: 10px 0;
+        }
+        .btn-reveal {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.9em;
-            margin-top: 15px;
-            transition: background 0.3s;
+            margin-top: 10px;
+            transition: background 0.2s;
         }
-        .btn-solution:hover {
-            background-color: #004494;
-        }
-        .solution-content {
+        .btn-reveal:hover { background-color: #002752; }
+        
+        /* Área de respuesta oculta */
+        .solution-area {
             display: none;
             margin-top: 15px;
             padding: 15px;
-            background-color: #e8f4fd;
-            border-left: 4px solid var(--primary-color);
-            border-radius: 0 4px 4px 0;
+            background-color: #d4edda; /* Fondo verde claro */
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #155724;
         }
-        .formula {
-            font-family: 'Courier New', monospace;
-            background: #fff;
-            padding: 2px 5px;
-            border-radius: 3px;
+        .explanation-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--correct-color);
         }
+        
+        /* Diferenciar problemas numéricos */
+        .numeric-card {
+            border-left-color: var(--accent-color);
+        }
+        .numeric-card .btn-reveal {
+            background-color: var(--accent-color);
+        }
+        .numeric-card .btn-reveal:hover {
+            background-color: #bd2130;
+        }
+        .numeric-card .solution-area {
+            background-color: #f8d7da; /* Fondo rojo claro */
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .numeric-card .explanation-title {
+            color: #721c24;
+        }
+
         footer {
             text-align: center;
             margin-top: 50px;
-            font-size: 0.8em;
-            color: #777;
+            font-size: 0.85em;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -103,118 +136,240 @@
 
 <div class="container">
     <header>
-        <h1>Dinámica: Trabajo y Energía</h1>
-        <p>Ejercicios Prácticos basados en <em>Física Universitaria</em> (Sears-Zemansky) - Cap. 7</p>
+        <h1>Banco de Práctica: Dinámica y Energía</h1>
+        <p>Capítulo 7: Energía Potencial y Conservación de la Energía (Sears-Zemansky)</p>
     </header>
 
-    <h2>1. Problemas Conceptuales</h2>
-    
+    <h2 class="section-title">I. Teoría y Conceptos</h2>
+    <p><em>Responde mentalmente antes de ver la solución para evaluar tu comprensión conceptual.</em></p>
+
     <div class="problem-card">
-        <span class="problem-title">Pregunta 1: La Paradoja del Camino</span>
-        <p>Dos toboganes de agua comienzan a la misma altura \( h \) y terminan al nivel del suelo. El tobogán A es recto y empinado, mientras que el tobogán B es curvo y más largo. Si despreciamos la fricción, ¿cómo se comparan las rapideces de un nadador al llegar al final de cada tobogán?</p>
-        <button class="btn-solution" onclick="toggleSolution('t1')">Ver Respuesta</button>
-        <div id="t1" class="solution-content">
-            <p><strong>Respuesta:</strong> Las rapideces son <strong>iguales</strong>.</p>
-            <p><strong>Explicación:</strong> La fuerza normal no realiza trabajo (es perpendicular al desplazamiento) y la fricción es despreciable. Solo la gravedad hace trabajo. Por conservación de energía: 
-            $$ E_i = E_f \Rightarrow mgh = \frac{1}{2}mv^2 $$
-            La velocidad final \( v = \sqrt{2gh} \) depende solo de la altura \( h \), no de la forma o longitud de la trayectoria.</p>
+        <span class="problem-type-tag">Concepto Básico</span>
+        <div class="problem-statement">
+            1. ¿Cuál es la definición matemática correcta de la energía potencial gravitacional \( U_{grav} \) para una partícula de masa \( m \) a una altura \( y \)?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t1')">Ver Respuesta</button>
+        <div id="t1" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            $$ U_{grav} = mgy $$
+            <hr>
+            <strong>Explicación:</strong> La energía potencial gravitacional se define como el trabajo que la gravedad podría realizar al caer el objeto hasta el nivel de referencia \( y=0 \). Es proporcional a la masa y a la altura.
         </div>
     </div>
 
     <div class="problem-card">
-        <span class="problem-title">Pregunta 2: Fuerza y Gradiente de Energía</span>
-        <p>Si la gráfica de energía potencial \( U(x) \) de una partícula es una línea recta con pendiente positiva constante, ¿qué tipo de fuerza actúa sobre la partícula?</p>
-        <button class="btn-solution" onclick="toggleSolution('t2')">Ver Respuesta</button>
-        <div id="t2" class="solution-content">
-            <p><strong>Respuesta:</strong> Una fuerza <strong>constante y negativa</strong>.</p>
-            <p><strong>Explicación:</strong> La relación entre fuerza y energía potencial es \( F_x = -\frac{dU}{dx} \). <br>
-            Si \( U(x) = Ax + B \) (pendiente positiva \( A > 0 \)), entonces su derivada es \( A \). <br>
-            Por lo tanto, \( F_x = -A \), lo que indica una fuerza constante dirigida en el sentido negativo del eje x.</p>
+        <span class="problem-type-tag">Conservación</span>
+        <div class="problem-statement">
+            2. Si la única fuerza que realiza trabajo sobre una partícula es la gravedad, ¿qué sucede con su energía mecánica total \( E \)?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t2')">Ver Respuesta</button>
+        <div id="t2" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            La energía mecánica permanece constante (se conserva).
+            <hr>
+            <strong>Explicación:</strong> La gravedad es una fuerza conservativa. En ausencia de fuerzas no conservativas (como fricción) o fuerzas externas impulsoras, \( \Delta E = 0 \), por lo que \( K_1 + U_1 = K_2 + U_2 \).
         </div>
     </div>
 
-    <h2>2. Problemas Numéricos (Estilo Sears-Zemansky)</h2>
+    <div class="problem-card">
+        <span class="problem-type-tag">Resortes</span>
+        <div class="problem-statement">
+            3. Un resorte ideal tiene constante \( k \). ¿Cuál es la expresión para su energía potencial elástica \( U_{el} \) al estirarse una distancia \( x \)?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t3')">Ver Respuesta</button>
+        <div id="t3" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            $$ U_{el} = \frac{1}{2}kx^2 $$
+            <hr>
+            <strong>Explicación:</strong> No confundir con la fuerza de Hooke (\( F=-kx \)). La energía es el área bajo la curva Fuerza vs Distancia (un triángulo), lo que resulta en un factor de \( 1/2 \) y \( x \) al cuadrado.
+        </div>
+    </div>
 
     <div class="problem-card">
-        <span class="problem-title">Problema 1: Lanzamiento Vertical (Variación del Ej. 7.1)</span>
-        <p>Usted lanza una piedra de <strong>0.250 kg</strong> verticalmente hacia arriba con una rapidez inicial de <strong>15.0 m/s</strong>. Despreciando la resistencia del aire:</p>
-        <ol type="a">
-            <li>¿Qué altura máxima alcanza?</li>
-            <li>Si al lanzarla su mano se movió hacia arriba <strong>0.60 m</strong> antes de soltarla, ¿qué trabajo realizó su mano?</li>
-        </ol>
-        <button class="btn-solution" onclick="toggleSolution('p1')">Ver Solución</button>
-        <div id="p1" class="solution-content">
-            <p><strong>a) Altura Máxima:</strong> Usamos conservación de energía ($K_1 + U_1 = K_2 + U_2$).<br>
+        <span class="problem-type-tag">Fuerzas No Conservativas</span>
+        <div class="problem-statement">
+            4. ¿Cómo se modifica la ecuación de conservación cuando actúa la fricción u otras fuerzas no conservativas (\( W_{otras} \))?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t4')">Ver Respuesta</button>
+        <div id="t4" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            $$ K_1 + U_1 + W_{otras} = K_2 + U_2 $$
+            <hr>
+            <strong>Explicación:</strong> El trabajo realizado por fuerzas externas o disipativas representa la energía que entra o sale del sistema mecánico. Si hay fricción, \( W_{otras} \) es negativo y la energía final es menor que la inicial.
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Signos y Trabajo</span>
+        <div class="problem-statement">
+            5. Al lanzar una pelota verticalmente hacia arriba, ¿cuáles son los signos del Trabajo de la Gravedad (\( W_{grav} \)) y del cambio de Energía Potencial (\( \Delta U \)) mientras sube?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t5')">Ver Respuesta</button>
+        <div id="t5" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            \( W_{grav} \) es negativo y \( \Delta U \) es positivo.
+            <hr>
+            <strong>Explicación:</strong> La gravedad tira hacia abajo mientras el desplazamiento es hacia arriba (ángulos opuestos \( \to \) Trabajo Negativo). Al subir, gana altura, por lo que la Energía Potencial aumenta (Cambio Positivo).
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Gráficas de Energía</span>
+        <div class="problem-statement">
+            6. En un diagrama de \( U(x) \) vs \( x \), ¿qué representa la pendiente negativa de la curva (\( -dU/dx \))?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t6')">Ver Respuesta</button>
+        <div id="t6" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            La componente \( x \) de la fuerza conservativa.
+            <hr>
+            <strong>Explicación:</strong> La relación fundamental es \( F_x = -\frac{dU}{dx} \). Los objetos tienden a "rodar colina abajo" en una gráfica de energía potencial, moviéndose hacia donde \( U \) es menor.
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Proporcionalidad</span>
+        <div class="problem-statement">
+            7. Se estira un resorte \( 0.10 \text{ m} \) y almacena \( 2.0 \text{ J} \). Si se estira el doble (\( 0.20 \text{ m} \)), ¿cuánta energía almacenará?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t7')">Ver Respuesta</button>
+        <div id="t7" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            \( 8.0 \text{ J} \)
+            <hr>
+            <strong>Explicación:</strong> La energía elástica depende del cuadrado de la distancia (\( x^2 \)). Si duplicas la distancia (\( 2x \)), la energía se cuadruplica (\( 2^2 = 4 \)). \( 4 \times 2.0 = 8.0 \).
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Equilibrio</span>
+        <div class="problem-statement">
+            8. ¿Qué condición debe cumplirse en un punto de equilibrio estable en un gráfico de energía potencial \( U(x) \)?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t8')">Ver Respuesta</button>
+        <div id="t8" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            \( U(x) \) es mínimo (un valle) y la fuerza es cero.
+            <hr>
+            <strong>Explicación:</strong> En un mínimo local, la pendiente es cero (fuerza cero) y la concavidad es hacia arriba. Cualquier pequeño desplazamiento genera una fuerza restauradora que devuelve la partícula al fondo.
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Concepto Avanzado</span>
+        <div class="problem-statement">
+            9. Un paracaidista cae a velocidad terminal constante. ¿Qué transformación de energía está ocurriendo?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t9')">Ver Respuesta</button>
+        <div id="t9" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            Energía Potencial Gravitacional \( \to \) Energía Térmica (aire).
+            <hr>
+            <strong>Explicación:</strong> Como la velocidad es constante, la Energía Cinética no cambia. Sin embargo, la altura disminuye. Esa energía potencial "perdida" se disipa calentando el aire debido a la resistencia (fricción fluida).
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <span class="problem-type-tag">Cálculo Simbólico</span>
+        <div class="problem-statement">
+            10. Si \( U(x) = \alpha x^4 \), ¿cuál es la fuerza conservativa asociada?
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('t10')">Ver Respuesta</button>
+        <div id="t10" class="solution-area">
+            <span class="explanation-title">Respuesta Correcta:</span>
+            \( F_x = -4\alpha x^3 \)
+            <hr>
+            <strong>Explicación:</strong> Derivamos \( U \) respecto a \( x \) y cambiamos el signo:
+            \( \frac{dU}{dx} = 4\alpha x^3 \), por lo tanto \( F = - (4\alpha x^3) \).
+        </div>
+    </div>
+
+
+    <h2 class="section-title" style="background-color: var(--accent-color);">II. Problemas Numéricos (Nivel Libro)</h2>
+    <p><em>Utiliza lápiz, papel y calculadora. Datos modificados del texto original para practicar.</em></p>
+
+    <div class="problem-card numeric-card">
+        <span class="problem-type-tag">Cinemática y Energía</span>
+        <div class="problem-statement">
+            Problema 1: Lanzamiento Vertical (Variación del Ej. 7.1)<br>
+            <span style="font-weight: normal;">Usted lanza una piedra de <strong>0.250 kg</strong> verticalmente hacia arriba con una rapidez inicial de <strong>15.0 m/s</strong>. Despreciando la resistencia del aire:</span>
+            <ul style="margin-top:5px;">
+                <li>a) ¿Qué altura máxima alcanza?</li>
+                <li>b) Si al lanzarla su mano se movió hacia arriba <strong>0.60 m</strong> antes de soltarla, ¿qué trabajo realizó su mano?</li>
+            </ul>
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('p1')">Ver Solución Detallada</button>
+        <div id="p1" class="solution-area">
+            <p><strong>a) Altura Máxima:</strong> Usamos conservación (\( K_1 + U_1 = K_2 + U_2 \)).<br>
+            Nivel de referencia en el punto de lanzamiento (\( y_1=0 \)).
             $$ \frac{1}{2}mv_1^2 = mgh_{max} $$
-            $$ h_{max} = \frac{v_1^2}{2g} = \frac{(15.0)^2}{2(9.8)} = \frac{225}{19.6} = \mathbf{11.48 \text{ m}} $$
+            $$ h_{max} = \frac{v_1^2}{2g} = \frac{(15.0)^2}{2(9.8)} = \mathbf{11.48 \text{ m}} $$
             </p>
             <hr>
-            <p><strong>b) Trabajo de la mano ($W_{otras}$):</strong><br>
-            El cambio en energía mecánica total desde el reposo (antes de mover la mano) hasta el punto de lanzamiento es igual al trabajo de la mano.
-            $$ W_{mano} = \Delta E = E_{final} - E_{inicial} $$
-            En el punto de lanzamiento (nivel 0 para referencia local de la mano):
-            $$ E_{final} = \frac{1}{2}mv^2 + mg(\Delta y_{mano}) $$
-            Considerando el inicio en $y = -0.60$ (reposo) y soltando en $y=0$ con velocidad:
-            $$ W_{mano} = K_{salida} + \Delta U_g = \frac{1}{2}(0.250)(15.0)^2 + (0.250)(9.8)(0.60) $$
-            $$ W_{mano} = 28.125 \text{ J} + 1.47 \text{ J} = \mathbf{29.6 \text{ J}} $$
+            <p><strong>b) Trabajo de la mano:</strong><br>
+            Consideramos el sistema desde el reposo (mano abajo) hasta el punto de lanzamiento.<br>
+            \( \Delta E = W_{mano} \).<br>
+            \( E_{final} = K + U = \frac{1}{2}(0.250)(15.0)^2 + 0 \).<br>
+            \( E_{inicial} = K_0 + U_0 = 0 + (0.250)(9.8)(-0.60) \) (comienza 0.60m abajo).<br>
+            $$ W_{mano} = E_f - E_i = 28.125 - (-1.47) = 28.125 + 1.47 = \mathbf{29.6 \text{ J}} $$
             </p>
         </div>
     </div>
 
-    <div class="problem-card">
-        <span class="problem-title">Problema 2: Compresión de Resorte (Variación del Ej. 7.7)</span>
-        <p>Un bloque de <strong>4.0 kg</strong> se desliza sobre una superficie horizontal sin fricción con una rapidez de <strong>3.0 m/s</strong> hacia un resorte ideal cuya constante de fuerza es \( k = \mathbf{1200 \text{ N/m}} \). ¿Cuánto se comprimirá el resorte antes de que el bloque se detenga momentáneamente?</p>
-        <button class="btn-solution" onclick="toggleSolution('p2')">Ver Solución</button>
-        <div id="p2" class="solution-content">
-            <p><strong>Planteamiento:</strong> Conservación de energía. Toda la energía cinética inicial se transforma en energía potencial elástica.</p>
-            <p>$$ K_1 = U_{el,2} $$</p>
-            <p>$$ \frac{1}{2}mv^2 = \frac{1}{2}kx^2 $$</p>
-            <p><strong>Cálculo:</strong><br>
-            $$ (4.0)(3.0)^2 = (1200)x^2 $$
-            $$ 36 = 1200 x^2 $$
-            $$ x^2 = \frac{36}{1200} = 0.03 $$
-            $$ x = \sqrt{0.03} \approx \mathbf{0.173 \text{ m}} \text{ (o } 17.3 \text{ cm)} $$</p>
+    <div class="problem-card numeric-card">
+        <span class="problem-type-tag">Energía Elástica</span>
+        <div class="problem-statement">
+            Problema 2: Compresión de Resorte (Variación del Ej. 7.7)<br>
+            <span style="font-weight: normal;">Un bloque de <strong>4.0 kg</strong> se desliza sobre una superficie horizontal sin fricción con una rapidez de <strong>3.0 m/s</strong> hacia un resorte ideal cuya constante de fuerza es \( k = \mathbf{1200 \text{ N/m}} \). ¿Cuánto se comprimirá el resorte antes de que el bloque se detenga momentáneamente?</span>
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('p2')">Ver Solución Detallada</button>
+        <div id="p2" class="solution-area">
+            <p><strong>Planteamiento:</strong> Energía Cinética inicial \( \to \) Energía Potencial Elástica final.</p>
+            $$ \frac{1}{2}mv^2 = \frac{1}{2}kx^2 $$
+            <p>Cancelamos el \( 1/2 \) y despejamos \( x \):</p>
+            $$ x = \sqrt{\frac{m v^2}{k}} $$
+            $$ x = \sqrt{\frac{4.0 \cdot (3.0)^2}{1200}} = \sqrt{\frac{36}{1200}} = \sqrt{0.03} $$
+            $$ x \approx \mathbf{0.173 \text{ m}} \text{ (o } 17.3 \text{ cm)} $$
         </div>
     </div>
 
-    <div class="problem-card">
-        <span class="problem-title">Problema 3: Trabajo de la Fricción en Rampa Curva (Variación Ej. 7.5)</span>
-        <p>Una caja de <strong>12.0 kg</strong> parte del reposo desde la cima de una rampa curva de <strong>4.0 m</strong> de altura. Al llegar al pie de la rampa, su rapidez es de <strong>7.0 m/s</strong>. ¿Qué trabajo realizó la fuerza de fricción durante el descenso?</p>
-        <button class="btn-solution" onclick="toggleSolution('p3')">Ver Solución</button>
-        <div id="p3" class="solution-content">
-            <p><strong>Planteamiento:</strong> Usamos el teorema general de trabajo y energía:
-            $$ K_1 + U_1 + W_{friccion} = K_2 + U_2 $$
-            Datos: \( v_1 = 0 \), \( h_1 = 4.0 \), \( v_2 = 7.0 \), \( h_2 = 0 \).</p>
-            
-            <p><strong>Cálculo de Energías:</strong><br>
-            Inicial ($E_1$): \( U_1 = mgh = (12.0)(9.8)(4.0) = 470.4 \text{ J} \) (Cinética es 0).<br>
-            Final ($E_2$): \( K_2 = \frac{1}{2}mv^2 = 0.5(12.0)(7.0)^2 = 294.0 \text{ J} \) (Potencial es 0).</p>
-            
-            <p><strong>Resolviendo para trabajo de fricción:</strong><br>
-            La energía "perdida" es el trabajo de la fricción.<br>
-            $$ 470.4 + W_{fric} = 294.0 $$
-            $$ W_{fric} = 294.0 - 470.4 = \mathbf{-176.4 \text{ J}} $$
-            </p>
+    <div class="problem-card numeric-card">
+        <span class="problem-type-tag">Trabajo y Fricción</span>
+        <div class="problem-statement">
+            Problema 3: Rampa con Fricción (Variación Ej. 7.5)<br>
+            <span style="font-weight: normal;">Una caja de <strong>12.0 kg</strong> parte del reposo desde la cima de una rampa curva de <strong>4.0 m</strong> de altura. Al llegar al pie de la rampa, su rapidez es de <strong>7.0 m/s</strong>. ¿Qué trabajo realizó la fuerza de fricción durante el descenso?</span>
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('p3')">Ver Solución Detallada</button>
+        <div id="p3" class="solution-area">
+            <p><strong>Teorema Trabajo-Energía:</strong> \( E_{inicial} + W_{fric} = E_{final} \)</p>
+            <ul>
+                <li>\( E_{ini} = mgh = (12.0)(9.8)(4.0) = 470.4 \text{ J} \)</li>
+                <li>\( E_{fin} = \frac{1}{2}mv^2 = 0.5(12.0)(7.0)^2 = 294.0 \text{ J} \)</li>
+            </ul>
+            <p>La energía "perdida" es el trabajo de la fricción:</p>
+            $$ W_{fric} = E_{fin} - E_{ini} = 294.0 - 470.4 = \mathbf{-176.4 \text{ J}} $$
+            <p><em>Nota: Es negativo porque la fricción se opone al movimiento.</em></p>
         </div>
     </div>
 
-    <div class="problem-card">
-        <span class="problem-title">Problema 4: Bucle Vertical (El "Loop")</span>
-        <p>Un carrito de montaña rusa de <strong>500 kg</strong> debe realizar un bucle vertical (loop) de radio \( R = \mathbf{10.0 \text{ m}} \). ¿Cuál es la rapidez mínima que debe tener el carrito en la <strong>cima</strong> del bucle para no caerse?</p>
-        <button class="btn-solution" onclick="toggleSolution('p4')">Ver Solución</button>
-        <div id="p4" class="solution-content">
-            <p><strong>Concepto:</strong> En la cima, para no caer, la fuerza normal debe ser al menos cero. La única fuerza necesaria para mantener el movimiento circular es la gravedad.</p>
-            <p>$$ \sum F_y = ma_c \Rightarrow mg + n = m\frac{v^2}{R} $$</p>
-            <p>Para la velocidad mínima (crítica), hacemos \( n = 0 \):</p>
-            <p>$$ mg = m\frac{v^2}{R} \Rightarrow g = \frac{v^2}{R} $$</p>
-            <p>$$ v = \sqrt{gR} $$</p>
-            <p><strong>Cálculo:</strong><br>
-            $$ v = \sqrt{9.8 \times 10.0} = \sqrt{98} \approx \mathbf{9.9 \text{ m/s}} $$</p>
+    <div class="problem-card numeric-card">
+        <span class="problem-type-tag">Fuerzas en Movimiento Circular</span>
+        <div class="problem-statement">
+            Problema 4: El Bucle Vertical (Loop)<br>
+            <span style="font-weight: normal;">Un carrito de montaña rusa de <strong>500 kg</strong> debe realizar un bucle vertical de radio \( R = \mathbf{10.0 \text{ m}} \). ¿Cuál es la rapidez mínima necesaria en la <strong>cima</strong> para no caerse?</span>
+        </div>
+        <button class="btn-reveal" onclick="toggleSolution('p4')">Ver Solución Detallada</button>
+        <div id="p4" class="solution-area">
+            <p><strong>Condición Crítica:</strong> En la cima, para la velocidad mínima, la fuerza Normal es cero (\( n=0 \)). Solo la gravedad provee la fuerza centrípeta.</p>
+            $$ \sum F_y = ma_c \quad \Rightarrow \quad mg = m \frac{v^2}{R} $$
+            <p>Las masas se cancelan:</p>
+            $$ g = \frac{v^2}{R} \quad \Rightarrow \quad v = \sqrt{gR} $$
+            $$ v = \sqrt{9.8 \cdot 10.0} = \sqrt{98} \approx \mathbf{9.9 \text{ m/s}} $$
         </div>
     </div>
     
     <footer>
-        <p>Generado por tu Asistente de Dinámica | Basado en Sears & Zemansky Vol. 1</p>
+        <p>Práctica generada por Asistente de Dinámica | Basado en el Libro de Texto Oficial</p>
     </footer>
 </div>
 
