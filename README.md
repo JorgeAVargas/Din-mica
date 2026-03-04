@@ -1,1 +1,1 @@
-# Din-mica
+# Mecanica 2026-A
