@@ -4,1236 +4,1403 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Repaso Examen Mecánica (Cap. 1–3) — Quiz Opción Múltiple</title>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --primary-color:#004085;
-      --secondary-color:#f8f9fa;
-      --accent-color:#c82333;
-      --correct-color:#28a745;
-      --wrong-color:#dc3545;
-      --text-color:#212529;
-      --muted:#6c757d;
-      --card-shadow:0 2px 6px rgba(0,0,0,0.06);
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2a5a8c;
+      --primary-wash: #e8f0f8;
+      --accent: #c0392b;
+      --accent-light: #e74c3c;
+      --correct: #27ae60;
+      --correct-bg: rgba(39,174,96,.1);
+      --correct-border: rgba(39,174,96,.4);
+      --wrong: #c0392b;
+      --wrong-bg: rgba(192,57,43,.08);
+      --wrong-border: rgba(192,57,43,.4);
+      --bg: #f0f2f5;
+      --card-bg: #fff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,.12);
+      --radius: 10px;
     }
-    body{
-      font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.6;
-      color:var(--text-color);
-      background:#e9ecef;
-      margin:0;
-      padding:20px;
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
     }
-    .container{
-      max-width:980px;
-      margin:0 auto;
-      background:white;
-      padding:40px;
-      border-radius:10px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    }
-    header{
-      text-align:center;
-      margin-bottom:30px;
-      border-bottom:3px solid var(--primary-color);
-      padding-bottom:18px;
-    }
-    h1{ color:var(--primary-color); margin:0; }
-    header p{ margin:8px 0 0; color:var(--muted); }
-
-    .section-title{
-      background:var(--primary-color);
-      color:white;
-      padding:10px 18px;
-      border-radius:6px;
-      margin-top:34px;
-      margin-bottom:16px;
-    }
-    .section-note{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-style:italic;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding-bottom: 40px;
     }
 
-    .problem-card{
-      background:white;
-      border-left:5px solid var(--primary-color);
-      border-radius:6px;
-      padding:18px 18px 14px;
-      margin-bottom:16px;
-      box-shadow:var(--card-shadow);
-      transition:transform .15s ease, box-shadow .15s ease;
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 44px 40px 36px;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
-    .problem-card:hover{
-      transform:translateX(4px);
-      box-shadow:0 6px 16px rgba(0,0,0,0.10);
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
     }
-    .problem-type-tag{
-      font-size:.75em;
-      text-transform:uppercase;
-      background:#e2e6ea;
-      padding:2px 6px;
-      border-radius:3px;
-      color:var(--muted);
-      font-weight:700;
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 30%;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
     }
-    .problem-statement{
-      font-weight:600;
-      font-size:1.04em;
-      margin:10px 0 10px;
+    header h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      margin: 0 0 6px;
+      letter-spacing: -.02em;
+      position: relative;
     }
-
-    .choices{
-      margin:8px 0 10px;
-      padding:0;
-      list-style:none;
-    }
-    .choice{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      padding:8px 10px;
-      border:1px solid #e9ecef;
-      border-radius:6px;
-      margin-bottom:8px;
-      background:#fbfcfd;
-    }
-    .choice input{ margin-top:3px; }
-    .choice label{
-      cursor:pointer;
-      flex:1;
-    }
-    .choice.correct{
-      border-color:rgba(40,167,69,.45);
-      background:rgba(40,167,69,.10);
-    }
-    .choice.wrong{
-      border-color:rgba(220,53,69,.45);
-      background:rgba(220,53,69,.08);
+    header p {
+      margin: 0;
+      opacity: .85;
+      font-size: .95rem;
     }
 
-    .btn{
-      background:var(--primary-color);
-      color:white;
-      border:none;
-      padding:8px 14px;
-      border-radius:5px;
-      cursor:pointer;
-      font-size:.92em;
-      transition:background .2s;
-      display:inline-block;
-      margin-right:8px;
+    /* ── SCORE BOARD ── */
+    .scoreboard {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 20px 28px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 8px;
+      z-index: 100;
+      border: 1px solid var(--border);
     }
-    .btn:hover{ background:#002752; }
-    .btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
+    .score-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-value.green { color: var(--correct); }
+    .stat-value.red { color: var(--wrong); }
+    .stat-value.blue { color: var(--primary); }
+    .stat-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .progress-bar-wrap {
+      flex: 1;
+      min-width: 180px;
+      max-width: 320px;
+    }
+    .progress-bar-bg {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--correct), #2ecc71);
+      border-radius: 10px;
+      transition: width .5s ease;
+    }
+    .progress-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .btn-reset-all {
+      background: none;
+      border: 2px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    .btn-reset-all:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--wrong-bg);
     }
 
-    .solution-area{
-      display:none;
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:6px;
-      border:1px solid #c3e6cb;
-      background:#d4edda;
-      color:#155724;
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--primary);
+      padding: 14px 22px;
+      border-radius: var(--radius);
+      margin: 36px 0 10px;
+      letter-spacing: -.01em;
     }
-    .solution-area.wrong{
-      border-color:#f5c6cb;
-      background:#f8d7da;
-      color:#721c24;
-    }
-    .explanation-title{
-      font-weight:800;
-      display:block;
-      margin-bottom:6px;
-    }
-    .tiny{
-      color:var(--muted);
-      font-size:.92em;
-      margin-top:6px;
+    .section-note {
+      color: var(--muted);
+      font-size: .88rem;
+      font-style: italic;
+      margin: 0 0 18px 4px;
     }
 
-    /* Práctica en rojo */
-    .numeric-card{ border-left-color:var(--accent-color); }
-    .numeric-card .btn{ background:var(--accent-color); }
-    .numeric-card .btn:hover{ background:#bd2130; }
+    /* ── PROBLEM CARDS ── */
+    .problem-card {
+      background: var(--card-bg);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 22px 24px 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .problem-card:hover {
+      transform: translateX(3px);
+      box-shadow: var(--shadow-md);
+    }
+    .problem-card.answered-correct { border-left-color: var(--correct); }
+    .problem-card.answered-wrong { border-left-color: var(--wrong); }
+    .numeric-card { border-left-color: var(--accent); }
+    .numeric-card.answered-correct { border-left-color: var(--correct); }
+    .numeric-card.answered-wrong { border-left-color: var(--wrong); }
 
-    .mini-svg{
-      width:100%;
-      max-width:520px;
-      margin:10px 0 0;
-      border:1px solid #e9ecef;
-      border-radius:8px;
-      background:#fff;
+    .problem-type-tag {
+      display: inline-block;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: var(--primary-wash);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .numeric-card .problem-type-tag {
+      background: rgba(192,57,43,.08);
+      color: var(--accent);
+    }
+    .problem-statement {
+      font-weight: 600;
+      font-size: 1.02rem;
+      margin: 12px 0;
     }
 
-    footer{
-      text-align:center;
-      margin-top:34px;
-      font-size:.86em;
-      color:var(--muted);
-      border-top:1px solid #dee2e6;
-      padding-top:16px;
+    /* ── CHOICES ── */
+    .choices { margin: 10px 0; padding: 0; list-style: none; }
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: #fafbfc;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .choice:hover { background: var(--primary-wash); border-color: #c5d3e3; }
+    .choice input[type="radio"] {
+      margin-top: 3px;
+      accent-color: var(--primary);
+    }
+    .choice label { cursor: pointer; flex: 1; }
+    .choice.correct {
+      border-color: var(--correct-border);
+      background: var(--correct-bg);
+    }
+    .choice.wrong {
+      border-color: var(--wrong-border);
+      background: var(--wrong-bg);
+    }
+
+    /* ── BUTTONS ── */
+    .card-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: all .2s;
+      font-family: inherit;
+    }
+    .btn:hover { background: #0f2940; transform: translateY(-1px); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .numeric-card .btn { background: var(--accent); }
+    .numeric-card .btn:hover { background: #a93226; }
+    .btn-retry {
+      background: none;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: all .2s;
+      display: none;
+      font-family: inherit;
+    }
+    .btn-retry:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── SOLUTION ── */
+    .solution-area {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--correct-border);
+      background: var(--correct-bg);
+      color: #155724;
+      font-size: .94rem;
+    }
+    .solution-area.wrong {
+      border-color: var(--wrong-border);
+      background: var(--wrong-bg);
+      color: #721c24;
+    }
+    .explanation-title {
+      font-weight: 800;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* ── WARNING (no selection) ── */
+    .warning-msg {
+      display: none;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      color: #856404;
+      font-size: .86rem;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: .82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      body { padding: 10px; }
+      header { padding: 28px 20px 24px; }
+      .problem-card { padding: 16px; }
+      .scoreboard { padding: 14px 16px; }
+      .score-stats { gap: 16px; }
     }
   </style>
 </head>
-
 <body>
 <div class="container">
+
   <header>
-    <h1>Repaso para Examen — Mecánica (Cap. 1–3)</h1>
-    <p>Unidades y vectores · Cinemática 1D · Cinemática 2D/3D (proyectiles, circular, relativa)</p>
+    <h1>Repaso Examen Departamental — Mecánica</h1>
+    <p>Basado en Sears &amp; Zemansky, Física Universitaria Vol. 1 (Capítulos 1–3)</p>
   </header>
 
-  <h2 class="section-title">I. Teoría y Conceptos (Opción múltiple)</h2>
-  <p class="section-note">Elige una opción y presiona <strong>Verificar</strong> para ver la explicación.</p>
+  <!-- ══════════ SCOREBOARD ══════════ -->
+  <div class="scoreboard" id="scoreboard">
+    <div class="score-stats">
+      <div class="stat-item">
+        <div class="stat-value green" id="stat-correct">0</div>
+        <div class="stat-label">Correctas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value red" id="stat-wrong">0</div>
+        <div class="stat-label">Incorrectas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value blue" id="stat-remaining">0</div>
+        <div class="stat-label">Pendientes</div>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label">Progreso: <span id="progress-pct">0</span>%</div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    </div>
+    <button class="btn-reset-all" onclick="resetAll()">Reiniciar todo</button>
+  </div>
 
-  <!-- T1 -->
-  <div class="problem-card" data-qid="t1" data-answer="b">
-    <span class="problem-type-tag">Unidades</span>
-    <div class="problem-statement">1) En el SI, ¿cuáles son las unidades de la aceleración?</div>
+  <!-- ══════════════════════════════════════════════════════
+       TEMA 1 — UNIDADES, CANTIDADES FÍSICAS Y VECTORES
+       ══════════════════════════════════════════════════════ -->
+  <h2 class="section-title">Tema 1: Unidades, Cantidades Físicas y Vectores</h2>
+  <p class="section-note">Preguntas conceptuales y de práctica. Selecciona tu respuesta y verifica.</p>
+
+  <!-- Q1 -->
+  <div class="problem-card" data-qid="t1_1" data-answer="b">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">1. ¿Cuál de las siguientes es una magnitud estrictamente vectorial?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t1" id="t1a" value="a"><label for="t1a">\( \mathrm{m/s} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1b" value="b"><label for="t1b">\( \mathrm{m/s^2} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1c" value="c"><label for="t1c">\( \mathrm{N} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1d" value="d"><label for="t1d">\( \mathrm{kg\;m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="t1_1" id="t1_1a" value="a"><label for="t1_1a">La masa</label></li>
+      <li class="choice"><input type="radio" name="t1_1" id="t1_1b" value="b"><label for="t1_1b">El desplazamiento</label></li>
+      <li class="choice"><input type="radio" name="t1_1" id="t1_1c" value="c"><label for="t1_1c">La temperatura</label></li>
+      <li class="choice"><input type="radio" name="t1_1" id="t1_1d" value="d"><label for="t1_1d">El tiempo</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t1')">Verificar</button>
-    <div id="sol-t1" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \( \mathrm{m/s^2} \)</span>
-      <strong>Idea clave:</strong> aceleración = cambio de velocidad por unidad de tiempo.
-      \[
-        a = \frac{\Delta v}{\Delta t}\quad \Rightarrow\quad \frac{\mathrm{m/s}}{\mathrm{s}}=\mathrm{m/s^2}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_1"></div>
+    <div id="sol-t1_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: El desplazamiento</span>
+      El desplazamiento describe el cambio de posición de una partícula y requiere una magnitud y una dirección espacial para estar completamente definido.
     </div>
   </div>
 
-  <!-- T2 -->
-  <div class="problem-card" data-qid="t2" data-answer="c">
-    <span class="problem-type-tag">Cifras significativas</span>
-    <div class="problem-statement">2) ¿Con cuántas cifras significativas debe reportarse \(2.50\times 3.1\)?</div>
+  <!-- Q2 -->
+  <div class="problem-card" data-qid="t1_2" data-answer="c">
+    <span class="problem-type-tag">Cifras Significativas</span>
+    <div class="problem-statement">2. Al sumar los valores medidos \( 12.3 \) y \( 3.14 \), ¿cómo debe reportarse el resultado final según las reglas de cifras significativas?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t2" id="t2a" value="a"><label for="t2a">3 cifras</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2b" value="b"><label for="t2b">1 cifra</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2c" value="c"><label for="t2c">2 cifras</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2d" value="d"><label for="t2d">4 cifras</label></li>
+      <li class="choice"><input type="radio" name="t1_2" id="t1_2a" value="a"><label for="t1_2a">\( 15.44 \)</label></li>
+      <li class="choice"><input type="radio" name="t1_2" id="t1_2b" value="b"><label for="t1_2b">\( 15 \)</label></li>
+      <li class="choice"><input type="radio" name="t1_2" id="t1_2c" value="c"><label for="t1_2c">\( 15.4 \)</label></li>
+      <li class="choice"><input type="radio" name="t1_2" id="t1_2d" value="d"><label for="t1_2d">\( 15.440 \)</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t2')">Verificar</button>
-    <div id="sol-t2" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: 2 cifras significativas</span>
-      En productos/divisiones, el resultado hereda el <em>menor</em> número de cifras significativas.
-      \(2.50\) tiene 3 y \(3.1\) tiene 2 → el producto debe reportarse con 2.
-      <div class="tiny">Extra: \(2.50\times 3.1=7.75\Rightarrow 7.8\) (2 cifras).</div>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_2"></div>
+    <div id="sol-t1_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 15.4 \)</span>
+      En sumas y restas, el resultado no debe tener más posiciones decimales que el término con menor número de decimales (\(12.3\) tiene un decimal).
     </div>
   </div>
 
-  <!-- T3 -->
-  <div class="problem-card" data-qid="t3" data-answer="a">
+  <!-- Q3 — CORREGIDA -->
+  <div class="problem-card" data-qid="t1_3" data-answer="d">
     <span class="problem-type-tag">Vectores</span>
-    <div class="problem-statement">3) Si \(\vec A=3\hat i+4\hat j\), ¿cuál es \(|\vec A|\)?</div>
+    <div class="problem-statement">3. ¿Qué define de forma precisa a un vector unitario?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t3" id="t3a" value="a"><label for="t3a">\(5\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3b" value="b"><label for="t3b">\(7\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3c" value="c"><label for="t3c">\(1\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3d" value="d"><label for="t3d">\(25\)</label></li>
+      <li class="choice"><input type="radio" name="t1_3" id="t1_3a" value="a"><label for="t1_3a">Un vector que apunta exclusivamente en el eje x.</label></li>
+      <li class="choice"><input type="radio" name="t1_3" id="t1_3b" value="b"><label for="t1_3b">Un vector con magnitud igual a cero.</label></li>
+      <li class="choice"><input type="radio" name="t1_3" id="t1_3c" value="c"><label for="t1_3c">Un vector cuyas componentes siempre son enteras.</label></li>
+      <li class="choice"><input type="radio" name="t1_3" id="t1_3d" value="d"><label for="t1_3d">Un vector adimensional cuya magnitud es exactamente uno; se usa para indicar dirección.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t3')">Verificar</button>
-    <div id="sol-t3" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(5\)</span>
-      \[
-        |\vec A|=\sqrt{3^2+4^2}=\sqrt{9+16}=5.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_3"></div>
+    <div id="sol-t1_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Un vector adimensional cuya magnitud es exactamente uno.</span>
+      Los vectores unitarios \(\hat{i}\), \(\hat{j}\), \(\hat{k}\) son adimensionales y de magnitud 1. Sirven para indicar una dirección; al multiplicarlos por un escalar con unidades se obtiene un vector físico.
     </div>
   </div>
 
-  <!-- T4 -->
-  <div class="problem-card" data-qid="t4" data-answer="d">
-    <span class="problem-type-tag">Componentes</span>
-    <div class="problem-statement">4) Un vector de magnitud \(10\) forma \(30^\circ\) con el eje \(+x\). ¿Cuánto vale \(A_x\)?</div>
+  <!-- Q4 -->
+  <div class="problem-card" data-qid="t1_4" data-answer="b">
+    <span class="problem-type-tag">Álgebra Vectorial</span>
+    <div class="problem-statement">4. Si el producto escalar (punto) de dos vectores no nulos es cero (\( \vec{A} \cdot \vec{B} = 0 \)), entonces los vectores:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t4" id="t4a" value="a"><label for="t4a">\(10\sin 30^\circ=5.0\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4b" value="b"><label for="t4b">\(10\tan 30^\circ\approx 5.77\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4c" value="c"><label for="t4c">\(10/ \cos 30^\circ\approx 11.55\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4d" value="d"><label for="t4d">\(10\cos 30^\circ\approx 8.66\)</label></li>
+      <li class="choice"><input type="radio" name="t1_4" id="t1_4a" value="a"><label for="t1_4a">Son paralelos.</label></li>
+      <li class="choice"><input type="radio" name="t1_4" id="t1_4b" value="b"><label for="t1_4b">Son perpendiculares (ortogonales) entre sí.</label></li>
+      <li class="choice"><input type="radio" name="t1_4" id="t1_4c" value="c"><label for="t1_4c">Tienen la misma magnitud.</label></li>
+      <li class="choice"><input type="radio" name="t1_4" id="t1_4d" value="d"><label for="t1_4d">Apuntan en direcciones opuestas.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t4')">Verificar</button>
-    <div id="sol-t4" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(A_x=10\cos 30^\circ\approx 8.66\)</span>
-      Si el ángulo se mide desde \(+x\): \(A_x=A\cos\theta\), \(A_y=A\sin\theta\).
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_4"></div>
+    <div id="sol-t1_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Son perpendiculares.</span>
+      \( \vec{A} \cdot \vec{B} = |\vec{A}||\vec{B}| \cos \phi \). Si el producto es cero y las magnitudes no son cero, \(\cos \phi = 0 \Rightarrow \phi = 90^\circ\).
     </div>
   </div>
 
-  <!-- T5 -->
-  <div class="problem-card" data-qid="t5" data-answer="b">
-    <span class="problem-type-tag">Cinemática 1D</span>
-    <div class="problem-statement">5) ¿Cuál ecuación es válida para aceleración constante en 1D?</div>
+  <!-- Q5 -->
+  <div class="problem-card" data-qid="t1_5" data-answer="a">
+    <span class="problem-type-tag">Álgebra Vectorial</span>
+    <div class="problem-statement">5. La dirección del vector resultante del producto cruz \( \vec{C} = \vec{A} \times \vec{B} \) está determinada por:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t5" id="t5a" value="a"><label for="t5a">\(v=v_0+xt\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5b" value="b"><label for="t5b">\(\;v^2=v_0^2+2a(x-x_0)\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5c" value="c"><label for="t5c">\(a=\frac{x}{v}\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5d" value="d"><label for="t5d">\(x=\frac{v}{t^2}\)</label></li>
+      <li class="choice"><input type="radio" name="t1_5" id="t1_5a" value="a"><label for="t1_5a">La regla de la mano derecha.</label></li>
+      <li class="choice"><input type="radio" name="t1_5" id="t1_5b" value="b"><label for="t1_5b">El vector de mayor magnitud.</label></li>
+      <li class="choice"><input type="radio" name="t1_5" id="t1_5c" value="c"><label for="t1_5c">La dirección del vector \( \vec{A} \).</label></li>
+      <li class="choice"><input type="radio" name="t1_5" id="t1_5d" value="d"><label for="t1_5d">El producto escalar de ambos vectores.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t5')">Verificar</button>
-    <div id="sol-t5" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;v^2=v_0^2+2a\Delta x\)</span>
-      Esta ecuación elimina \(t\). Muy útil cuando no te dan el tiempo.
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_5')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_5')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_5"></div>
+    <div id="sol-t1_5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La regla de la mano derecha.</span>
+      La regla de la mano derecha define una dirección perpendicular al plano formado por \(\vec{A}\) y \(\vec{B}\).
     </div>
   </div>
 
-  <!-- T6 -->
-  <div class="problem-card" data-qid="t6" data-answer="a">
-    <span class="problem-type-tag">Concepto</span>
-    <div class="problem-statement">6) Si \(\vec v(t)\) cambia de dirección aunque \(|\vec v|\) sea constante, entonces…</div>
+  <!-- Q6 -->
+  <div class="problem-card" data-qid="t1_6" data-answer="a">
+    <span class="problem-type-tag">Vectores</span>
+    <div class="problem-statement">6. ¿Es cierta la propiedad conmutativa para la suma de vectores y el producto cruz?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t6" id="t6a" value="a"><label for="t6a">\(\vec a\neq \vec 0\)</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6b" value="b"><label for="t6b">\(\vec a=\vec 0\)</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6c" value="c"><label for="t6c">La partícula está en reposo</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6d" value="d"><label for="t6d">La rapidez es negativa</label></li>
+      <li class="choice"><input type="radio" name="t1_6" id="t1_6a" value="a"><label for="t1_6a">La suma es conmutativa, el producto cruz anticonmutativo.</label></li>
+      <li class="choice"><input type="radio" name="t1_6" id="t1_6b" value="b"><label for="t1_6b">Ambas operaciones son conmutativas.</label></li>
+      <li class="choice"><input type="radio" name="t1_6" id="t1_6c" value="c"><label for="t1_6c">Ambas operaciones son anticonmutativas.</label></li>
+      <li class="choice"><input type="radio" name="t1_6" id="t1_6d" value="d"><label for="t1_6d">La suma es anticonmutativa, el producto cruz conmutativo.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t6')">Verificar</button>
-    <div id="sol-t6" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\vec a\neq \vec 0\)</span>
-      Aceleración = cambio del vector velocidad. Si cambia dirección, cambia \(\vec v\), así que hay aceleración.
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_6')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_6')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_6"></div>
+    <div id="sol-t1_6" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La suma es conmutativa, el producto cruz anticonmutativo.</span>
+      \(\vec{A} + \vec{B} = \vec{B} + \vec{A}\), pero \(\vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})\).
     </div>
   </div>
 
-  <!-- T7 -->
-  <div class="problem-card" data-qid="t7" data-answer="c">
+  <!-- Q7 -->
+  <div class="problem-card" data-qid="t1_7" data-answer="d">
+    <span class="problem-type-tag">Sistemas de Unidades</span>
+    <div class="problem-statement">7. ¿Cuáles de las siguientes son unidades fundamentales en el Sistema Internacional (SI)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1_7" id="t1_7a" value="a"><label for="t1_7a">Newton, Segundo, Metro</label></li>
+      <li class="choice"><input type="radio" name="t1_7" id="t1_7b" value="b"><label for="t1_7b">Gramo, Centímetro, Segundo</label></li>
+      <li class="choice"><input type="radio" name="t1_7" id="t1_7c" value="c"><label for="t1_7c">Joule, Kilogramo, Metro</label></li>
+      <li class="choice"><input type="radio" name="t1_7" id="t1_7d" value="d"><label for="t1_7d">Kilogramo, Metro, Segundo</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_7')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_7')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_7"></div>
+    <div id="sol-t1_7" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Kilogramo, Metro, Segundo</span>
+      El Newton y el Joule son unidades derivadas en el SI. El gramo y centímetro pertenecen al sistema cgs.
+    </div>
+  </div>
+
+  <!-- ── NUEVAS: Análisis Dimensional y Orden de Magnitud ── -->
+
+  <!-- Q8 NUEVA -->
+  <div class="problem-card" data-qid="t1_8" data-answer="c">
+    <span class="problem-type-tag">Análisis Dimensional</span>
+    <div class="problem-statement">8. La ecuación \( v = v_0 + a t^2 \) donde \(v\) es velocidad, \(a\) es aceleración y \(t\) es tiempo, ¿es dimensionalmente correcta?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1_8" id="t1_8a" value="a"><label for="t1_8a">Sí, porque cada término tiene unidades de metros por segundo.</label></li>
+      <li class="choice"><input type="radio" name="t1_8" id="t1_8b" value="b"><label for="t1_8b">Sí, porque la aceleración multiplicada por tiempo da velocidad.</label></li>
+      <li class="choice"><input type="radio" name="t1_8" id="t1_8c" value="c"><label for="t1_8c">No, porque \([a t^2] = \text{m/s}^2 \cdot \text{s}^2 = \text{m}\), que no es velocidad.</label></li>
+      <li class="choice"><input type="radio" name="t1_8" id="t1_8d" value="d"><label for="t1_8d">No, porque no tiene un factor \(\frac{1}{2}\).</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_8')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_8')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_8"></div>
+    <div id="sol-t1_8" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: No, porque \([at^2] = \text{m}\), que no es velocidad.</span>
+      Dimensionalmente: \([at^2] = (\text{m/s}^2)(\text{s}^2) = \text{m}\). No se puede sumar metros con metros por segundo. La ecuación correcta es \(v = v_0 + at\), donde \([at] = (\text{m/s}^2)(\text{s}) = \text{m/s}\).
+    </div>
+  </div>
+
+  <!-- Q9 NUEVA -->
+  <div class="problem-card" data-qid="t1_9" data-answer="b">
+    <span class="problem-type-tag">Análisis Dimensional</span>
+    <div class="problem-statement">9. Si la fuerza tiene dimensiones \([F] = MLT^{-2}\), ¿cuáles son las dimensiones de la energía (trabajo = fuerza × distancia)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1_9" id="t1_9a" value="a"><label for="t1_9a">\( ML^2T^{-1} \)</label></li>
+      <li class="choice"><input type="radio" name="t1_9" id="t1_9b" value="b"><label for="t1_9b">\( ML^2T^{-2} \)</label></li>
+      <li class="choice"><input type="radio" name="t1_9" id="t1_9c" value="c"><label for="t1_9c">\( MLT^{-2} \)</label></li>
+      <li class="choice"><input type="radio" name="t1_9" id="t1_9d" value="d"><label for="t1_9d">\( M^2LT^{-2} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_9')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_9')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_9"></div>
+    <div id="sol-t1_9" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( ML^2T^{-2} \)</span>
+      \([W] = [F][d] = (MLT^{-2})(L) = ML^2T^{-2}\). En el SI esto equivale a kg·m²/s², es decir, el Joule.
+    </div>
+  </div>
+
+  <!-- Q10 NUEVA -->
+  <div class="problem-card" data-qid="t1_10" data-answer="a">
+    <span class="problem-type-tag">Orden de Magnitud</span>
+    <div class="problem-statement">10. Estima el orden de magnitud del número de latidos del corazón humano en un año (frecuencia cardíaca promedio ≈ 70 lat/min).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1_10" id="t1_10a" value="a"><label for="t1_10a">\( \sim 10^7 \) latidos</label></li>
+      <li class="choice"><input type="radio" name="t1_10" id="t1_10b" value="b"><label for="t1_10b">\( \sim 10^5 \) latidos</label></li>
+      <li class="choice"><input type="radio" name="t1_10" id="t1_10c" value="c"><label for="t1_10c">\( \sim 10^9 \) latidos</label></li>
+      <li class="choice"><input type="radio" name="t1_10" id="t1_10d" value="d"><label for="t1_10d">\( \sim 10^{11} \) latidos</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_10')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_10')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_10"></div>
+    <div id="sol-t1_10" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( \sim 10^7 \) latidos</span>
+      70 lat/min × 60 min/h × 24 h/d × 365 d/año ≈ 70 × 525,600 ≈ 3.7 × 10⁷. El orden de magnitud es \(10^7\).
+    </div>
+  </div>
+
+  <!-- Q11 NUEVA -->
+  <div class="problem-card" data-qid="t1_11" data-answer="d">
+    <span class="problem-type-tag">Análisis Dimensional</span>
+    <div class="problem-statement">11. Una cantidad física desconocida \(Q\) aparece en la expresión \( Q = \frac{mv^2}{r} \), donde \(m\) es masa, \(v\) es velocidad y \(r\) es radio. ¿Qué dimensiones tiene \(Q\)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1_11" id="t1_11a" value="a"><label for="t1_11a">\( ML^2T^{-2} \) (energía)</label></li>
+      <li class="choice"><input type="radio" name="t1_11" id="t1_11b" value="b"><label for="t1_11b">\( MLT^{-1} \) (momento lineal)</label></li>
+      <li class="choice"><input type="radio" name="t1_11" id="t1_11c" value="c"><label for="t1_11c">\( ML^{-1}T^{-2} \) (presión)</label></li>
+      <li class="choice"><input type="radio" name="t1_11" id="t1_11d" value="d"><label for="t1_11d">\( MLT^{-2} \) (fuerza)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t1_11')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t1_11')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t1_11"></div>
+    <div id="sol-t1_11" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( MLT^{-2} \) (fuerza)</span>
+      \([Q] = \frac{M(LT^{-1})^2}{L} = \frac{ML^2T^{-2}}{L} = MLT^{-2}\). Esta es la fuerza centrípeta.
+    </div>
+  </div>
+
+  <!-- Q12 práctica conversión -->
+  <div class="problem-card numeric-card" data-qid="p1_1" data-answer="c">
+    <span class="problem-type-tag">Práctica / Conversión</span>
+    <div class="problem-statement">12. Convierte una densidad de \( 13.6 \text{ g/cm}^3 \) a \( \text{kg/m}^3 \).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p1_1" id="p1_1a" value="a"><label for="p1_1a">\( 136 \text{ kg/m}^3 \)</label></li>
+      <li class="choice"><input type="radio" name="p1_1" id="p1_1b" value="b"><label for="p1_1b">\( 1360 \text{ kg/m}^3 \)</label></li>
+      <li class="choice"><input type="radio" name="p1_1" id="p1_1c" value="c"><label for="p1_1c">\( 13600 \text{ kg/m}^3 \)</label></li>
+      <li class="choice"><input type="radio" name="p1_1" id="p1_1d" value="d"><label for="p1_1d">\( 0.0136 \text{ kg/m}^3 \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p1_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p1_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p1_1"></div>
+    <div id="sol-p1_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 13600 \text{ kg/m}^3 \)</span>
+      \[ 13.6 \frac{\text{g}}{\text{cm}^3} \times \frac{1 \text{ kg}}{1000 \text{ g}} \times \left(\frac{100 \text{ cm}}{1 \text{ m}}\right)^3 = 13600 \text{ kg/m}^3 \]
+    </div>
+  </div>
+
+  <!-- Q13 magnitud vector -->
+  <div class="problem-card numeric-card" data-qid="p1_2" data-answer="b">
+    <span class="problem-type-tag">Práctica / Vectores</span>
+    <div class="problem-statement">13. Se tiene el vector \( \vec{r} = (3.0\,\hat{i} - 4.0\,\hat{j} + 12.0\,\hat{k}) \text{ m} \). ¿Cuál es su magnitud?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p1_2" id="p1_2a" value="a"><label for="p1_2a">\( 11.0 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_2" id="p1_2b" value="b"><label for="p1_2b">\( 13.0 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_2" id="p1_2c" value="c"><label for="p1_2c">\( 19.0 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_2" id="p1_2d" value="d"><label for="p1_2d">\( 169.0 \text{ m} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p1_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p1_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p1_2"></div>
+    <div id="sol-p1_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 13.0 \text{ m} \)</span>
+      \[ |\vec{r}| = \sqrt{3.0^2 + (-4.0)^2 + 12.0^2} = \sqrt{9+16+144} = \sqrt{169} = 13.0 \text{ m} \]
+    </div>
+  </div>
+
+  <!-- Q14 producto escalar -->
+  <div class="problem-card numeric-card" data-qid="p1_3" data-answer="d">
+    <span class="problem-type-tag">Práctica / Álgebra Vectorial</span>
+    <div class="problem-statement">14. Dados \( \vec{A} = 2\hat{i} + 3\hat{j} \) y \( \vec{B} = -\hat{i} + 2\hat{j} \), halla \( \vec{A} \cdot \vec{B} \).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p1_3" id="p1_3a" value="a"><label for="p1_3a">\( 8 \)</label></li>
+      <li class="choice"><input type="radio" name="p1_3" id="p1_3b" value="b"><label for="p1_3b">\( -2\hat{i} + 6\hat{j} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_3" id="p1_3c" value="c"><label for="p1_3c">\( -4 \)</label></li>
+      <li class="choice"><input type="radio" name="p1_3" id="p1_3d" value="d"><label for="p1_3d">\( 4 \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p1_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p1_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p1_3"></div>
+    <div id="sol-p1_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 4 \)</span>
+      El producto escalar da un valor numérico: \( (2)(-1) + (3)(2) = -2 + 6 = 4 \).
+    </div>
+  </div>
+
+  <!-- Q15 NUEVA – Estimación -->
+  <div class="problem-card numeric-card" data-qid="p1_4" data-answer="b">
+    <span class="problem-type-tag">Práctica / Orden de Magnitud</span>
+    <div class="problem-statement">15. Estima el número de segundos que tiene un año. ¿Cuál es la aproximación más cercana?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p1_4" id="p1_4a" value="a"><label for="p1_4a">\( 3.15 \times 10^6 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_4" id="p1_4b" value="b"><label for="p1_4b">\( 3.15 \times 10^7 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_4" id="p1_4c" value="c"><label for="p1_4c">\( 3.15 \times 10^8 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p1_4" id="p1_4d" value="d"><label for="p1_4d">\( 3.15 \times 10^5 \text{ s} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p1_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p1_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p1_4"></div>
+    <div id="sol-p1_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 3.15 \times 10^7 \text{ s} \)</span>
+      365.25 días × 24 h × 3600 s = 31,557,600 s ≈ \(3.16 \times 10^7\) s. Una constante útil: "\(\pi \times 10^7\) segundos en un año" es una excelente regla mnemotécnica.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       TEMA 2 — MOVIMIENTO EN LÍNEA RECTA
+       ══════════════════════════════════════════════════════ -->
+  <h2 class="section-title">Tema 2: Movimiento en Línea Recta (Cinemática 1D)</h2>
+  <p class="section-note">Preguntas conceptuales y de práctica sobre cinemática unidimensional.</p>
+
+  <!-- Q1 -->
+  <div class="problem-card" data-qid="t2_1" data-answer="b">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">1. La derivada temporal de la función posición, \( \frac{dx}{dt} \), representa:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_1" id="t2_1a" value="a"><label for="t2_1a">La aceleración instantánea</label></li>
+      <li class="choice"><input type="radio" name="t2_1" id="t2_1b" value="b"><label for="t2_1b">La velocidad instantánea</label></li>
+      <li class="choice"><input type="radio" name="t2_1" id="t2_1c" value="c"><label for="t2_1c">La velocidad media</label></li>
+      <li class="choice"><input type="radio" name="t2_1" id="t2_1d" value="d"><label for="t2_1d">El desplazamiento total</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_1"></div>
+    <div id="sol-t2_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La velocidad instantánea</span>
+      El límite de la velocidad media conforme \(\Delta t \to 0\) es la derivada \(dx/dt\).
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="problem-card" data-qid="t2_2" data-answer="a">
+    <span class="problem-type-tag">Gráficas</span>
+    <div class="problem-statement">2. ¿Qué significado geométrico tiene el área bajo la curva en una gráfica de velocidad vs. tiempo?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_2" id="t2_2a" value="a"><label for="t2_2a">El desplazamiento de la partícula.</label></li>
+      <li class="choice"><input type="radio" name="t2_2" id="t2_2b" value="b"><label for="t2_2b">La aceleración de la partícula.</label></li>
+      <li class="choice"><input type="radio" name="t2_2" id="t2_2c" value="c"><label for="t2_2c">El cambio en aceleración.</label></li>
+      <li class="choice"><input type="radio" name="t2_2" id="t2_2d" value="d"><label for="t2_2d">La posición inicial del objeto.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_2"></div>
+    <div id="sol-t2_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: El desplazamiento de la partícula.</span>
+      La integral de la velocidad respecto al tiempo (área neta bajo la curva) es igual al cambio neto de la posición (\(\Delta x\)).
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="problem-card" data-qid="t2_3" data-answer="c">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">3. Si la velocidad de un auto es negativa y su aceleración es negativa, el auto está:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_3" id="t2_3a" value="a"><label for="t2_3a">Frenando gradualmente.</label></li>
+      <li class="choice"><input type="radio" name="t2_3" id="t2_3b" value="b"><label for="t2_3b">Moviéndose a velocidad constante.</label></li>
+      <li class="choice"><input type="radio" name="t2_3" id="t2_3c" value="c"><label for="t2_3c">Aumentando su rapidez (acelerando).</label></li>
+      <li class="choice"><input type="radio" name="t2_3" id="t2_3d" value="d"><label for="t2_3d">Cambiando de dirección temporalmente.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_3"></div>
+    <div id="sol-t2_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Aumentando su rapidez.</span>
+      Si velocidad y aceleración tienen el mismo signo, la magnitud de la velocidad (rapidez) aumenta.
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="problem-card" data-qid="t2_4" data-answer="d">
+    <span class="problem-type-tag">Caída Libre</span>
+    <div class="problem-statement">4. En un lanzamiento vertical hacia arriba, en el punto de altura máxima, ¿cuál es la aceleración de la partícula? (Desprecia el aire).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_4" id="t2_4a" value="a"><label for="t2_4a">Cero, momentáneamente.</label></li>
+      <li class="choice"><input type="radio" name="t2_4" id="t2_4b" value="b"><label for="t2_4b">\( 9.8 \text{ m/s}^2 \) dirigida hacia arriba.</label></li>
+      <li class="choice"><input type="radio" name="t2_4" id="t2_4c" value="c"><label for="t2_4c">Proporcional a la masa del objeto.</label></li>
+      <li class="choice"><input type="radio" name="t2_4" id="t2_4d" value="d"><label for="t2_4d">\( g \) dirigida hacia abajo (aprox. \( 9.8 \text{ m/s}^2 \)).</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_4"></div>
+    <div id="sol-t2_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( g \) dirigida hacia abajo.</span>
+      Aunque la velocidad es cero en el punto más alto, la gravedad sigue actuando; la aceleración es siempre \(-g\) en caída libre.
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="problem-card" data-qid="t2_5" data-answer="b">
+    <span class="problem-type-tag">Ecuaciones</span>
+    <div class="problem-statement">5. La ecuación \( x = x_0 + v_0 t + \frac{1}{2}at^2 \) es válida únicamente cuando:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_5" id="t2_5a" value="a"><label for="t2_5a">La aceleración cambia linealmente con el tiempo.</label></li>
+      <li class="choice"><input type="radio" name="t2_5" id="t2_5b" value="b"><label for="t2_5b">La aceleración de la partícula es constante.</label></li>
+      <li class="choice"><input type="radio" name="t2_5" id="t2_5c" value="c"><label for="t2_5c">El objeto se mueve con velocidad constante.</label></li>
+      <li class="choice"><input type="radio" name="t2_5" id="t2_5d" value="d"><label for="t2_5d">El desplazamiento inicial es cero.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_5')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_5')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_5"></div>
+    <div id="sol-t2_5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La aceleración es constante.</span>
+      Todas las ecuaciones cinemáticas estándar en este formato se derivan bajo la suposición de aceleración constante.
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="problem-card" data-qid="t2_6" data-answer="c">
+    <span class="problem-type-tag">Gráficas</span>
+    <div class="problem-statement">6. La pendiente de una gráfica de posición vs. tiempo en un instante \( t \) representa:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_6" id="t2_6a" value="a"><label for="t2_6a">La aceleración instantánea en \( t \).</label></li>
+      <li class="choice"><input type="radio" name="t2_6" id="t2_6b" value="b"><label for="t2_6b">El cambio de posición desde \( t = 0 \).</label></li>
+      <li class="choice"><input type="radio" name="t2_6" id="t2_6c" value="c"><label for="t2_6c">La velocidad instantánea en \( t \).</label></li>
+      <li class="choice"><input type="radio" name="t2_6" id="t2_6d" value="d"><label for="t2_6d">La velocidad promedio en toda la trayectoria.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_6')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_6')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_6"></div>
+    <div id="sol-t2_6" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La velocidad instantánea.</span>
+      La pendiente de la tangente a \(x(t)\) es \(dx/dt = v(t)\).
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="problem-card" data-qid="t2_7" data-answer="a">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">7. Una partícula va del origen a un punto y regresa al origen. Su desplazamiento total es:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_7" id="t2_7a" value="a"><label for="t2_7a">Cero.</label></li>
+      <li class="choice"><input type="radio" name="t2_7" id="t2_7b" value="b"><label for="t2_7b">Doble de la distancia alcanzada.</label></li>
+      <li class="choice"><input type="radio" name="t2_7" id="t2_7c" value="c"><label for="t2_7c">Dependiente de su aceleración en la vuelta.</label></li>
+      <li class="choice"><input type="radio" name="t2_7" id="t2_7d" value="d"><label for="t2_7d">Menor que cero.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_7')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_7')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_7"></div>
+    <div id="sol-t2_7" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Cero.</span>
+      El desplazamiento mide la diferencia entre posición final e inicial. Si regresa al inicio, \(\Delta x = 0\).
+    </div>
+  </div>
+
+  <!-- Q8 NUEVA – Vel media vs instantánea -->
+  <div class="problem-card" data-qid="t2_8" data-answer="c">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">8. Un corredor recorre 100 m en 10 s. ¿Qué podemos afirmar con certeza?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_8" id="t2_8a" value="a"><label for="t2_8a">Su velocidad instantánea fue siempre 10 m/s.</label></li>
+      <li class="choice"><input type="radio" name="t2_8" id="t2_8b" value="b"><label for="t2_8b">Su aceleración fue constante e igual a 1 m/s².</label></li>
+      <li class="choice"><input type="radio" name="t2_8" id="t2_8c" value="c"><label for="t2_8c">Su velocidad media fue de 10 m/s.</label></li>
+      <li class="choice"><input type="radio" name="t2_8" id="t2_8d" value="d"><label for="t2_8d">Su velocidad final fue de 20 m/s.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_8')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_8')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_8"></div>
+    <div id="sol-t2_8" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Su velocidad media fue de 10 m/s.</span>
+      La velocidad media es \(\bar{v} = \Delta x / \Delta t = 100/10 = 10\) m/s. Sin más información, no podemos saber cómo varió la velocidad instantánea durante el recorrido.
+    </div>
+  </div>
+
+  <!-- Q9 NUEVA – Pendiente gráfica v-t -->
+  <div class="problem-card" data-qid="t2_9" data-answer="a">
+    <span class="problem-type-tag">Gráficas</span>
+    <div class="problem-statement">9. En una gráfica de velocidad vs. tiempo, la pendiente de la recta en cualquier instante representa:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2_9" id="t2_9a" value="a"><label for="t2_9a">La aceleración instantánea.</label></li>
+      <li class="choice"><input type="radio" name="t2_9" id="t2_9b" value="b"><label for="t2_9b">El desplazamiento.</label></li>
+      <li class="choice"><input type="radio" name="t2_9" id="t2_9c" value="c"><label for="t2_9c">La posición del objeto.</label></li>
+      <li class="choice"><input type="radio" name="t2_9" id="t2_9d" value="d"><label for="t2_9d">La velocidad media.</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t2_9')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t2_9')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t2_9"></div>
+    <div id="sol-t2_9" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: La aceleración instantánea.</span>
+      La pendiente de \(v(t)\) es \(dv/dt = a(t)\), la aceleración instantánea.
+    </div>
+  </div>
+
+  <!-- Q10 práctica MRUV -->
+  <div class="problem-card numeric-card" data-qid="p2_1" data-answer="d">
+    <span class="problem-type-tag">Práctica / MRUV</span>
+    <div class="problem-statement">10. Un tren reduce su velocidad de \( 60 \text{ m/s} \) a \( 20 \text{ m/s} \) en \( 800 \text{ m} \). ¿Cuál es su aceleración?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p2_1" id="p2_1a" value="a"><label for="p2_1a">\( -1.0 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_1" id="p2_1b" value="b"><label for="p2_1b">\( 2.0 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_1" id="p2_1c" value="c"><label for="p2_1c">\( -4.0 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_1" id="p2_1d" value="d"><label for="p2_1d">\( -2.0 \text{ m/s}^2 \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p2_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p2_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p2_1"></div>
+    <div id="sol-p2_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( -2.0 \text{ m/s}^2 \)</span>
+      \( v^2 = v_0^2 + 2a\Delta x \Rightarrow 20^2 = 60^2 + 2a(800) \Rightarrow a = \frac{400-3600}{1600} = -2.0 \text{ m/s}^2 \).
+    </div>
+  </div>
+
+  <!-- Q11 práctica derivación -->
+  <div class="problem-card numeric-card" data-qid="p2_2" data-answer="c">
+    <span class="problem-type-tag">Práctica / Derivación</span>
+    <div class="problem-statement">11. La posición de un auto es \( x(t) = 4t^3 - 2t + 5 \) (metros). Calcula su velocidad instantánea en \( t = 2 \text{ s} \).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p2_2" id="p2_2a" value="a"><label for="p2_2a">\( 33 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_2" id="p2_2b" value="b"><label for="p2_2b">\( 48 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_2" id="p2_2c" value="c"><label for="p2_2c">\( 46 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_2" id="p2_2d" value="d"><label for="p2_2d">\( 24 \text{ m/s} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p2_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p2_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p2_2"></div>
+    <div id="sol-p2_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 46 \text{ m/s} \)</span>
+      \( v(t) = 12t^2 - 2 \). En \( t=2 \): \( v = 12(4)-2 = 46 \text{ m/s} \).
+    </div>
+  </div>
+
+  <!-- Q12 práctica caída libre -->
+  <div class="problem-card numeric-card" data-qid="p2_3" data-answer="b">
+    <span class="problem-type-tag">Práctica / Caída Libre</span>
+    <div class="problem-statement">12. Se suelta un balín desde el reposo. ¿Qué distancia cae tras \( 3.0 \text{ s} \)? (Sin fricción).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p2_3" id="p2_3a" value="a"><label for="p2_3a">\( 29.4 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_3" id="p2_3b" value="b"><label for="p2_3b">\( 44.1 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_3" id="p2_3c" value="c"><label for="p2_3c">\( 14.7 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p2_3" id="p2_3d" value="d"><label for="p2_3d">\( 88.2 \text{ m} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p2_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p2_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p2_3"></div>
+    <div id="sol-p2_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 44.1 \text{ m} \)</span>
+      \( y = \frac{1}{2}gt^2 = \frac{1}{2}(9.8)(3.0)^2 = 4.9(9) = 44.1 \text{ m} \).
+    </div>
+  </div>
+
+  <!-- Q13 NUEVA – Aceleración instantánea -->
+  <div class="problem-card numeric-card" data-qid="p2_4" data-answer="a">
+    <span class="problem-type-tag">Práctica / Derivación</span>
+    <div class="problem-statement">13. Para el mismo auto de la pregunta 11 (\( x(t) = 4t^3 - 2t + 5 \)), calcula su aceleración instantánea en \( t = 1 \text{ s} \).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p2_4" id="p2_4a" value="a"><label for="p2_4a">\( 24 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_4" id="p2_4b" value="b"><label for="p2_4b">\( 12 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_4" id="p2_4c" value="c"><label for="p2_4c">\( 48 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p2_4" id="p2_4d" value="d"><label for="p2_4d">\( 10 \text{ m/s}^2 \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p2_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p2_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p2_4"></div>
+    <div id="sol-p2_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 24 \text{ m/s}^2 \)</span>
+      \( v(t) = 12t^2 - 2 \Rightarrow a(t) = \frac{dv}{dt} = 24t \). En \(t = 1\): \(a = 24(1) = 24 \text{ m/s}^2\).
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       TEMA 3 — MOVIMIENTO EN 2D y 3D
+       ══════════════════════════════════════════════════════ -->
+  <h2 class="section-title">Tema 3: Movimiento en 2D y 3D (Proyectiles, MCU, Relativa)</h2>
+  <p class="section-note">Preguntas sobre tiro parabólico, movimiento circular y velocidad relativa.</p>
+
+  <!-- Q1 -->
+  <div class="problem-card" data-qid="t3_1" data-answer="a">
     <span class="problem-type-tag">Proyectiles</span>
-    <div class="problem-statement">7) Sin resistencia del aire, en un tiro parabólico: </div>
+    <div class="problem-statement">1. El principio de independencia de movimientos establece que, para un proyectil:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t7" id="t7a" value="a"><label for="t7a">\(\;a_x=-g,\; a_y=0\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7b" value="b"><label for="t7b">\(\;a_x\neq 0,\; a_y\neq 0\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7c" value="c"><label for="t7c">\(\;a_x=0,\; a_y=-g\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7d" value="d"><label for="t7d">\(\;a_x=g,\; a_y=g\)</label></li>
+      <li class="choice"><input type="radio" name="t3_1" id="t3_1a" value="a"><label for="t3_1a">El movimiento horizontal y vertical se analizan por separado sin afectarse mutuamente.</label></li>
+      <li class="choice"><input type="radio" name="t3_1" id="t3_1b" value="b"><label for="t3_1b">El tiempo de vuelo depende de la velocidad inicial horizontal.</label></li>
+      <li class="choice"><input type="radio" name="t3_1" id="t3_1c" value="c"><label for="t3_1c">La masa del proyectil altera significativamente el análisis.</label></li>
+      <li class="choice"><input type="radio" name="t3_1" id="t3_1d" value="d"><label for="t3_1d">La aceleración cambia en los distintos ejes según la velocidad.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t7')">Verificar</button>
-    <div id="sol-t7" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;a_x=0,\; a_y=-g\)</span>
-      La única aceleración es la gravedad (vertical). En x el movimiento es MRU.
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_1"></div>
+    <div id="sol-t3_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Se analizan por separado.</span>
+      Las ecuaciones para \(x\) e \(y\) están ligadas únicamente por el parámetro de tiempo \(t\).
     </div>
   </div>
 
-  <!-- T8 -->
-  <div class="problem-card" data-qid="t8" data-answer="b">
-    <span class="problem-type-tag">Circular</span>
-    <div class="problem-statement">8) En movimiento circular uniforme, la aceleración centrípeta tiene magnitud:</div>
+  <!-- Q2 -->
+  <div class="problem-card" data-qid="t3_2" data-answer="d">
+    <span class="problem-type-tag">Proyectiles</span>
+    <div class="problem-statement">2. Para un proyectil en vuelo libre, su vector velocidad es siempre:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t8" id="t8a" value="a"><label for="t8a">\(\;a_c=\frac{R}{v^2}\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8b" value="b"><label for="t8b">\(\;a_c=\frac{v^2}{R}\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8c" value="c"><label for="t8c">\(\;a_c=vR\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8d" value="d"><label for="t8d">\(\;a_c=g\)</label></li>
+      <li class="choice"><input type="radio" name="t3_2" id="t3_2a" value="a"><label for="t3_2a">Paralelo a la aceleración de la gravedad.</label></li>
+      <li class="choice"><input type="radio" name="t3_2" id="t3_2b" value="b"><label for="t3_2b">Constante durante el vuelo.</label></li>
+      <li class="choice"><input type="radio" name="t3_2" id="t3_2c" value="c"><label for="t3_2c">Perpendicular a la aceleración en todo momento.</label></li>
+      <li class="choice"><input type="radio" name="t3_2" id="t3_2d" value="d"><label for="t3_2d">Tangente a la trayectoria que describe.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t8')">Verificar</button>
-    <div id="sol-t8" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;a_c=\frac{v^2}{R}\)</span>
-      Apunta hacia el centro; es el “precio” de cambiar dirección continuamente.
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_2"></div>
+    <div id="sol-t3_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Tangente a la trayectoria.</span>
+      El vector velocidad indica la dirección del movimiento, por lo tanto es tangente a la curva parabólica.
     </div>
   </div>
 
-  <!-- T9 -->
-  <div class="problem-card" data-qid="t9" data-answer="a">
-    <span class="problem-type-tag">Velocidad relativa</span>
-    <div class="problem-statement">9) La velocidad de A respecto de B se escribe como:</div>
+  <!-- Q3 -->
+  <div class="problem-card" data-qid="t3_3" data-answer="c">
+    <span class="problem-type-tag">Proyectiles</span>
+    <div class="problem-statement">3. En el punto más alto de un proyectil parabólico, es cierto que:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t9" id="t9a" value="a"><label for="t9a">\(\vec v_{A/B}=\vec v_A-\vec v_B\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9b" value="b"><label for="t9b">\(\vec v_{A/B}=\vec v_B-\vec v_A\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9c" value="c"><label for="t9c">\(\vec v_{A/B}=\vec v_A+\vec v_B\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9d" value="d"><label for="t9d">\(\vec v_{A/B}=\frac{\vec v_A}{\vec v_B}\)</label></li>
+      <li class="choice"><input type="radio" name="t3_3" id="t3_3a" value="a"><label for="t3_3a">Velocidad y aceleración son cero.</label></li>
+      <li class="choice"><input type="radio" name="t3_3" id="t3_3b" value="b"><label for="t3_3b">Su velocidad es máxima y horizontal.</label></li>
+      <li class="choice"><input type="radio" name="t3_3" id="t3_3c" value="c"><label for="t3_3c">Su rapidez es mínima y \(\vec{v} \perp \vec{a}\).</label></li>
+      <li class="choice"><input type="radio" name="t3_3" id="t3_3d" value="d"><label for="t3_3d">Su aceleración es nula y su velocidad apunta hacia abajo.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t9')">Verificar</button>
-    <div id="sol-t9" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\vec v_{A/B}=\vec v_A-\vec v_B\)</span>
-      “Respecto de B” significa que restas lo que B “arrastra” como referencia.
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_3"></div>
+    <div id="sol-t3_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Su rapidez es mínima y \(\vec{v} \perp \vec{a}\).</span>
+      En el vértice, \(v_y = 0\), así que \(\vec{v}\) es puramente horizontal. Como \(\vec{a} = \vec{g}\) es vertical, forman 90°. Y la rapidez es mínima porque solo queda la componente \(v_x\).
     </div>
   </div>
 
-  <!-- T10 -->
-  <div class="problem-card" data-qid="t10" data-answer="d">
-    <span class="problem-type-tag">Interpretación</span>
-    <div class="problem-statement">10) La pendiente de una gráfica \(x\) vs \(t\) representa:</div>
+  <!-- Q4 -->
+  <div class="problem-card" data-qid="t3_4" data-answer="b">
+    <span class="problem-type-tag">Movimiento Circular Uniforme</span>
+    <div class="problem-statement">4. En el MCU, las magnitudes de velocidad y aceleración:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="t10" id="t10a" value="a"><label for="t10a">aceleración</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10b" value="b"><label for="t10b">fuerza neta</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10c" value="c"><label for="t10c">energía</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10d" value="d"><label for="t10d">velocidad</label></li>
+      <li class="choice"><input type="radio" name="t3_4" id="t3_4a" value="a"><label for="t3_4a">Cambian ambas constantemente.</label></li>
+      <li class="choice"><input type="radio" name="t3_4" id="t3_4b" value="b"><label for="t3_4b">Se mantienen constantes, pero su dirección cambia.</label></li>
+      <li class="choice"><input type="radio" name="t3_4" id="t3_4c" value="c"><label for="t3_4c">La velocidad disminuye paulatinamente.</label></li>
+      <li class="choice"><input type="radio" name="t3_4" id="t3_4d" value="d"><label for="t3_4d">Aumentan en función del radio.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('t10')">Verificar</button>
-    <div id="sol-t10" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: velocidad</span>
-      \[
-        v=\frac{dx}{dt}\quad \Rightarrow\quad \text{pendiente de }x(t).
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_4"></div>
+    <div id="sol-t3_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Se mantienen constantes, pero su dirección cambia.</span>
+      "Uniforme" significa rapidez constante, lo que hace \(a_c = v^2/R\) también constante en magnitud; sin embargo, ambos vectores rotan continuamente.
     </div>
   </div>
 
-
-  <h2 class="section-title" style="background: var(--accent-color);">II. Práctica (Nivel libro) — Opción múltiple</h2>
-  <p class="section-note">Resuelve en papel; luego elige la opción y presiona <strong>Verificar</strong>.</p>
-
-  <!-- P1 -->
-  <div class="problem-card numeric-card" data-qid="p1" data-answer="c">
-    <span class="problem-type-tag">Conversión</span>
-    <div class="problem-statement">1) Convierte \(72~\mathrm{km/h}\) a \(\mathrm{m/s}\).</div>
+  <!-- Q5 -->
+  <div class="problem-card" data-qid="t3_5" data-answer="a">
+    <span class="problem-type-tag">Circular No Uniforme</span>
+    <div class="problem-statement">5. Si una partícula en trayectoria circular incrementa su rapidez, el vector aceleración neta:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p1" id="p1a" value="a"><label for="p1a">\(18~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1b" value="b"><label for="p1b">\(22~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1c" value="c"><label for="p1c">\(20~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1d" value="d"><label for="p1d">\(25~\mathrm{m/s}\)</label></li>
+      <li class="choice"><input type="radio" name="t3_5" id="t3_5a" value="a"><label for="t3_5a">Tiene componente radial (centrípeta) y tangencial.</label></li>
+      <li class="choice"><input type="radio" name="t3_5" id="t3_5b" value="b"><label for="t3_5b">Apunta estrictamente hacia el centro.</label></li>
+      <li class="choice"><input type="radio" name="t3_5" id="t3_5c" value="c"><label for="t3_5c">Apunta tangencialmente en dirección opuesta al movimiento.</label></li>
+      <li class="choice"><input type="radio" name="t3_5" id="t3_5d" value="d"><label for="t3_5d">Es perpendicular a la velocidad en todo momento.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p1')">Verificar</button>
-    <div id="sol-p1" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(20~\mathrm{m/s}\)</span>
-      \[
-        72\frac{\mathrm{km}}{\mathrm{h}}\left(\frac{1000~\mathrm{m}}{1~\mathrm{km}}\right)\left(\frac{1~\mathrm{h}}{3600~\mathrm{s}}\right)
-        =72\cdot\frac{1000}{3600}\approx 20~\mathrm{m/s}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_5')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_5')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_5"></div>
+    <div id="sol-t3_5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Tiene componente radial y tangencial.</span>
+      \(a_{rad}\) mantiene la trayectoria curva y \(a_{tan}\) modifica la magnitud de la velocidad.
     </div>
   </div>
 
-  <!-- P2 -->
-  <div class="problem-card numeric-card" data-qid="p2" data-answer="b">
-    <span class="problem-type-tag">1D (a cte)</span>
-    <div class="problem-statement">
-      2) Un auto parte del reposo y llega a \(25~\mathrm{m/s}\) en \(8.0~\mathrm{s}\) con aceleración constante.
-      ¿Cuál distancia recorre?
-    </div>
+  <!-- Q6 -->
+  <div class="problem-card" data-qid="t3_6" data-answer="c">
+    <span class="problem-type-tag">Conceptos</span>
+    <div class="problem-statement">6. Sin resistencia del aire, ¿con qué ángulo se logra el alcance máximo en terreno plano?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p2" id="p2a" value="a"><label for="p2a">\(80~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2b" value="b"><label for="p2b">\(100~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2c" value="c"><label for="p2c">\(125~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2d" value="d"><label for="p2d">\(200~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="t3_6" id="t3_6a" value="a"><label for="t3_6a">30°</label></li>
+      <li class="choice"><input type="radio" name="t3_6" id="t3_6b" value="b"><label for="t3_6b">60°</label></li>
+      <li class="choice"><input type="radio" name="t3_6" id="t3_6c" value="c"><label for="t3_6c">45°</label></li>
+      <li class="choice"><input type="radio" name="t3_6" id="t3_6d" value="d"><label for="t3_6d">90°</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p2')">Verificar</button>
-    <div id="sol-p2" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(100~\mathrm{m}\)</span>
-      Con aceleración constante, \(v_{prom}=\frac{v_0+v}{2}=\frac{0+25}{2}=12.5\).
-      \[
-        \Delta x = v_{prom}\,t = 12.5(8.0)=100~\mathrm{m}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_6')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_6')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_6"></div>
+    <div id="sol-t3_6" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: 45°</span>
+      En \(R = v_0^2 \sin(2\theta)/g\), el seno es máximo cuando \(2\theta = 90° \Rightarrow \theta = 45°\).
     </div>
   </div>
 
-  <!-- P3 -->
-  <div class="problem-card numeric-card" data-qid="p3" data-answer="a">
-    <span class="problem-type-tag">Caída libre</span>
-    <div class="problem-statement">3) Se deja caer un objeto desde \(45~\mathrm{m}\). Ignora aire. ¿Tiempo de caída?</div>
+  <!-- Q7 -->
+  <div class="problem-card" data-qid="t3_7" data-answer="b">
+    <span class="problem-type-tag">Velocidad Relativa</span>
+    <div class="problem-statement">7. La ecuación de velocidad relativa en cinemática clásica es:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p3" id="p3a" value="a"><label for="p3a">\(\;3.0~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3b" value="b"><label for="p3b">\(\;1.5~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3c" value="c"><label for="p3c">\(\;4.5~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3d" value="d"><label for="p3d">\(\;9.6~\mathrm{s}\)</label></li>
+      <li class="choice"><input type="radio" name="t3_7" id="t3_7a" value="a"><label for="t3_7a">\( \vec{v}_{P/A} = \vec{v}_{P/B} \times \vec{v}_{B/A} \)</label></li>
+      <li class="choice"><input type="radio" name="t3_7" id="t3_7b" value="b"><label for="t3_7b">\( \vec{v}_{P/A} = \vec{v}_{P/B} + \vec{v}_{B/A} \)</label></li>
+      <li class="choice"><input type="radio" name="t3_7" id="t3_7c" value="c"><label for="t3_7c">\( \vec{v}_{P/A} = \frac{\vec{v}_{P/B}}{\vec{v}_{B/A}} \)</label></li>
+      <li class="choice"><input type="radio" name="t3_7" id="t3_7d" value="d"><label for="t3_7d">\( \vec{v}_{P/A} = \vec{v}_{B/A} - \vec{v}_{P/B} \)</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p3')">Verificar</button>
-    <div id="sol-p3" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 3.0~\mathrm{s}\)</span>
-      Desde reposo: \(\Delta y=\tfrac12 gt^2\Rightarrow t=\sqrt{2h/g}\).
-      \[
-        t=\sqrt{\frac{2(45)}{9.8}}=\sqrt{9.18}\approx 3.03~\mathrm{s}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_7')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_7')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_7"></div>
+    <div id="sol-t3_7" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( \vec{v}_{P/A} = \vec{v}_{P/B} + \vec{v}_{B/A} \)</span>
+      La velocidad de P respecto a A es la velocidad de P respecto a B más la velocidad de B respecto a A.
     </div>
   </div>
 
-  <!-- P4 -->
-  <div class="problem-card numeric-card" data-qid="p4" data-answer="d">
-    <span class="problem-type-tag">Proyectil</span>
-    <div class="problem-statement">
-      4) Se lanza un proyectil con \(v_0=20~\mathrm{m/s}\) a \(\theta=40^\circ\) (misma altura de salida y llegada).
-      ¿Alcance horizontal \(R\)?
-    </div>
-
-    <!-- mini diagrama -->
-    <svg class="mini-svg" viewBox="0 0 520 160" aria-label="diagrama proyectil">
-      <defs>
-        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-          <path d="M0,0 L10,3 L0,6 Z" fill="#004085"></path>
-        </marker>
-      </defs>
-      <line x1="40" y1="130" x2="480" y2="130" stroke="#212529" stroke-width="2"></line>
-      <line x1="60" y1="130" x2="60" y2="25" stroke="#212529" stroke-width="2"></line>
-      <path d="M60,130 Q220,30 400,130" fill="none" stroke="#c82333" stroke-width="3"></path>
-      <line x1="60" y1="130" x2="140" y2="90" stroke="#004085" stroke-width="3" marker-end="url(#arrow)"></line>
-      <text x="150" y="92" font-size="14" fill="#004085">\(v_0,\,\theta\)</text>
-      <text x="255" y="155" font-size="14" fill="#6c757d">\(R\)</text>
-      <line x1="60" y1="145" x2="400" y2="145" stroke="#6c757d" stroke-width="2"></line>
-    </svg>
-
+  <!-- Q8 NUEVA – Ángulos complementarios -->
+  <div class="problem-card" data-qid="t3_8" data-answer="b">
+    <span class="problem-type-tag">Proyectiles</span>
+    <div class="problem-statement">8. Dos proyectiles se lanzan con la misma rapidez inicial desde el suelo, uno a 30° y otro a 60°. Sin resistencia del aire, ¿qué ocurre con sus alcances horizontales?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p4" id="p4a" value="a"><label for="p4a">\(25~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4b" value="b"><label for="p4b">\(32~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4c" value="c"><label for="p4c">\(48~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4d" value="d"><label for="p4d">\(40~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="t3_8" id="t3_8a" value="a"><label for="t3_8a">El de 30° llega más lejos.</label></li>
+      <li class="choice"><input type="radio" name="t3_8" id="t3_8b" value="b"><label for="t3_8b">Ambos tienen el mismo alcance.</label></li>
+      <li class="choice"><input type="radio" name="t3_8" id="t3_8c" value="c"><label for="t3_8c">El de 60° llega más lejos.</label></li>
+      <li class="choice"><input type="radio" name="t3_8" id="t3_8d" value="d"><label for="t3_8d">No se puede determinar sin conocer la masa.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p4')">Verificar</button>
-    <div id="sol-p4" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 40~\mathrm{m}\)</span>
-      Tiempo de vuelo: \(T=\dfrac{2v_0\sin\theta}{g}\).
-      \[
-        T=\frac{2(20)\sin 40^\circ}{9.8}\approx \frac{40(0.6428)}{9.8}\approx 2.62~\mathrm{s}.
-      \]
-      Alcance: \(R=v_0\cos\theta\;T\):
-      \[
-        R=20\cos40^\circ(2.62)\approx 20(0.7660)(2.62)\approx 40.1~\mathrm{m}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_8')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_8')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_8"></div>
+    <div id="sol-t3_8" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Ambos tienen el mismo alcance.</span>
+      Los ángulos complementarios (\(\theta\) y \(90°-\theta\)) producen el mismo valor de \(\sin(2\theta)\), por lo que \(R = v_0^2\sin(2\theta)/g\) es igual para ambos.
     </div>
   </div>
 
-  <!-- P5 -->
-  <div class="problem-card numeric-card" data-qid="p5" data-answer="a">
-    <span class="problem-type-tag">Proyectil</span>
-    <div class="problem-statement">
-      5) Se dispara con \(v_0=15~\mathrm{m/s}\) y aterriza a la misma altura a \(R=20~\mathrm{m}\).
-      ¿Qué ángulos posibles \(\theta\) (aprox.) existen?
-    </div>
+  <!-- Q9 NUEVA – Dirección aceleración centrípeta -->
+  <div class="problem-card" data-qid="t3_9" data-answer="d">
+    <span class="problem-type-tag">Movimiento Circular</span>
+    <div class="problem-statement">9. En el MCU, la aceleración centrípeta siempre apunta:</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p5" id="p5a" value="a"><label for="p5a">\(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5b" value="b"><label for="p5b">\(\theta\approx 10^\circ\) únicamente</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5c" value="c"><label for="p5c">\(\theta\approx 45^\circ\) únicamente</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5d" value="d"><label for="p5d">\(\theta\approx 80^\circ\) únicamente</label></li>
+      <li class="choice"><input type="radio" name="t3_9" id="t3_9a" value="a"><label for="t3_9a">En la dirección tangencial al movimiento.</label></li>
+      <li class="choice"><input type="radio" name="t3_9" id="t3_9b" value="b"><label for="t3_9b">Hacia afuera del centro de la trayectoria.</label></li>
+      <li class="choice"><input type="radio" name="t3_9" id="t3_9c" value="c"><label for="t3_9c">En la dirección de la velocidad.</label></li>
+      <li class="choice"><input type="radio" name="t3_9" id="t3_9d" value="d"><label for="t3_9d">Hacia el centro de la trayectoria circular.</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p5')">Verificar</button>
-    <div id="sol-p5" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</span>
-      Para misma altura: \(R=\dfrac{v_0^2}{g}\sin(2\theta)\).
-      \[
-        \sin(2\theta)=\frac{Rg}{v_0^2}=\frac{(20)(9.8)}{15^2}=\frac{196}{225}\approx 0.871.
-      \]
-      Entonces \(2\theta\approx 60.6^\circ\) o \(119.4^\circ\) → \(\theta\approx 30.3^\circ\) o \(59.7^\circ\).
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('t3_9')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('t3_9')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-t3_9"></div>
+    <div id="sol-t3_9" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: Hacia el centro de la trayectoria.</span>
+      La aceleración centrípeta (o radial) siempre apunta radialmente hacia adentro, es decir, hacia el centro del círculo. Esto es lo que cambia la dirección de la velocidad sin modificar su magnitud.
     </div>
   </div>
 
-  <!-- P6 -->
-  <div class="problem-card numeric-card" data-qid="p6" data-answer="b">
-    <span class="problem-type-tag">Circular</span>
-    <div class="problem-statement">
-      6) Un auto toma una curva de radio \(R=50~\mathrm{m}\) a \(v=12~\mathrm{m/s}\).
-      ¿Cuál es \(a_c\)?
-    </div>
+  <!-- Q10 práctica proyectil -->
+  <div class="problem-card numeric-card" data-qid="p3_1" data-answer="c">
+    <span class="problem-type-tag">Práctica / Proyectiles</span>
+    <div class="problem-statement">10. Una flecha se dispara a nivel de suelo con \( 40 \text{ m/s} \) a \( 30° \). ¿Cuánto tiempo dura en el aire?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p6" id="p6a" value="a"><label for="p6a">\(1.44~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6b" value="b"><label for="p6b">\(2.88~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6c" value="c"><label for="p6c">\(9.8~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6d" value="d"><label for="p6d">\(24~\mathrm{m/s^2}\)</label></li>
+      <li class="choice"><input type="radio" name="p3_1" id="p3_1a" value="a"><label for="p3_1a">\( \approx 2.04 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_1" id="p3_1b" value="b"><label for="p3_1b">\( \approx 8.16 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_1" id="p3_1c" value="c"><label for="p3_1c">\( \approx 4.08 \text{ s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_1" id="p3_1d" value="d"><label for="p3_1d">\( \approx 10.0 \text{ s} \)</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p6')">Verificar</button>
-    <div id="sol-p6" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(2.88~\mathrm{m/s^2}\)</span>
-      \[
-        a_c=\frac{v^2}{R}=\frac{12^2}{50}=\frac{144}{50}=2.88~\mathrm{m/s^2}.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p3_1')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p3_1')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p3_1"></div>
+    <div id="sol-p3_1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( \approx 4.08 \text{ s} \)</span>
+      \( T = \frac{2v_0 \sin\theta}{g} = \frac{2(40)(0.5)}{9.8} = \frac{40}{9.8} \approx 4.08 \text{ s} \).
     </div>
   </div>
 
-  <!-- P7 -->
-  <div class="problem-card numeric-card" data-qid="p7" data-answer="c">
-    <span class="problem-type-tag">Relativa (río)</span>
-    <div class="problem-statement">
-      7) Un bote apunta al norte con \(v_{b/agua}=3.0~\mathrm{m/s}\). La corriente va al este con \(v_{agua/tierra}=2.0~\mathrm{m/s}\).
-      ¿\(|\vec v_{b/tierra}|\) y dirección?
-    </div>
+  <!-- Q11 práctica MCU -->
+  <div class="problem-card numeric-card" data-qid="p3_2" data-answer="d">
+    <span class="problem-type-tag">Práctica / Circular Uniforme</span>
+    <div class="problem-statement">11. Un volante de radio \( 0.2 \text{ m} \) gira con rapidez constante de \( 10 \text{ m/s} \). Calcula la aceleración centrípeta.</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p7" id="p7a" value="a"><label for="p7a">\(5.0~\mathrm{m/s}\), \(45^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7b" value="b"><label for="p7b">\(3.0~\mathrm{m/s}\), N puro</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7c" value="c"><label for="p7c">\(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7d" value="d"><label for="p7d">\(\approx 2.00~\mathrm{m/s}\), E puro</label></li>
+      <li class="choice"><input type="radio" name="p3_2" id="p3_2a" value="a"><label for="p3_2a">\( 50 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p3_2" id="p3_2b" value="b"><label for="p3_2b">\( 100 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p3_2" id="p3_2c" value="c"><label for="p3_2c">\( 2 \text{ m/s}^2 \)</label></li>
+      <li class="choice"><input type="radio" name="p3_2" id="p3_2d" value="d"><label for="p3_2d">\( 500 \text{ m/s}^2 \)</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p7')">Verificar</button>
-    <div id="sol-p7" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</span>
-      \[
-        \vec v_{b/t}=\vec v_{b/a}+\vec v_{a/t}.
-      \]
-      Componentes: \(v_x=2\), \(v_y=3\). Magnitud: \(\sqrt{2^2+3^2}=\sqrt{13}=3.61\).
-      Dirección respecto al norte: \(\tan\phi=\frac{2}{3}\Rightarrow \phi\approx 33.7^\circ\).
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p3_2')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p3_2')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p3_2"></div>
+    <div id="sol-p3_2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 500 \text{ m/s}^2 \)</span>
+      \( a_c = v^2/R = 100/0.2 = 500 \text{ m/s}^2 \).
     </div>
   </div>
 
-  <!-- P8 -->
-  <div class="problem-card numeric-card" data-qid="p8" data-answer="a">
-    <span class="problem-type-tag">Relativa (viento)</span>
-    <div class="problem-statement">
-      8) Un avión tiene rapidez en aire \(200~\mathrm{km/h}\) hacia el norte. Viento \(50~\mathrm{km/h}\) hacia el este.
-      ¿Rapidez en tierra y desvío?
-    </div>
+  <!-- Q12 práctica vel relativa -->
+  <div class="problem-card numeric-card" data-qid="p3_3" data-answer="b">
+    <span class="problem-type-tag">Práctica / Velocidad Relativa</span>
+    <div class="problem-statement">12. Un nadador cruza un río a \( 1.5 \text{ m/s} \) respecto al agua, perpendicular a la orilla. La corriente es de \( 2.0 \text{ m/s} \). ¿Qué rapidez tiene respecto a tierra?</div>
     <ul class="choices">
-      <li class="choice"><input type="radio" name="p8" id="p8a" value="a"><label for="p8a">\(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8b" value="b"><label for="p8b">\(250~\mathrm{km/h}\), \(0^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8c" value="c"><label for="p8c">\(\approx 150~\mathrm{km/h}\), \(\approx 30^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8d" value="d"><label for="p8d">\(\approx 206~\mathrm{km/h}\), \(\approx 45^\circ\) E del N</label></li>
+      <li class="choice"><input type="radio" name="p3_3" id="p3_3a" value="a"><label for="p3_3a">\( 3.5 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_3" id="p3_3b" value="b"><label for="p3_3b">\( 2.5 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_3" id="p3_3c" value="c"><label for="p3_3c">\( 0.5 \text{ m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_3" id="p3_3d" value="d"><label for="p3_3d">\( 4.25 \text{ m/s} \)</label></li>
     </ul>
-    <button class="btn" onclick="checkMCQ('p8')">Verificar</button>
-    <div id="sol-p8" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</span>
-      Componentes: \(v_x=50\), \(v_y=200\).
-      \[
-        |\vec v|=\sqrt{50^2+200^2}=\sqrt{42500}\approx 206~\mathrm{km/h}.
-      \]
-      \[
-        \tan\phi=\frac{50}{200}=0.25\Rightarrow \phi\approx 14.0^\circ.
-      \]
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p3_3')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p3_3')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p3_3"></div>
+    <div id="sol-p3_3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 2.5 \text{ m/s} \)</span>
+      Vectores perpendiculares: \( v = \sqrt{1.5^2 + 2.0^2} = \sqrt{2.25+4.0} = \sqrt{6.25} = 2.5 \text{ m/s} \).
+    </div>
+  </div>
+
+  <!-- Q13 NUEVA – Altura máxima proyectil -->
+  <div class="problem-card numeric-card" data-qid="p3_4" data-answer="a">
+    <span class="problem-type-tag">Práctica / Proyectiles</span>
+    <div class="problem-statement">13. Un proyectil se lanza con \( 50 \text{ m/s} \) a \( 53° \) respecto a la horizontal. ¿Cuál es su altura máxima? (Usa \(g = 10 \text{ m/s}^2\), \(\sin 53° \approx 0.8\)).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p3_4" id="p3_4a" value="a"><label for="p3_4a">\( 80 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_4" id="p3_4b" value="b"><label for="p3_4b">\( 125 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_4" id="p3_4c" value="c"><label for="p3_4c">\( 100 \text{ m} \)</label></li>
+      <li class="choice"><input type="radio" name="p3_4" id="p3_4d" value="d"><label for="p3_4d">\( 45 \text{ m} \)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p3_4')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p3_4')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p3_4"></div>
+    <div id="sol-p3_4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( 80 \text{ m} \)</span>
+      \( v_{0y} = 50 \sin 53° = 40 \text{ m/s} \). En la altura máxima \(v_y = 0\):
+      \( h_{max} = \frac{v_{0y}^2}{2g} = \frac{1600}{20} = 80 \text{ m} \).
+    </div>
+  </div>
+
+  <!-- Q14 NUEVA – Periodo MCU -->
+  <div class="problem-card numeric-card" data-qid="p3_5" data-answer="c">
+    <span class="problem-type-tag">Práctica / Circular Uniforme</span>
+    <div class="problem-statement">14. Un satélite describe una órbita circular de radio \( 6800 \text{ km} \) con rapidez de \( 7.5 \text{ km/s} \). ¿Cuál es su periodo orbital aproximado?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p3_5" id="p3_5a" value="a"><label for="p3_5a">\( \approx 2850 \text{ s} \) (47.5 min)</label></li>
+      <li class="choice"><input type="radio" name="p3_5" id="p3_5b" value="b"><label for="p3_5b">\( \approx 907 \text{ s} \) (15.1 min)</label></li>
+      <li class="choice"><input type="radio" name="p3_5" id="p3_5c" value="c"><label for="p3_5c">\( \approx 5695 \text{ s} \) (94.9 min)</label></li>
+      <li class="choice"><input type="radio" name="p3_5" id="p3_5d" value="d"><label for="p3_5d">\( \approx 11400 \text{ s} \) (190 min)</label></li>
+    </ul>
+    <div class="card-actions">
+      <button class="btn" onclick="checkMCQ('p3_5')">Verificar</button>
+      <button class="btn-retry" onclick="retryQ('p3_5')">Reintentar</button>
+    </div>
+    <div class="warning-msg" id="warn-p3_5"></div>
+    <div id="sol-p3_5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( \approx 5695 \text{ s} \) (94.9 min)</span>
+      La circunferencia es \(C = 2\pi R = 2\pi(6800) \approx 42,726 \text{ km}\). El periodo es \(T = C/v = 42726/7.5 \approx 5697 \text{ s} \approx 95 \text{ min}\).
     </div>
   </div>
 
   <footer>
-    <p>Material de práctica (Cap. 1–3) — Mecánica / Cinemática | Hecho para incrustar en GitHub Pages</p>
+    <p>Material interactivo de repaso para el curso de Mecánica (CUCEI) — <span id="total-q-count"></span> preguntas</p>
   </footer>
+
 </div>
 
 <script>
-  function checkMCQ(qid){
+  // ── STATE ──
+  const allCards = document.querySelectorAll('.problem-card');
+  const totalQ = allCards.length;
+  let correctCount = 0;
+  let wrongCount = 0;
+  let answeredSet = new Set();
+
+  document.getElementById('total-q-count').textContent = totalQ;
+
+  function updateScore() {
+    document.getElementById('stat-correct').textContent = correctCount;
+    document.getElementById('stat-wrong').textContent = wrongCount;
+    document.getElementById('stat-remaining').textContent = totalQ - answeredSet.size;
+    const pct = Math.round((answeredSet.size / totalQ) * 100);
+    document.getElementById('progress-pct').textContent = pct;
+    document.getElementById('progress-fill').style.width = pct + '%';
+  }
+  updateScore();
+
+  function checkMCQ(qid) {
     const card = document.querySelector(`[data-qid="${qid}"]`);
-    const correct = card.getAttribute("data-answer");
+    const correct = card.getAttribute('data-answer');
     const selected = document.querySelector(`input[name="${qid}"]:checked`);
-
-    // Reset styles
-    card.querySelectorAll(".choice").forEach(li=>{
-      li.classList.remove("correct","wrong");
-    });
-
     const sol = document.getElementById(`sol-${qid}`);
-    sol.classList.remove("wrong");
+    const warn = document.getElementById(`warn-${qid}`);
 
-    if(!selected){
-      sol.style.display = "block";
-      sol.classList.add("wrong");
-      sol.innerHTML = `<span class="explanation-title">Falta elegir una opción</span>
-        Selecciona una respuesta y vuelve a presionar <strong>Verificar</strong>.`;
+    // Hide warning
+    warn.style.display = 'none';
+
+    if (!selected) {
+      warn.textContent = 'Selecciona una respuesta antes de verificar.';
+      warn.style.display = 'block';
       return;
     }
 
-    const val = selected.value;
-    const choiceLi = selected.closest(".choice");
-    const correctLi = card.querySelector(`input[name="${qid}"][value="${correct}"]`).closest(".choice");
+    // Already answered? do nothing
+    if (answeredSet.has(qid)) return;
 
-    if(val === correct){
-      choiceLi.classList.add("correct");
-      sol.style.display = "block";
-      // deja el contenido original (ya está en HTML)
-    }else{
-      choiceLi.classList.add("wrong");
-      correctLi.classList.add("correct");
-      sol.style.display = "block";
-      sol.classList.add("wrong");
-      // Conserva explicación original pero en modo "wrong" (fondo rojo)
-      // (El contenido original permanece; solo cambiamos estilo).
+    // Reset choice styles
+    card.querySelectorAll('.choice').forEach(li => li.classList.remove('correct', 'wrong'));
+    sol.classList.remove('wrong');
+
+    const val = selected.value;
+    const choiceLi = selected.closest('.choice');
+    const correctLi = card.querySelector(`input[name="${qid}"][value="${correct}"]`).closest('.choice');
+
+    // Mark answered
+    answeredSet.add(qid);
+
+    if (val === correct) {
+      choiceLi.classList.add('correct');
+      card.classList.add('answered-correct');
+      correctCount++;
+    } else {
+      choiceLi.classList.add('wrong');
+      correctLi.classList.add('correct');
+      sol.classList.add('wrong');
+      card.classList.add('answered-wrong');
+      wrongCount++;
     }
 
-    // Deshabilitar botón para evitar spam (opcional)
-    // card.querySelector("button.btn").disabled = true;
+    sol.style.display = 'block';
 
-    // Re-render MathJax si hace falta
-    if(window.MathJax && window.MathJax.typeset){
+    // Disable radios
+    card.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = true);
+
+    // Show retry button
+    card.querySelector('.btn-retry').style.display = 'inline-block';
+
+    // Disable verify button
+    card.querySelector('.btn').disabled = true;
+
+    updateScore();
+
+    if (window.MathJax && window.MathJax.typeset) {
       window.MathJax.typeset();
     }
   }
-</script>
 
-</body>
-</html>      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    }
-    header{
-      text-align:center;
-      margin-bottom:30px;
-      border-bottom:3px solid var(--primary-color);
-      padding-bottom:18px;
-    }
-    h1{ color:var(--primary-color); margin:0; }
-    header p{ margin:8px 0 0; color:var(--muted); }
-
-    .section-title{
-      background:var(--primary-color);
-      color:white;
-      padding:10px 18px;
-      border-radius:6px;
-      margin-top:34px;
-      margin-bottom:16px;
-    }
-    .section-note{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-style:italic;
-    }
-
-    .problem-card{
-      background:white;
-      border-left:5px solid var(--primary-color);
-      border-radius:6px;
-      padding:18px 18px 14px;
-      margin-bottom:16px;
-      box-shadow:var(--card-shadow);
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-    .problem-card:hover{
-      transform:translateX(4px);
-      box-shadow:0 6px 16px rgba(0,0,0,0.10);
-    }
-    .problem-type-tag{
-      font-size:.75em;
-      text-transform:uppercase;
-      background:#e2e6ea;
-      padding:2px 6px;
-      border-radius:3px;
-      color:var(--muted);
-      font-weight:700;
-    }
-    .problem-statement{
-      font-weight:600;
-      font-size:1.04em;
-      margin:10px 0 10px;
-    }
-
-    .choices{
-      margin:8px 0 10px;
-      padding:0;
-      list-style:none;
-    }
-    .choice{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      padding:8px 10px;
-      border:1px solid #e9ecef;
-      border-radius:6px;
-      margin-bottom:8px;
-      background:#fbfcfd;
-    }
-    .choice input{ margin-top:3px; }
-    .choice label{
-      cursor:pointer;
-      flex:1;
-    }
-    .choice.correct{
-      border-color:rgba(40,167,69,.45);
-      background:rgba(40,167,69,.10);
-    }
-    .choice.wrong{
-      border-color:rgba(220,53,69,.45);
-      background:rgba(220,53,69,.08);
-    }
-
-    .btn{
-      background:var(--primary-color);
-      color:white;
-      border:none;
-      padding:8px 14px;
-      border-radius:5px;
-      cursor:pointer;
-      font-size:.92em;
-      transition:background .2s;
-      display:inline-block;
-      margin-right:8px;
-    }
-    .btn:hover{ background:#002752; }
-    .btn:disabled{
-      opacity:.6;
-      cursor:not-allowed;
-    }
-
-    .solution-area{
-      display:none;
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:6px;
-      border:1px solid #c3e6cb;
-      background:#d4edda;
-      color:#155724;
-    }
-    .solution-area.wrong{
-      border-color:#f5c6cb;
-      background:#f8d7da;
-      color:#721c24;
-    }
-    .explanation-title{
-      font-weight:800;
-      display:block;
-      margin-bottom:6px;
-    }
-    .tiny{
-      color:var(--muted);
-      font-size:.92em;
-      margin-top:6px;
-    }
-
-    /* Práctica en rojo */
-    .numeric-card{ border-left-color:var(--accent-color); }
-    .numeric-card .btn{ background:var(--accent-color); }
-    .numeric-card .btn:hover{ background:#bd2130; }
-
-    .mini-svg{
-      width:100%;
-      max-width:520px;
-      margin:10px 0 0;
-      border:1px solid #e9ecef;
-      border-radius:8px;
-      background:#fff;
-    }
-
-    footer{
-      text-align:center;
-      margin-top:34px;
-      font-size:.86em;
-      color:var(--muted);
-      border-top:1px solid #dee2e6;
-      padding-top:16px;
-    }
-  </style>
-</head>
-
-<body>
-<div class="container">
-  <header>
-    <h1>Repaso para Examen — Mecánica (Cap. 1–3)</h1>
-    <p>Unidades y vectores · Cinemática 1D · Cinemática 2D/3D (proyectiles, circular, relativa)</p>
-  </header>
-
-  <h2 class="section-title">I. Teoría y Conceptos (Opción múltiple)</h2>
-  <p class="section-note">Elige una opción y presiona <strong>Verificar</strong> para ver la explicación.</p>
-
-  <!-- T1 -->
-  <div class="problem-card" data-qid="t1" data-answer="b">
-    <span class="problem-type-tag">Unidades</span>
-    <div class="problem-statement">1) En el SI, ¿cuáles son las unidades de la aceleración?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t1" id="t1a" value="a"><label for="t1a">\( \mathrm{m/s} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1b" value="b"><label for="t1b">\( \mathrm{m/s^2} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1c" value="c"><label for="t1c">\( \mathrm{N} \)</label></li>
-      <li class="choice"><input type="radio" name="t1" id="t1d" value="d"><label for="t1d">\( \mathrm{kg\;m/s} \)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t1')">Verificar</button>
-    <div id="sol-t1" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \( \mathrm{m/s^2} \)</span>
-      <strong>Idea clave:</strong> aceleración = cambio de velocidad por unidad de tiempo.
-      \[
-        a = \frac{\Delta v}{\Delta t}\quad \Rightarrow\quad \frac{\mathrm{m/s}}{\mathrm{s}}=\mathrm{m/s^2}.
-      \]
-    </div>
-  </div>
-
-  <!-- T2 -->
-  <div class="problem-card" data-qid="t2" data-answer="c">
-    <span class="problem-type-tag">Cifras significativas</span>
-    <div class="problem-statement">2) ¿Con cuántas cifras significativas debe reportarse \(2.50\times 3.1\)?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t2" id="t2a" value="a"><label for="t2a">3 cifras</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2b" value="b"><label for="t2b">1 cifra</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2c" value="c"><label for="t2c">2 cifras</label></li>
-      <li class="choice"><input type="radio" name="t2" id="t2d" value="d"><label for="t2d">4 cifras</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t2')">Verificar</button>
-    <div id="sol-t2" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: 2 cifras significativas</span>
-      En productos/divisiones, el resultado hereda el <em>menor</em> número de cifras significativas.
-      \(2.50\) tiene 3 y \(3.1\) tiene 2 → el producto debe reportarse con 2.
-      <div class="tiny">Extra: \(2.50\times 3.1=7.75\Rightarrow 7.8\) (2 cifras).</div>
-    </div>
-  </div>
-
-  <!-- T3 -->
-  <div class="problem-card" data-qid="t3" data-answer="a">
-    <span class="problem-type-tag">Vectores</span>
-    <div class="problem-statement">3) Si \(\vec A=3\hat i+4\hat j\), ¿cuál es \(|\vec A|\)?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t3" id="t3a" value="a"><label for="t3a">\(5\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3b" value="b"><label for="t3b">\(7\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3c" value="c"><label for="t3c">\(1\)</label></li>
-      <li class="choice"><input type="radio" name="t3" id="t3d" value="d"><label for="t3d">\(25\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t3')">Verificar</button>
-    <div id="sol-t3" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(5\)</span>
-      \[
-        |\vec A|=\sqrt{3^2+4^2}=\sqrt{9+16}=5.
-      \]
-    </div>
-  </div>
-
-  <!-- T4 -->
-  <div class="problem-card" data-qid="t4" data-answer="d">
-    <span class="problem-type-tag">Componentes</span>
-    <div class="problem-statement">4) Un vector de magnitud \(10\) forma \(30^\circ\) con el eje \(+x\). ¿Cuánto vale \(A_x\)?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t4" id="t4a" value="a"><label for="t4a">\(10\sin 30^\circ=5.0\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4b" value="b"><label for="t4b">\(10\tan 30^\circ\approx 5.77\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4c" value="c"><label for="t4c">\(10/ \cos 30^\circ\approx 11.55\)</label></li>
-      <li class="choice"><input type="radio" name="t4" id="t4d" value="d"><label for="t4d">\(10\cos 30^\circ\approx 8.66\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t4')">Verificar</button>
-    <div id="sol-t4" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(A_x=10\cos 30^\circ\approx 8.66\)</span>
-      Si el ángulo se mide desde \(+x\): \(A_x=A\cos\theta\), \(A_y=A\sin\theta\).
-    </div>
-  </div>
-
-  <!-- T5 -->
-  <div class="problem-card" data-qid="t5" data-answer="b">
-    <span class="problem-type-tag">Cinemática 1D</span>
-    <div class="problem-statement">5) ¿Cuál ecuación es válida para aceleración constante en 1D?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t5" id="t5a" value="a"><label for="t5a">\(v=v_0+xt\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5b" value="b"><label for="t5b">\(\;v^2=v_0^2+2a(x-x_0)\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5c" value="c"><label for="t5c">\(a=\frac{x}{v}\)</label></li>
-      <li class="choice"><input type="radio" name="t5" id="t5d" value="d"><label for="t5d">\(x=\frac{v}{t^2}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t5')">Verificar</button>
-    <div id="sol-t5" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;v^2=v_0^2+2a\Delta x\)</span>
-      Esta ecuación elimina \(t\). Muy útil cuando no te dan el tiempo.
-    </div>
-  </div>
-
-  <!-- T6 -->
-  <div class="problem-card" data-qid="t6" data-answer="a">
-    <span class="problem-type-tag">Concepto</span>
-    <div class="problem-statement">6) Si \(\vec v(t)\) cambia de dirección aunque \(|\vec v|\) sea constante, entonces…</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t6" id="t6a" value="a"><label for="t6a">\(\vec a\neq \vec 0\)</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6b" value="b"><label for="t6b">\(\vec a=\vec 0\)</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6c" value="c"><label for="t6c">La partícula está en reposo</label></li>
-      <li class="choice"><input type="radio" name="t6" id="t6d" value="d"><label for="t6d">La rapidez es negativa</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t6')">Verificar</button>
-    <div id="sol-t6" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\vec a\neq \vec 0\)</span>
-      Aceleración = cambio del vector velocidad. Si cambia dirección, cambia \(\vec v\), así que hay aceleración.
-    </div>
-  </div>
-
-  <!-- T7 -->
-  <div class="problem-card" data-qid="t7" data-answer="c">
-    <span class="problem-type-tag">Proyectiles</span>
-    <div class="problem-statement">7) Sin resistencia del aire, en un tiro parabólico: </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t7" id="t7a" value="a"><label for="t7a">\(\;a_x=-g,\; a_y=0\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7b" value="b"><label for="t7b">\(\;a_x\neq 0,\; a_y\neq 0\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7c" value="c"><label for="t7c">\(\;a_x=0,\; a_y=-g\)</label></li>
-      <li class="choice"><input type="radio" name="t7" id="t7d" value="d"><label for="t7d">\(\;a_x=g,\; a_y=g\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t7')">Verificar</button>
-    <div id="sol-t7" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;a_x=0,\; a_y=-g\)</span>
-      La única aceleración es la gravedad (vertical). En x el movimiento es MRU.
-    </div>
-  </div>
-
-  <!-- T8 -->
-  <div class="problem-card" data-qid="t8" data-answer="b">
-    <span class="problem-type-tag">Circular</span>
-    <div class="problem-statement">8) En movimiento circular uniforme, la aceleración centrípeta tiene magnitud:</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t8" id="t8a" value="a"><label for="t8a">\(\;a_c=\frac{R}{v^2}\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8b" value="b"><label for="t8b">\(\;a_c=\frac{v^2}{R}\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8c" value="c"><label for="t8c">\(\;a_c=vR\)</label></li>
-      <li class="choice"><input type="radio" name="t8" id="t8d" value="d"><label for="t8d">\(\;a_c=g\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t8')">Verificar</button>
-    <div id="sol-t8" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\;a_c=\frac{v^2}{R}\)</span>
-      Apunta hacia el centro; es el “precio” de cambiar dirección continuamente.
-    </div>
-  </div>
-
-  <!-- T9 -->
-  <div class="problem-card" data-qid="t9" data-answer="a">
-    <span class="problem-type-tag">Velocidad relativa</span>
-    <div class="problem-statement">9) La velocidad de A respecto de B se escribe como:</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t9" id="t9a" value="a"><label for="t9a">\(\vec v_{A/B}=\vec v_A-\vec v_B\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9b" value="b"><label for="t9b">\(\vec v_{A/B}=\vec v_B-\vec v_A\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9c" value="c"><label for="t9c">\(\vec v_{A/B}=\vec v_A+\vec v_B\)</label></li>
-      <li class="choice"><input type="radio" name="t9" id="t9d" value="d"><label for="t9d">\(\vec v_{A/B}=\frac{\vec v_A}{\vec v_B}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t9')">Verificar</button>
-    <div id="sol-t9" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\vec v_{A/B}=\vec v_A-\vec v_B\)</span>
-      “Respecto de B” significa que restas lo que B “arrastra” como referencia.
-    </div>
-  </div>
-
-  <!-- T10 -->
-  <div class="problem-card" data-qid="t10" data-answer="d">
-    <span class="problem-type-tag">Interpretación</span>
-    <div class="problem-statement">10) La pendiente de una gráfica \(x\) vs \(t\) representa:</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="t10" id="t10a" value="a"><label for="t10a">aceleración</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10b" value="b"><label for="t10b">fuerza neta</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10c" value="c"><label for="t10c">energía</label></li>
-      <li class="choice"><input type="radio" name="t10" id="t10d" value="d"><label for="t10d">velocidad</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('t10')">Verificar</button>
-    <div id="sol-t10" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: velocidad</span>
-      \[
-        v=\frac{dx}{dt}\quad \Rightarrow\quad \text{pendiente de }x(t).
-      \]
-    </div>
-  </div>
-
-
-  <h2 class="section-title" style="background: var(--accent-color);">II. Práctica (Nivel libro) — Opción múltiple</h2>
-  <p class="section-note">Resuelve en papel; luego elige la opción y presiona <strong>Verificar</strong>.</p>
-
-  <!-- P1 -->
-  <div class="problem-card numeric-card" data-qid="p1" data-answer="c">
-    <span class="problem-type-tag">Conversión</span>
-    <div class="problem-statement">1) Convierte \(72~\mathrm{km/h}\) a \(\mathrm{m/s}\).</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p1" id="p1a" value="a"><label for="p1a">\(18~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1b" value="b"><label for="p1b">\(22~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1c" value="c"><label for="p1c">\(20~\mathrm{m/s}\)</label></li>
-      <li class="choice"><input type="radio" name="p1" id="p1d" value="d"><label for="p1d">\(25~\mathrm{m/s}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p1')">Verificar</button>
-    <div id="sol-p1" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(20~\mathrm{m/s}\)</span>
-      \[
-        72\frac{\mathrm{km}}{\mathrm{h}}\left(\frac{1000~\mathrm{m}}{1~\mathrm{km}}\right)\left(\frac{1~\mathrm{h}}{3600~\mathrm{s}}\right)
-        =72\cdot\frac{1000}{3600}\approx 20~\mathrm{m/s}.
-      \]
-    </div>
-  </div>
-
-  <!-- P2 -->
-  <div class="problem-card numeric-card" data-qid="p2" data-answer="b">
-    <span class="problem-type-tag">1D (a cte)</span>
-    <div class="problem-statement">
-      2) Un auto parte del reposo y llega a \(25~\mathrm{m/s}\) en \(8.0~\mathrm{s}\) con aceleración constante.
-      ¿Cuál distancia recorre?
-    </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p2" id="p2a" value="a"><label for="p2a">\(80~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2b" value="b"><label for="p2b">\(100~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2c" value="c"><label for="p2c">\(125~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p2" id="p2d" value="d"><label for="p2d">\(200~\mathrm{m}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p2')">Verificar</button>
-    <div id="sol-p2" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(100~\mathrm{m}\)</span>
-      Con aceleración constante, \(v_{prom}=\frac{v_0+v}{2}=\frac{0+25}{2}=12.5\).
-      \[
-        \Delta x = v_{prom}\,t = 12.5(8.0)=100~\mathrm{m}.
-      \]
-    </div>
-  </div>
-
-  <!-- P3 -->
-  <div class="problem-card numeric-card" data-qid="p3" data-answer="a">
-    <span class="problem-type-tag">Caída libre</span>
-    <div class="problem-statement">3) Se deja caer un objeto desde \(45~\mathrm{m}\). Ignora aire. ¿Tiempo de caída?</div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p3" id="p3a" value="a"><label for="p3a">\(\;3.0~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3b" value="b"><label for="p3b">\(\;1.5~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3c" value="c"><label for="p3c">\(\;4.5~\mathrm{s}\)</label></li>
-      <li class="choice"><input type="radio" name="p3" id="p3d" value="d"><label for="p3d">\(\;9.6~\mathrm{s}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p3')">Verificar</button>
-    <div id="sol-p3" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 3.0~\mathrm{s}\)</span>
-      Desde reposo: \(\Delta y=\tfrac12 gt^2\Rightarrow t=\sqrt{2h/g}\).
-      \[
-        t=\sqrt{\frac{2(45)}{9.8}}=\sqrt{9.18}\approx 3.03~\mathrm{s}.
-      \]
-    </div>
-  </div>
-
-  <!-- P4 -->
-  <div class="problem-card numeric-card" data-qid="p4" data-answer="d">
-    <span class="problem-type-tag">Proyectil</span>
-    <div class="problem-statement">
-      4) Se lanza un proyectil con \(v_0=20~\mathrm{m/s}\) a \(\theta=40^\circ\) (misma altura de salida y llegada).
-      ¿Alcance horizontal \(R\)?
-    </div>
-
-    <!-- mini diagrama -->
-    <svg class="mini-svg" viewBox="0 0 520 160" aria-label="diagrama proyectil">
-      <defs>
-        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-          <path d="M0,0 L10,3 L0,6 Z" fill="#004085"></path>
-        </marker>
-      </defs>
-      <line x1="40" y1="130" x2="480" y2="130" stroke="#212529" stroke-width="2"></line>
-      <line x1="60" y1="130" x2="60" y2="25" stroke="#212529" stroke-width="2"></line>
-      <path d="M60,130 Q220,30 400,130" fill="none" stroke="#c82333" stroke-width="3"></path>
-      <line x1="60" y1="130" x2="140" y2="90" stroke="#004085" stroke-width="3" marker-end="url(#arrow)"></line>
-      <text x="150" y="92" font-size="14" fill="#004085">\(v_0,\,\theta\)</text>
-      <text x="255" y="155" font-size="14" fill="#6c757d">\(R\)</text>
-      <line x1="60" y1="145" x2="400" y2="145" stroke="#6c757d" stroke-width="2"></line>
-    </svg>
-
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p4" id="p4a" value="a"><label for="p4a">\(25~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4b" value="b"><label for="p4b">\(32~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4c" value="c"><label for="p4c">\(48~\mathrm{m}\)</label></li>
-      <li class="choice"><input type="radio" name="p4" id="p4d" value="d"><label for="p4d">\(40~\mathrm{m}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p4')">Verificar</button>
-    <div id="sol-p4" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 40~\mathrm{m}\)</span>
-      Tiempo de vuelo: \(T=\dfrac{2v_0\sin\theta}{g}\).
-      \[
-        T=\frac{2(20)\sin 40^\circ}{9.8}\approx \frac{40(0.6428)}{9.8}\approx 2.62~\mathrm{s}.
-      \]
-      Alcance: \(R=v_0\cos\theta\;T\):
-      \[
-        R=20\cos40^\circ(2.62)\approx 20(0.7660)(2.62)\approx 40.1~\mathrm{m}.
-      \]
-    </div>
-  </div>
-
-  <!-- P5 -->
-  <div class="problem-card numeric-card" data-qid="p5" data-answer="a">
-    <span class="problem-type-tag">Proyectil</span>
-    <div class="problem-statement">
-      5) Se dispara con \(v_0=15~\mathrm{m/s}\) y aterriza a la misma altura a \(R=20~\mathrm{m}\).
-      ¿Qué ángulos posibles \(\theta\) (aprox.) existen?
-    </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p5" id="p5a" value="a"><label for="p5a">\(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5b" value="b"><label for="p5b">\(\theta\approx 10^\circ\) únicamente</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5c" value="c"><label for="p5c">\(\theta\approx 45^\circ\) únicamente</label></li>
-      <li class="choice"><input type="radio" name="p5" id="p5d" value="d"><label for="p5d">\(\theta\approx 80^\circ\) únicamente</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p5')">Verificar</button>
-    <div id="sol-p5" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</span>
-      Para misma altura: \(R=\dfrac{v_0^2}{g}\sin(2\theta)\).
-      \[
-        \sin(2\theta)=\frac{Rg}{v_0^2}=\frac{(20)(9.8)}{15^2}=\frac{196}{225}\approx 0.871.
-      \]
-      Entonces \(2\theta\approx 60.6^\circ\) o \(119.4^\circ\) → \(\theta\approx 30.3^\circ\) o \(59.7^\circ\).
-    </div>
-  </div>
-
-  <!-- P6 -->
-  <div class="problem-card numeric-card" data-qid="p6" data-answer="b">
-    <span class="problem-type-tag">Circular</span>
-    <div class="problem-statement">
-      6) Un auto toma una curva de radio \(R=50~\mathrm{m}\) a \(v=12~\mathrm{m/s}\).
-      ¿Cuál es \(a_c\)?
-    </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p6" id="p6a" value="a"><label for="p6a">\(1.44~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6b" value="b"><label for="p6b">\(2.88~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6c" value="c"><label for="p6c">\(9.8~\mathrm{m/s^2}\)</label></li>
-      <li class="choice"><input type="radio" name="p6" id="p6d" value="d"><label for="p6d">\(24~\mathrm{m/s^2}\)</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p6')">Verificar</button>
-    <div id="sol-p6" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(2.88~\mathrm{m/s^2}\)</span>
-      \[
-        a_c=\frac{v^2}{R}=\frac{12^2}{50}=\frac{144}{50}=2.88~\mathrm{m/s^2}.
-      \]
-    </div>
-  </div>
-
-  <!-- P7 -->
-  <div class="problem-card numeric-card" data-qid="p7" data-answer="c">
-    <span class="problem-type-tag">Relativa (río)</span>
-    <div class="problem-statement">
-      7) Un bote apunta al norte con \(v_{b/agua}=3.0~\mathrm{m/s}\). La corriente va al este con \(v_{agua/tierra}=2.0~\mathrm{m/s}\).
-      ¿\(|\vec v_{b/tierra}|\) y dirección?
-    </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p7" id="p7a" value="a"><label for="p7a">\(5.0~\mathrm{m/s}\), \(45^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7b" value="b"><label for="p7b">\(3.0~\mathrm{m/s}\), N puro</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7c" value="c"><label for="p7c">\(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p7" id="p7d" value="d"><label for="p7d">\(\approx 2.00~\mathrm{m/s}\), E puro</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p7')">Verificar</button>
-    <div id="sol-p7" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</span>
-      \[
-        \vec v_{b/t}=\vec v_{b/a}+\vec v_{a/t}.
-      \]
-      Componentes: \(v_x=2\), \(v_y=3\). Magnitud: \(\sqrt{2^2+3^2}=\sqrt{13}=3.61\).
-      Dirección respecto al norte: \(\tan\phi=\frac{2}{3}\Rightarrow \phi\approx 33.7^\circ\).
-    </div>
-  </div>
-
-  <!-- P8 -->
-  <div class="problem-card numeric-card" data-qid="p8" data-answer="a">
-    <span class="problem-type-tag">Relativa (viento)</span>
-    <div class="problem-statement">
-      8) Un avión tiene rapidez en aire \(200~\mathrm{km/h}\) hacia el norte. Viento \(50~\mathrm{km/h}\) hacia el este.
-      ¿Rapidez en tierra y desvío?
-    </div>
-    <ul class="choices">
-      <li class="choice"><input type="radio" name="p8" id="p8a" value="a"><label for="p8a">\(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8b" value="b"><label for="p8b">\(250~\mathrm{km/h}\), \(0^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8c" value="c"><label for="p8c">\(\approx 150~\mathrm{km/h}\), \(\approx 30^\circ\)</label></li>
-      <li class="choice"><input type="radio" name="p8" id="p8d" value="d"><label for="p8d">\(\approx 206~\mathrm{km/h}\), \(\approx 45^\circ\) E del N</label></li>
-    </ul>
-    <button class="btn" onclick="checkMCQ('p8')">Verificar</button>
-    <div id="sol-p8" class="solution-area">
-      <span class="explanation-title">Respuesta correcta: \(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</span>
-      Componentes: \(v_x=50\), \(v_y=200\).
-      \[
-        |\vec v|=\sqrt{50^2+200^2}=\sqrt{42500}\approx 206~\mathrm{km/h}.
-      \]
-      \[
-        \tan\phi=\frac{50}{200}=0.25\Rightarrow \phi\approx 14.0^\circ.
-      \]
-    </div>
-  </div>
-
-  <footer>
-    <p>Material de práctica (Cap. 1–3) — Mecánica / Cinemática | Hecho para incrustar en GitHub Pages</p>
-  </footer>
-</div>
-
-<script>
-  function checkMCQ(qid){
+  function retryQ(qid) {
     const card = document.querySelector(`[data-qid="${qid}"]`);
-    const correct = card.getAttribute("data-answer");
-    const selected = document.querySelector(`input[name="${qid}"]:checked`);
-
-    // Reset styles
-    card.querySelectorAll(".choice").forEach(li=>{
-      li.classList.remove("correct","wrong");
-    });
-
     const sol = document.getElementById(`sol-${qid}`);
-    sol.classList.remove("wrong");
+    const warn = document.getElementById(`warn-${qid}`);
 
-    if(!selected){
-      sol.style.display = "block";
-      sol.classList.add("wrong");
-      sol.innerHTML = `<span class="explanation-title">Falta elegir una opción</span>
-        Selecciona una respuesta y vuelve a presionar <strong>Verificar</strong>.`;
-      return;
+    // Was it correct or wrong?
+    if (card.classList.contains('answered-correct')) {
+      correctCount--;
+    } else if (card.classList.contains('answered-wrong')) {
+      wrongCount--;
     }
+    answeredSet.delete(qid);
 
-    const val = selected.value;
-    const choiceLi = selected.closest(".choice");
-    const correctLi = card.querySelector(`input[name="${qid}"][value="${correct}"]`).closest(".choice");
+    // Reset UI
+    card.classList.remove('answered-correct', 'answered-wrong');
+    card.querySelectorAll('.choice').forEach(li => li.classList.remove('correct', 'wrong'));
+    card.querySelectorAll('input[type="radio"]').forEach(r => {
+      r.disabled = false;
+      r.checked = false;
+    });
+    sol.style.display = 'none';
+    sol.classList.remove('wrong');
+    warn.style.display = 'none';
+    card.querySelector('.btn').disabled = false;
+    card.querySelector('.btn-retry').style.display = 'none';
 
-    if(val === correct){
-      choiceLi.classList.add("correct");
-      sol.style.display = "block";
-      // deja el contenido original (ya está en HTML)
-    }else{
-      choiceLi.classList.add("wrong");
-      correctLi.classList.add("correct");
-      sol.style.display = "block";
-      sol.classList.add("wrong");
-      // Conserva explicación original pero en modo "wrong" (fondo rojo)
-      // (El contenido original permanece; solo cambiamos estilo).
-    }
+    updateScore();
+  }
 
-    // Deshabilitar botón para evitar spam (opcional)
-    // card.querySelector("button.btn").disabled = true;
-
-    // Re-render MathJax si hace falta
-    if(window.MathJax && window.MathJax.typeset){
-      window.MathJax.typeset();
-    }
+  function resetAll() {
+    allCards.forEach(card => {
+      const qid = card.getAttribute('data-qid');
+      retryQ(qid);
+    });
   }
 </script>
-
 </body>
 </html>
