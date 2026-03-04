@@ -1,387 +1,637 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrenamiento Completo: Energía y Dinámica</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --primary-color: #004085; /* Azul oscuro académico */
-            --secondary-color: #f8f9fa;
-            --accent-color: #c82333; /* Rojo para énfasis */
-            --correct-color: #28a745; /* Verde para respuestas */
-            --text-color: #212529;
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #e9ecef;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 20px;
-        }
-        h1 { color: var(--primary-color); margin: 0; }
-        h2.section-title {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 50px;
-            margin-bottom: 20px;
-        }
-        /* Estilos para las tarjetas de preguntas */
-        .problem-card {
-            background: white;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .problem-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .problem-type-tag {
-            font-size: 0.75em;
-            text-transform: uppercase;
-            background: #e2e6ea;
-            padding: 2px 6px;
-            border-radius: 3px;
-            color: #6c757d;
-            font-weight: bold;
-        }
-        .problem-statement {
-            font-weight: 500;
-            font-size: 1.05em;
-            margin: 10px 0;
-        }
-        .btn-reveal {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-        .btn-reveal:hover { background-color: #002752; }
-        
-        /* Área de respuesta oculta */
-        .solution-area {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #d4edda; /* Fondo verde claro */
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            color: #155724;
-        }
-        .explanation-title {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            color: var(--correct-color);
-        }
-        
-        /* Diferenciar problemas numéricos */
-        .numeric-card {
-            border-left-color: var(--accent-color);
-        }
-        .numeric-card .btn-reveal {
-            background-color: var(--accent-color);
-        }
-        .numeric-card .btn-reveal:hover {
-            background-color: #bd2130;
-        }
-        .numeric-card .solution-area {
-            background-color: #f8d7da; /* Fondo rojo claro */
-            border-color: #f5c6cb;
-            color: #721c24;
-        }
-        .numeric-card .explanation-title {
-            color: #721c24;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Repaso Examen Mecánica (Cap. 1–3) — Quiz Opción Múltiple</title>
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.85em;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 20px;
-        }
-    </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root{
+      --primary-color:#004085;
+      --secondary-color:#f8f9fa;
+      --accent-color:#c82333;
+      --correct-color:#28a745;
+      --wrong-color:#dc3545;
+      --text-color:#212529;
+      --muted:#6c757d;
+      --card-shadow:0 2px 6px rgba(0,0,0,0.06);
+    }
+    body{
+      font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.6;
+      color:var(--text-color);
+      background:#e9ecef;
+      margin:0;
+      padding:20px;
+    }
+    .container{
+      max-width:980px;
+      margin:0 auto;
+      background:white;
+      padding:40px;
+      border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+    header{
+      text-align:center;
+      margin-bottom:30px;
+      border-bottom:3px solid var(--primary-color);
+      padding-bottom:18px;
+    }
+    h1{ color:var(--primary-color); margin:0; }
+    header p{ margin:8px 0 0; color:var(--muted); }
+
+    .section-title{
+      background:var(--primary-color);
+      color:white;
+      padding:10px 18px;
+      border-radius:6px;
+      margin-top:34px;
+      margin-bottom:16px;
+    }
+    .section-note{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    .problem-card{
+      background:white;
+      border-left:5px solid var(--primary-color);
+      border-radius:6px;
+      padding:18px 18px 14px;
+      margin-bottom:16px;
+      box-shadow:var(--card-shadow);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .problem-card:hover{
+      transform:translateX(4px);
+      box-shadow:0 6px 16px rgba(0,0,0,0.10);
+    }
+    .problem-type-tag{
+      font-size:.75em;
+      text-transform:uppercase;
+      background:#e2e6ea;
+      padding:2px 6px;
+      border-radius:3px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .problem-statement{
+      font-weight:600;
+      font-size:1.04em;
+      margin:10px 0 10px;
+    }
+
+    .choices{
+      margin:8px 0 10px;
+      padding:0;
+      list-style:none;
+    }
+    .choice{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:8px 10px;
+      border:1px solid #e9ecef;
+      border-radius:6px;
+      margin-bottom:8px;
+      background:#fbfcfd;
+    }
+    .choice input{ margin-top:3px; }
+    .choice label{
+      cursor:pointer;
+      flex:1;
+    }
+    .choice.correct{
+      border-color:rgba(40,167,69,.45);
+      background:rgba(40,167,69,.10);
+    }
+    .choice.wrong{
+      border-color:rgba(220,53,69,.45);
+      background:rgba(220,53,69,.08);
+    }
+
+    .btn{
+      background:var(--primary-color);
+      color:white;
+      border:none;
+      padding:8px 14px;
+      border-radius:5px;
+      cursor:pointer;
+      font-size:.92em;
+      transition:background .2s;
+      display:inline-block;
+      margin-right:8px;
+    }
+    .btn:hover{ background:#002752; }
+    .btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
+    .solution-area{
+      display:none;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:6px;
+      border:1px solid #c3e6cb;
+      background:#d4edda;
+      color:#155724;
+    }
+    .solution-area.wrong{
+      border-color:#f5c6cb;
+      background:#f8d7da;
+      color:#721c24;
+    }
+    .explanation-title{
+      font-weight:800;
+      display:block;
+      margin-bottom:6px;
+    }
+    .tiny{
+      color:var(--muted);
+      font-size:.92em;
+      margin-top:6px;
+    }
+
+    /* Práctica en rojo */
+    .numeric-card{ border-left-color:var(--accent-color); }
+    .numeric-card .btn{ background:var(--accent-color); }
+    .numeric-card .btn:hover{ background:#bd2130; }
+
+    .mini-svg{
+      width:100%;
+      max-width:520px;
+      margin:10px 0 0;
+      border:1px solid #e9ecef;
+      border-radius:8px;
+      background:#fff;
+    }
+
+    footer{
+      text-align:center;
+      margin-top:34px;
+      font-size:.86em;
+      color:var(--muted);
+      border-top:1px solid #dee2e6;
+      padding-top:16px;
+    }
+  </style>
 </head>
+
 <body>
-
 <div class="container">
-    <header>
-        <h1>Banco de Práctica: Dinámica y Energía</h1>
-        <p>Capítulo 7: Energía Potencial y Conservación de la Energía (Sears-Zemansky)</p>
-    </header>
+  <header>
+    <h1>Repaso para Examen — Mecánica (Cap. 1–3)</h1>
+    <p>Unidades y vectores · Cinemática 1D · Cinemática 2D/3D (proyectiles, circular, relativa)</p>
+  </header>
 
-    <h2 class="section-title">I. Teoría y Conceptos</h2>
-    <p><em>Responde mentalmente antes de ver la solución para evaluar tu comprensión conceptual.</em></p>
+  <h2 class="section-title">I. Teoría y Conceptos (Opción múltiple)</h2>
+  <p class="section-note">Elige una opción y presiona <strong>Verificar</strong> para ver la explicación.</p>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Concepto Básico</span>
-        <div class="problem-statement">
-            1. ¿Cuál es la definición matemática correcta de la energía potencial gravitacional \( U_{grav} \) para una partícula de masa \( m \) a una altura \( y \)?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t1')">Ver Respuesta</button>
-        <div id="t1" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            $$ U_{grav} = mgy $$
-            <hr>
-            <strong>Explicación:</strong> La energía potencial gravitacional se define como el trabajo que la gravedad podría realizar al caer el objeto hasta el nivel de referencia \( y=0 \). Es proporcional a la masa y a la altura.
-        </div>
+  <!-- T1 -->
+  <div class="problem-card" data-qid="t1" data-answer="b">
+    <span class="problem-type-tag">Unidades</span>
+    <div class="problem-statement">1) En el SI, ¿cuáles son las unidades de la aceleración?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t1" id="t1a" value="a"><label for="t1a">\( \mathrm{m/s} \)</label></li>
+      <li class="choice"><input type="radio" name="t1" id="t1b" value="b"><label for="t1b">\( \mathrm{m/s^2} \)</label></li>
+      <li class="choice"><input type="radio" name="t1" id="t1c" value="c"><label for="t1c">\( \mathrm{N} \)</label></li>
+      <li class="choice"><input type="radio" name="t1" id="t1d" value="d"><label for="t1d">\( \mathrm{kg\;m/s} \)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t1')">Verificar</button>
+    <div id="sol-t1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \( \mathrm{m/s^2} \)</span>
+      <strong>Idea clave:</strong> aceleración = cambio de velocidad por unidad de tiempo.
+      \[
+        a = \frac{\Delta v}{\Delta t}\quad \Rightarrow\quad \frac{\mathrm{m/s}}{\mathrm{s}}=\mathrm{m/s^2}.
+      \]
+    </div>
+  </div>
+
+  <!-- T2 -->
+  <div class="problem-card" data-qid="t2" data-answer="c">
+    <span class="problem-type-tag">Cifras significativas</span>
+    <div class="problem-statement">2) ¿Con cuántas cifras significativas debe reportarse \(2.50\times 3.1\)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t2" id="t2a" value="a"><label for="t2a">3 cifras</label></li>
+      <li class="choice"><input type="radio" name="t2" id="t2b" value="b"><label for="t2b">1 cifra</label></li>
+      <li class="choice"><input type="radio" name="t2" id="t2c" value="c"><label for="t2c">2 cifras</label></li>
+      <li class="choice"><input type="radio" name="t2" id="t2d" value="d"><label for="t2d">4 cifras</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t2')">Verificar</button>
+    <div id="sol-t2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: 2 cifras significativas</span>
+      En productos/divisiones, el resultado hereda el <em>menor</em> número de cifras significativas.
+      \(2.50\) tiene 3 y \(3.1\) tiene 2 → el producto debe reportarse con 2.
+      <div class="tiny">Extra: \(2.50\times 3.1=7.75\Rightarrow 7.8\) (2 cifras).</div>
+    </div>
+  </div>
+
+  <!-- T3 -->
+  <div class="problem-card" data-qid="t3" data-answer="a">
+    <span class="problem-type-tag">Vectores</span>
+    <div class="problem-statement">3) Si \(\vec A=3\hat i+4\hat j\), ¿cuál es \(|\vec A|\)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t3" id="t3a" value="a"><label for="t3a">\(5\)</label></li>
+      <li class="choice"><input type="radio" name="t3" id="t3b" value="b"><label for="t3b">\(7\)</label></li>
+      <li class="choice"><input type="radio" name="t3" id="t3c" value="c"><label for="t3c">\(1\)</label></li>
+      <li class="choice"><input type="radio" name="t3" id="t3d" value="d"><label for="t3d">\(25\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t3')">Verificar</button>
+    <div id="sol-t3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(5\)</span>
+      \[
+        |\vec A|=\sqrt{3^2+4^2}=\sqrt{9+16}=5.
+      \]
+    </div>
+  </div>
+
+  <!-- T4 -->
+  <div class="problem-card" data-qid="t4" data-answer="d">
+    <span class="problem-type-tag">Componentes</span>
+    <div class="problem-statement">4) Un vector de magnitud \(10\) forma \(30^\circ\) con el eje \(+x\). ¿Cuánto vale \(A_x\)?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t4" id="t4a" value="a"><label for="t4a">\(10\sin 30^\circ=5.0\)</label></li>
+      <li class="choice"><input type="radio" name="t4" id="t4b" value="b"><label for="t4b">\(10\tan 30^\circ\approx 5.77\)</label></li>
+      <li class="choice"><input type="radio" name="t4" id="t4c" value="c"><label for="t4c">\(10/ \cos 30^\circ\approx 11.55\)</label></li>
+      <li class="choice"><input type="radio" name="t4" id="t4d" value="d"><label for="t4d">\(10\cos 30^\circ\approx 8.66\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t4')">Verificar</button>
+    <div id="sol-t4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(A_x=10\cos 30^\circ\approx 8.66\)</span>
+      Si el ángulo se mide desde \(+x\): \(A_x=A\cos\theta\), \(A_y=A\sin\theta\).
+    </div>
+  </div>
+
+  <!-- T5 -->
+  <div class="problem-card" data-qid="t5" data-answer="b">
+    <span class="problem-type-tag">Cinemática 1D</span>
+    <div class="problem-statement">5) ¿Cuál ecuación es válida para aceleración constante en 1D?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t5" id="t5a" value="a"><label for="t5a">\(v=v_0+xt\)</label></li>
+      <li class="choice"><input type="radio" name="t5" id="t5b" value="b"><label for="t5b">\(\;v^2=v_0^2+2a(x-x_0)\)</label></li>
+      <li class="choice"><input type="radio" name="t5" id="t5c" value="c"><label for="t5c">\(a=\frac{x}{v}\)</label></li>
+      <li class="choice"><input type="radio" name="t5" id="t5d" value="d"><label for="t5d">\(x=\frac{v}{t^2}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t5')">Verificar</button>
+    <div id="sol-t5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\;v^2=v_0^2+2a\Delta x\)</span>
+      Esta ecuación elimina \(t\). Muy útil cuando no te dan el tiempo.
+    </div>
+  </div>
+
+  <!-- T6 -->
+  <div class="problem-card" data-qid="t6" data-answer="a">
+    <span class="problem-type-tag">Concepto</span>
+    <div class="problem-statement">6) Si \(\vec v(t)\) cambia de dirección aunque \(|\vec v|\) sea constante, entonces…</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t6" id="t6a" value="a"><label for="t6a">\(\vec a\neq \vec 0\)</label></li>
+      <li class="choice"><input type="radio" name="t6" id="t6b" value="b"><label for="t6b">\(\vec a=\vec 0\)</label></li>
+      <li class="choice"><input type="radio" name="t6" id="t6c" value="c"><label for="t6c">La partícula está en reposo</label></li>
+      <li class="choice"><input type="radio" name="t6" id="t6d" value="d"><label for="t6d">La rapidez es negativa</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t6')">Verificar</button>
+    <div id="sol-t6" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\vec a\neq \vec 0\)</span>
+      Aceleración = cambio del vector velocidad. Si cambia dirección, cambia \(\vec v\), así que hay aceleración.
+    </div>
+  </div>
+
+  <!-- T7 -->
+  <div class="problem-card" data-qid="t7" data-answer="c">
+    <span class="problem-type-tag">Proyectiles</span>
+    <div class="problem-statement">7) Sin resistencia del aire, en un tiro parabólico: </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t7" id="t7a" value="a"><label for="t7a">\(\;a_x=-g,\; a_y=0\)</label></li>
+      <li class="choice"><input type="radio" name="t7" id="t7b" value="b"><label for="t7b">\(\;a_x\neq 0,\; a_y\neq 0\)</label></li>
+      <li class="choice"><input type="radio" name="t7" id="t7c" value="c"><label for="t7c">\(\;a_x=0,\; a_y=-g\)</label></li>
+      <li class="choice"><input type="radio" name="t7" id="t7d" value="d"><label for="t7d">\(\;a_x=g,\; a_y=g\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t7')">Verificar</button>
+    <div id="sol-t7" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\;a_x=0,\; a_y=-g\)</span>
+      La única aceleración es la gravedad (vertical). En x el movimiento es MRU.
+    </div>
+  </div>
+
+  <!-- T8 -->
+  <div class="problem-card" data-qid="t8" data-answer="b">
+    <span class="problem-type-tag">Circular</span>
+    <div class="problem-statement">8) En movimiento circular uniforme, la aceleración centrípeta tiene magnitud:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t8" id="t8a" value="a"><label for="t8a">\(\;a_c=\frac{R}{v^2}\)</label></li>
+      <li class="choice"><input type="radio" name="t8" id="t8b" value="b"><label for="t8b">\(\;a_c=\frac{v^2}{R}\)</label></li>
+      <li class="choice"><input type="radio" name="t8" id="t8c" value="c"><label for="t8c">\(\;a_c=vR\)</label></li>
+      <li class="choice"><input type="radio" name="t8" id="t8d" value="d"><label for="t8d">\(\;a_c=g\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t8')">Verificar</button>
+    <div id="sol-t8" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\;a_c=\frac{v^2}{R}\)</span>
+      Apunta hacia el centro; es el “precio” de cambiar dirección continuamente.
+    </div>
+  </div>
+
+  <!-- T9 -->
+  <div class="problem-card" data-qid="t9" data-answer="a">
+    <span class="problem-type-tag">Velocidad relativa</span>
+    <div class="problem-statement">9) La velocidad de A respecto de B se escribe como:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t9" id="t9a" value="a"><label for="t9a">\(\vec v_{A/B}=\vec v_A-\vec v_B\)</label></li>
+      <li class="choice"><input type="radio" name="t9" id="t9b" value="b"><label for="t9b">\(\vec v_{A/B}=\vec v_B-\vec v_A\)</label></li>
+      <li class="choice"><input type="radio" name="t9" id="t9c" value="c"><label for="t9c">\(\vec v_{A/B}=\vec v_A+\vec v_B\)</label></li>
+      <li class="choice"><input type="radio" name="t9" id="t9d" value="d"><label for="t9d">\(\vec v_{A/B}=\frac{\vec v_A}{\vec v_B}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t9')">Verificar</button>
+    <div id="sol-t9" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\vec v_{A/B}=\vec v_A-\vec v_B\)</span>
+      “Respecto de B” significa que restas lo que B “arrastra” como referencia.
+    </div>
+  </div>
+
+  <!-- T10 -->
+  <div class="problem-card" data-qid="t10" data-answer="d">
+    <span class="problem-type-tag">Interpretación</span>
+    <div class="problem-statement">10) La pendiente de una gráfica \(x\) vs \(t\) representa:</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="t10" id="t10a" value="a"><label for="t10a">aceleración</label></li>
+      <li class="choice"><input type="radio" name="t10" id="t10b" value="b"><label for="t10b">fuerza neta</label></li>
+      <li class="choice"><input type="radio" name="t10" id="t10c" value="c"><label for="t10c">energía</label></li>
+      <li class="choice"><input type="radio" name="t10" id="t10d" value="d"><label for="t10d">velocidad</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('t10')">Verificar</button>
+    <div id="sol-t10" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: velocidad</span>
+      \[
+        v=\frac{dx}{dt}\quad \Rightarrow\quad \text{pendiente de }x(t).
+      \]
+    </div>
+  </div>
+
+
+  <h2 class="section-title" style="background: var(--accent-color);">II. Práctica (Nivel libro) — Opción múltiple</h2>
+  <p class="section-note">Resuelve en papel; luego elige la opción y presiona <strong>Verificar</strong>.</p>
+
+  <!-- P1 -->
+  <div class="problem-card numeric-card" data-qid="p1" data-answer="c">
+    <span class="problem-type-tag">Conversión</span>
+    <div class="problem-statement">1) Convierte \(72~\mathrm{km/h}\) a \(\mathrm{m/s}\).</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p1" id="p1a" value="a"><label for="p1a">\(18~\mathrm{m/s}\)</label></li>
+      <li class="choice"><input type="radio" name="p1" id="p1b" value="b"><label for="p1b">\(22~\mathrm{m/s}\)</label></li>
+      <li class="choice"><input type="radio" name="p1" id="p1c" value="c"><label for="p1c">\(20~\mathrm{m/s}\)</label></li>
+      <li class="choice"><input type="radio" name="p1" id="p1d" value="d"><label for="p1d">\(25~\mathrm{m/s}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p1')">Verificar</button>
+    <div id="sol-p1" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(20~\mathrm{m/s}\)</span>
+      \[
+        72\frac{\mathrm{km}}{\mathrm{h}}\left(\frac{1000~\mathrm{m}}{1~\mathrm{km}}\right)\left(\frac{1~\mathrm{h}}{3600~\mathrm{s}}\right)
+        =72\cdot\frac{1000}{3600}\approx 20~\mathrm{m/s}.
+      \]
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="problem-card numeric-card" data-qid="p2" data-answer="b">
+    <span class="problem-type-tag">1D (a cte)</span>
+    <div class="problem-statement">
+      2) Un auto parte del reposo y llega a \(25~\mathrm{m/s}\) en \(8.0~\mathrm{s}\) con aceleración constante.
+      ¿Cuál distancia recorre?
+    </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p2" id="p2a" value="a"><label for="p2a">\(80~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p2" id="p2b" value="b"><label for="p2b">\(100~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p2" id="p2c" value="c"><label for="p2c">\(125~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p2" id="p2d" value="d"><label for="p2d">\(200~\mathrm{m}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p2')">Verificar</button>
+    <div id="sol-p2" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(100~\mathrm{m}\)</span>
+      Con aceleración constante, \(v_{prom}=\frac{v_0+v}{2}=\frac{0+25}{2}=12.5\).
+      \[
+        \Delta x = v_{prom}\,t = 12.5(8.0)=100~\mathrm{m}.
+      \]
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="problem-card numeric-card" data-qid="p3" data-answer="a">
+    <span class="problem-type-tag">Caída libre</span>
+    <div class="problem-statement">3) Se deja caer un objeto desde \(45~\mathrm{m}\). Ignora aire. ¿Tiempo de caída?</div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p3" id="p3a" value="a"><label for="p3a">\(\;3.0~\mathrm{s}\)</label></li>
+      <li class="choice"><input type="radio" name="p3" id="p3b" value="b"><label for="p3b">\(\;1.5~\mathrm{s}\)</label></li>
+      <li class="choice"><input type="radio" name="p3" id="p3c" value="c"><label for="p3c">\(\;4.5~\mathrm{s}\)</label></li>
+      <li class="choice"><input type="radio" name="p3" id="p3d" value="d"><label for="p3d">\(\;9.6~\mathrm{s}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p3')">Verificar</button>
+    <div id="sol-p3" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\approx 3.0~\mathrm{s}\)</span>
+      Desde reposo: \(\Delta y=\tfrac12 gt^2\Rightarrow t=\sqrt{2h/g}\).
+      \[
+        t=\sqrt{\frac{2(45)}{9.8}}=\sqrt{9.18}\approx 3.03~\mathrm{s}.
+      \]
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="problem-card numeric-card" data-qid="p4" data-answer="d">
+    <span class="problem-type-tag">Proyectil</span>
+    <div class="problem-statement">
+      4) Se lanza un proyectil con \(v_0=20~\mathrm{m/s}\) a \(\theta=40^\circ\) (misma altura de salida y llegada).
+      ¿Alcance horizontal \(R\)?
     </div>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Conservación</span>
-        <div class="problem-statement">
-            2. Si la única fuerza que realiza trabajo sobre una partícula es la gravedad, ¿qué sucede con su energía mecánica total \( E \)?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t2')">Ver Respuesta</button>
-        <div id="t2" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            La energía mecánica permanece constante (se conserva).
-            <hr>
-            <strong>Explicación:</strong> La gravedad es una fuerza conservativa. En ausencia de fuerzas no conservativas (como fricción) o fuerzas externas impulsoras, \( \Delta E = 0 \), por lo que \( K_1 + U_1 = K_2 + U_2 \).
-        </div>
+    <!-- mini diagrama -->
+    <svg class="mini-svg" viewBox="0 0 520 160" aria-label="diagrama proyectil">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L10,3 L0,6 Z" fill="#004085"></path>
+        </marker>
+      </defs>
+      <line x1="40" y1="130" x2="480" y2="130" stroke="#212529" stroke-width="2"></line>
+      <line x1="60" y1="130" x2="60" y2="25" stroke="#212529" stroke-width="2"></line>
+      <path d="M60,130 Q220,30 400,130" fill="none" stroke="#c82333" stroke-width="3"></path>
+      <line x1="60" y1="130" x2="140" y2="90" stroke="#004085" stroke-width="3" marker-end="url(#arrow)"></line>
+      <text x="150" y="92" font-size="14" fill="#004085">\(v_0,\,\theta\)</text>
+      <text x="255" y="155" font-size="14" fill="#6c757d">\(R\)</text>
+      <line x1="60" y1="145" x2="400" y2="145" stroke="#6c757d" stroke-width="2"></line>
+    </svg>
+
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p4" id="p4a" value="a"><label for="p4a">\(25~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p4" id="p4b" value="b"><label for="p4b">\(32~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p4" id="p4c" value="c"><label for="p4c">\(48~\mathrm{m}\)</label></li>
+      <li class="choice"><input type="radio" name="p4" id="p4d" value="d"><label for="p4d">\(40~\mathrm{m}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p4')">Verificar</button>
+    <div id="sol-p4" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\approx 40~\mathrm{m}\)</span>
+      Tiempo de vuelo: \(T=\dfrac{2v_0\sin\theta}{g}\).
+      \[
+        T=\frac{2(20)\sin 40^\circ}{9.8}\approx \frac{40(0.6428)}{9.8}\approx 2.62~\mathrm{s}.
+      \]
+      Alcance: \(R=v_0\cos\theta\;T\):
+      \[
+        R=20\cos40^\circ(2.62)\approx 20(0.7660)(2.62)\approx 40.1~\mathrm{m}.
+      \]
     </div>
+  </div>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Resortes</span>
-        <div class="problem-statement">
-            3. Un resorte ideal tiene constante \( k \). ¿Cuál es la expresión para su energía potencial elástica \( U_{el} \) al estirarse una distancia \( x \)?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t3')">Ver Respuesta</button>
-        <div id="t3" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            $$ U_{el} = \frac{1}{2}kx^2 $$
-            <hr>
-            <strong>Explicación:</strong> No confundir con la fuerza de Hooke (\( F=-kx \)). La energía es el área bajo la curva Fuerza vs Distancia (un triángulo), lo que resulta en un factor de \( 1/2 \) y \( x \) al cuadrado.
-        </div>
+  <!-- P5 -->
+  <div class="problem-card numeric-card" data-qid="p5" data-answer="a">
+    <span class="problem-type-tag">Proyectil</span>
+    <div class="problem-statement">
+      5) Se dispara con \(v_0=15~\mathrm{m/s}\) y aterriza a la misma altura a \(R=20~\mathrm{m}\).
+      ¿Qué ángulos posibles \(\theta\) (aprox.) existen?
     </div>
-
-    <div class="problem-card">
-        <span class="problem-type-tag">Fuerzas No Conservativas</span>
-        <div class="problem-statement">
-            4. ¿Cómo se modifica la ecuación de conservación cuando actúa la fricción u otras fuerzas no conservativas (\( W_{otras} \))?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t4')">Ver Respuesta</button>
-        <div id="t4" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            $$ K_1 + U_1 + W_{otras} = K_2 + U_2 $$
-            <hr>
-            <strong>Explicación:</strong> El trabajo realizado por fuerzas externas o disipativas representa la energía que entra o sale del sistema mecánico. Si hay fricción, \( W_{otras} \) es negativo y la energía final es menor que la inicial.
-        </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p5" id="p5a" value="a"><label for="p5a">\(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</label></li>
+      <li class="choice"><input type="radio" name="p5" id="p5b" value="b"><label for="p5b">\(\theta\approx 10^\circ\) únicamente</label></li>
+      <li class="choice"><input type="radio" name="p5" id="p5c" value="c"><label for="p5c">\(\theta\approx 45^\circ\) únicamente</label></li>
+      <li class="choice"><input type="radio" name="p5" id="p5d" value="d"><label for="p5d">\(\theta\approx 80^\circ\) únicamente</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p5')">Verificar</button>
+    <div id="sol-p5" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\theta\approx 30^\circ\) ó \(\theta\approx 60^\circ\)</span>
+      Para misma altura: \(R=\dfrac{v_0^2}{g}\sin(2\theta)\).
+      \[
+        \sin(2\theta)=\frac{Rg}{v_0^2}=\frac{(20)(9.8)}{15^2}=\frac{196}{225}\approx 0.871.
+      \]
+      Entonces \(2\theta\approx 60.6^\circ\) o \(119.4^\circ\) → \(\theta\approx 30.3^\circ\) o \(59.7^\circ\).
     </div>
+  </div>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Signos y Trabajo</span>
-        <div class="problem-statement">
-            5. Al lanzar una pelota verticalmente hacia arriba, ¿cuáles son los signos del Trabajo de la Gravedad (\( W_{grav} \)) y del cambio de Energía Potencial (\( \Delta U \)) mientras sube?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t5')">Ver Respuesta</button>
-        <div id="t5" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            \( W_{grav} \) es negativo y \( \Delta U \) es positivo.
-            <hr>
-            <strong>Explicación:</strong> La gravedad tira hacia abajo mientras el desplazamiento es hacia arriba (ángulos opuestos \( \to \) Trabajo Negativo). Al subir, gana altura, por lo que la Energía Potencial aumenta (Cambio Positivo).
-        </div>
+  <!-- P6 -->
+  <div class="problem-card numeric-card" data-qid="p6" data-answer="b">
+    <span class="problem-type-tag">Circular</span>
+    <div class="problem-statement">
+      6) Un auto toma una curva de radio \(R=50~\mathrm{m}\) a \(v=12~\mathrm{m/s}\).
+      ¿Cuál es \(a_c\)?
     </div>
-
-    <div class="problem-card">
-        <span class="problem-type-tag">Gráficas de Energía</span>
-        <div class="problem-statement">
-            6. En un diagrama de \( U(x) \) vs \( x \), ¿qué representa la pendiente negativa de la curva (\( -dU/dx \))?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t6')">Ver Respuesta</button>
-        <div id="t6" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            La componente \( x \) de la fuerza conservativa.
-            <hr>
-            <strong>Explicación:</strong> La relación fundamental es \( F_x = -\frac{dU}{dx} \). Los objetos tienden a "rodar colina abajo" en una gráfica de energía potencial, moviéndose hacia donde \( U \) es menor.
-        </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p6" id="p6a" value="a"><label for="p6a">\(1.44~\mathrm{m/s^2}\)</label></li>
+      <li class="choice"><input type="radio" name="p6" id="p6b" value="b"><label for="p6b">\(2.88~\mathrm{m/s^2}\)</label></li>
+      <li class="choice"><input type="radio" name="p6" id="p6c" value="c"><label for="p6c">\(9.8~\mathrm{m/s^2}\)</label></li>
+      <li class="choice"><input type="radio" name="p6" id="p6d" value="d"><label for="p6d">\(24~\mathrm{m/s^2}\)</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p6')">Verificar</button>
+    <div id="sol-p6" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(2.88~\mathrm{m/s^2}\)</span>
+      \[
+        a_c=\frac{v^2}{R}=\frac{12^2}{50}=\frac{144}{50}=2.88~\mathrm{m/s^2}.
+      \]
     </div>
+  </div>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Proporcionalidad</span>
-        <div class="problem-statement">
-            7. Se estira un resorte \( 0.10 \text{ m} \) y almacena \( 2.0 \text{ J} \). Si se estira el doble (\( 0.20 \text{ m} \)), ¿cuánta energía almacenará?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t7')">Ver Respuesta</button>
-        <div id="t7" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            \( 8.0 \text{ J} \)
-            <hr>
-            <strong>Explicación:</strong> La energía elástica depende del cuadrado de la distancia (\( x^2 \)). Si duplicas la distancia (\( 2x \)), la energía se cuadruplica (\( 2^2 = 4 \)). \( 4 \times 2.0 = 8.0 \).
-        </div>
+  <!-- P7 -->
+  <div class="problem-card numeric-card" data-qid="p7" data-answer="c">
+    <span class="problem-type-tag">Relativa (río)</span>
+    <div class="problem-statement">
+      7) Un bote apunta al norte con \(v_{b/agua}=3.0~\mathrm{m/s}\). La corriente va al este con \(v_{agua/tierra}=2.0~\mathrm{m/s}\).
+      ¿\(|\vec v_{b/tierra}|\) y dirección?
     </div>
-
-    <div class="problem-card">
-        <span class="problem-type-tag">Equilibrio</span>
-        <div class="problem-statement">
-            8. ¿Qué condición debe cumplirse en un punto de equilibrio estable en un gráfico de energía potencial \( U(x) \)?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t8')">Ver Respuesta</button>
-        <div id="t8" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            \( U(x) \) es mínimo (un valle) y la fuerza es cero.
-            <hr>
-            <strong>Explicación:</strong> En un mínimo local, la pendiente es cero (fuerza cero) y la concavidad es hacia arriba. Cualquier pequeño desplazamiento genera una fuerza restauradora que devuelve la partícula al fondo.
-        </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p7" id="p7a" value="a"><label for="p7a">\(5.0~\mathrm{m/s}\), \(45^\circ\) E del N</label></li>
+      <li class="choice"><input type="radio" name="p7" id="p7b" value="b"><label for="p7b">\(3.0~\mathrm{m/s}\), N puro</label></li>
+      <li class="choice"><input type="radio" name="p7" id="p7c" value="c"><label for="p7c">\(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</label></li>
+      <li class="choice"><input type="radio" name="p7" id="p7d" value="d"><label for="p7d">\(\approx 2.00~\mathrm{m/s}\), E puro</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p7')">Verificar</button>
+    <div id="sol-p7" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\approx 3.61~\mathrm{m/s}\), \(\approx 34^\circ\) E del N</span>
+      \[
+        \vec v_{b/t}=\vec v_{b/a}+\vec v_{a/t}.
+      \]
+      Componentes: \(v_x=2\), \(v_y=3\). Magnitud: \(\sqrt{2^2+3^2}=\sqrt{13}=3.61\).
+      Dirección respecto al norte: \(\tan\phi=\frac{2}{3}\Rightarrow \phi\approx 33.7^\circ\).
     </div>
+  </div>
 
-    <div class="problem-card">
-        <span class="problem-type-tag">Concepto Avanzado</span>
-        <div class="problem-statement">
-            9. Un paracaidista cae a velocidad terminal constante. ¿Qué transformación de energía está ocurriendo?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t9')">Ver Respuesta</button>
-        <div id="t9" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            Energía Potencial Gravitacional \( \to \) Energía Térmica (aire).
-            <hr>
-            <strong>Explicación:</strong> Como la velocidad es constante, la Energía Cinética no cambia. Sin embargo, la altura disminuye. Esa energía potencial "perdida" se disipa calentando el aire debido a la resistencia (fricción fluida).
-        </div>
+  <!-- P8 -->
+  <div class="problem-card numeric-card" data-qid="p8" data-answer="a">
+    <span class="problem-type-tag">Relativa (viento)</span>
+    <div class="problem-statement">
+      8) Un avión tiene rapidez en aire \(200~\mathrm{km/h}\) hacia el norte. Viento \(50~\mathrm{km/h}\) hacia el este.
+      ¿Rapidez en tierra y desvío?
     </div>
-
-    <div class="problem-card">
-        <span class="problem-type-tag">Cálculo Simbólico</span>
-        <div class="problem-statement">
-            10. Si \( U(x) = \alpha x^4 \), ¿cuál es la fuerza conservativa asociada?
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('t10')">Ver Respuesta</button>
-        <div id="t10" class="solution-area">
-            <span class="explanation-title">Respuesta Correcta:</span>
-            \( F_x = -4\alpha x^3 \)
-            <hr>
-            <strong>Explicación:</strong> Derivamos \( U \) respecto a \( x \) y cambiamos el signo:
-            \( \frac{dU}{dx} = 4\alpha x^3 \), por lo tanto \( F = - (4\alpha x^3) \).
-        </div>
+    <ul class="choices">
+      <li class="choice"><input type="radio" name="p8" id="p8a" value="a"><label for="p8a">\(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</label></li>
+      <li class="choice"><input type="radio" name="p8" id="p8b" value="b"><label for="p8b">\(250~\mathrm{km/h}\), \(0^\circ\)</label></li>
+      <li class="choice"><input type="radio" name="p8" id="p8c" value="c"><label for="p8c">\(\approx 150~\mathrm{km/h}\), \(\approx 30^\circ\)</label></li>
+      <li class="choice"><input type="radio" name="p8" id="p8d" value="d"><label for="p8d">\(\approx 206~\mathrm{km/h}\), \(\approx 45^\circ\) E del N</label></li>
+    </ul>
+    <button class="btn" onclick="checkMCQ('p8')">Verificar</button>
+    <div id="sol-p8" class="solution-area">
+      <span class="explanation-title">Respuesta correcta: \(\approx 206~\mathrm{km/h}\), \(\approx 14^\circ\) E del N</span>
+      Componentes: \(v_x=50\), \(v_y=200\).
+      \[
+        |\vec v|=\sqrt{50^2+200^2}=\sqrt{42500}\approx 206~\mathrm{km/h}.
+      \]
+      \[
+        \tan\phi=\frac{50}{200}=0.25\Rightarrow \phi\approx 14.0^\circ.
+      \]
     </div>
+  </div>
 
-
-    <h2 class="section-title" style="background-color: var(--accent-color);">II. Problemas Numéricos (Nivel Libro)</h2>
-    <p><em>Utiliza lápiz, papel y calculadora. Datos modificados del texto original para practicar.</em></p>
-
-    <div class="problem-card numeric-card">
-        <span class="problem-type-tag">Cinemática y Energía</span>
-        <div class="problem-statement">
-            Problema 1: Lanzamiento Vertical (Variación del Ej. 7.1)<br>
-            <span style="font-weight: normal;">Usted lanza una piedra de <strong>0.250 kg</strong> verticalmente hacia arriba con una rapidez inicial de <strong>15.0 m/s</strong>. Despreciando la resistencia del aire:</span>
-            <ul style="margin-top:5px;">
-                <li>a) ¿Qué altura máxima alcanza?</li>
-                <li>b) Si al lanzarla su mano se movió hacia arriba <strong>0.60 m</strong> antes de soltarla, ¿qué trabajo realizó su mano?</li>
-            </ul>
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('p1')">Ver Solución Detallada</button>
-        <div id="p1" class="solution-area">
-            <p><strong>a) Altura Máxima:</strong> Usamos conservación (\( K_1 + U_1 = K_2 + U_2 \)).<br>
-            Nivel de referencia en el punto de lanzamiento (\( y_1=0 \)).
-            $$ \frac{1}{2}mv_1^2 = mgh_{max} $$
-            $$ h_{max} = \frac{v_1^2}{2g} = \frac{(15.0)^2}{2(9.8)} = \mathbf{11.48 \text{ m}} $$
-            </p>
-            <hr>
-            <p><strong>b) Trabajo de la mano:</strong><br>
-            Consideramos el sistema desde el reposo (mano abajo) hasta el punto de lanzamiento.<br>
-            \( \Delta E = W_{mano} \).<br>
-            \( E_{final} = K + U = \frac{1}{2}(0.250)(15.0)^2 + 0 \).<br>
-            \( E_{inicial} = K_0 + U_0 = 0 + (0.250)(9.8)(-0.60) \) (comienza 0.60m abajo).<br>
-            $$ W_{mano} = E_f - E_i = 28.125 - (-1.47) = 28.125 + 1.47 = \mathbf{29.6 \text{ J}} $$
-            </p>
-        </div>
-    </div>
-
-    <div class="problem-card numeric-card">
-        <span class="problem-type-tag">Energía Elástica</span>
-        <div class="problem-statement">
-            Problema 2: Compresión de Resorte (Variación del Ej. 7.7)<br>
-            <span style="font-weight: normal;">Un bloque de <strong>4.0 kg</strong> se desliza sobre una superficie horizontal sin fricción con una rapidez de <strong>3.0 m/s</strong> hacia un resorte ideal cuya constante de fuerza es \( k = \mathbf{1200 \text{ N/m}} \). ¿Cuánto se comprimirá el resorte antes de que el bloque se detenga momentáneamente?</span>
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('p2')">Ver Solución Detallada</button>
-        <div id="p2" class="solution-area">
-            <p><strong>Planteamiento:</strong> Energía Cinética inicial \( \to \) Energía Potencial Elástica final.</p>
-            $$ \frac{1}{2}mv^2 = \frac{1}{2}kx^2 $$
-            <p>Cancelamos el \( 1/2 \) y despejamos \( x \):</p>
-            $$ x = \sqrt{\frac{m v^2}{k}} $$
-            $$ x = \sqrt{\frac{4.0 \cdot (3.0)^2}{1200}} = \sqrt{\frac{36}{1200}} = \sqrt{0.03} $$
-            $$ x \approx \mathbf{0.173 \text{ m}} \text{ (o } 17.3 \text{ cm)} $$
-        </div>
-    </div>
-
-    <div class="problem-card numeric-card">
-        <span class="problem-type-tag">Trabajo y Fricción</span>
-        <div class="problem-statement">
-            Problema 3: Rampa con Fricción (Variación Ej. 7.5)<br>
-            <span style="font-weight: normal;">Una caja de <strong>12.0 kg</strong> parte del reposo desde la cima de una rampa curva de <strong>4.0 m</strong> de altura. Al llegar al pie de la rampa, su rapidez es de <strong>7.0 m/s</strong>. ¿Qué trabajo realizó la fuerza de fricción durante el descenso?</span>
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('p3')">Ver Solución Detallada</button>
-        <div id="p3" class="solution-area">
-            <p><strong>Teorema Trabajo-Energía:</strong> \( E_{inicial} + W_{fric} = E_{final} \)</p>
-            <ul>
-                <li>\( E_{ini} = mgh = (12.0)(9.8)(4.0) = 470.4 \text{ J} \)</li>
-                <li>\( E_{fin} = \frac{1}{2}mv^2 = 0.5(12.0)(7.0)^2 = 294.0 \text{ J} \)</li>
-            </ul>
-            <p>La energía "perdida" es el trabajo de la fricción:</p>
-            $$ W_{fric} = E_{fin} - E_{ini} = 294.0 - 470.4 = \mathbf{-176.4 \text{ J}} $$
-            <p><em>Nota: Es negativo porque la fricción se opone al movimiento.</em></p>
-        </div>
-    </div>
-
-    <div class="problem-card numeric-card">
-        <span class="problem-type-tag">Fuerzas en Movimiento Circular</span>
-        <div class="problem-statement">
-            Problema 4: El Bucle Vertical (Loop)<br>
-            <span style="font-weight: normal;">Un carrito de montaña rusa de <strong>500 kg</strong> debe realizar un bucle vertical de radio \( R = \mathbf{10.0 \text{ m}} \). ¿Cuál es la rapidez mínima necesaria en la <strong>cima</strong> para no caerse?</span>
-        </div>
-        <button class="btn-reveal" onclick="toggleSolution('p4')">Ver Solución Detallada</button>
-        <div id="p4" class="solution-area">
-            <p><strong>Condición Crítica:</strong> En la cima, para la velocidad mínima, la fuerza Normal es cero (\( n=0 \)). Solo la gravedad provee la fuerza centrípeta.</p>
-            $$ \sum F_y = ma_c \quad \Rightarrow \quad mg = m \frac{v^2}{R} $$
-            <p>Las masas se cancelan:</p>
-            $$ g = \frac{v^2}{R} \quad \Rightarrow \quad v = \sqrt{gR} $$
-            $$ v = \sqrt{9.8 \cdot 10.0} = \sqrt{98} \approx \mathbf{9.9 \text{ m/s}} $$
-        </div>
-    </div>
-    
-    <footer>
-        <p>Práctica generada por Asistente de Dinámica | Basado en el Libro de Texto Oficial</p>
-    </footer>
+  <footer>
+    <p>Material de práctica (Cap. 1–3) — Mecánica / Cinemática | Hecho para incrustar en GitHub Pages</p>
+  </footer>
 </div>
 
 <script>
-    function toggleSolution(id) {
-        var x = document.getElementById(id);
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
+  function checkMCQ(qid){
+    const card = document.querySelector(`[data-qid="${qid}"]`);
+    const correct = card.getAttribute("data-answer");
+    const selected = document.querySelector(`input[name="${qid}"]:checked`);
+
+    // Reset styles
+    card.querySelectorAll(".choice").forEach(li=>{
+      li.classList.remove("correct","wrong");
+    });
+
+    const sol = document.getElementById(`sol-${qid}`);
+    sol.classList.remove("wrong");
+
+    if(!selected){
+      sol.style.display = "block";
+      sol.classList.add("wrong");
+      sol.innerHTML = `<span class="explanation-title">Falta elegir una opción</span>
+        Selecciona una respuesta y vuelve a presionar <strong>Verificar</strong>.`;
+      return;
     }
+
+    const val = selected.value;
+    const choiceLi = selected.closest(".choice");
+    const correctLi = card.querySelector(`input[name="${qid}"][value="${correct}"]`).closest(".choice");
+
+    if(val === correct){
+      choiceLi.classList.add("correct");
+      sol.style.display = "block";
+      // deja el contenido original (ya está en HTML)
+    }else{
+      choiceLi.classList.add("wrong");
+      correctLi.classList.add("correct");
+      sol.style.display = "block";
+      sol.classList.add("wrong");
+      // Conserva explicación original pero en modo "wrong" (fondo rojo)
+      // (El contenido original permanece; solo cambiamos estilo).
+    }
+
+    // Deshabilitar botón para evitar spam (opcional)
+    // card.querySelector("button.btn").disabled = true;
+
+    // Re-render MathJax si hace falta
+    if(window.MathJax && window.MathJax.typeset){
+      window.MathJax.typeset();
+    }
+  }
 </script>
 
 </body>
