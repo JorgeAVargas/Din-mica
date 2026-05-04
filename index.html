@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repaso de Mecánica - CUCEI</title>
+    <title>Repaso de Teoría - Mecánica Clásica - CUCEI</title>
     
+    <!-- Bootstrap y Fuentes -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -30,22 +32,22 @@
         .header-section {
             background: linear-gradient(135deg, #003366 0%, #0056b3 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 3rem 0;
             margin-bottom: 3rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .container { max-width: 900px; }
 
-        /* Estilos de Tarjetas */
-        .problem-card, .quiz-card {
+        /* Tarjetas */
+        .problem-card {
             background-color: var(--theory-bg);
             border-left: 6px solid var(--theory-blue);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 25px;
-            transition: transform 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
 
         .numeric-card {
@@ -55,6 +57,7 @@
             padding: 20px;
             margin-bottom: 25px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
 
         .problem-card:hover, .numeric-card:hover {
@@ -64,7 +67,7 @@
 
         h3, p strong { color: #2c3e50; }
 
-        /* Inputs y Botones */
+        /* Listas e Inputs */
         ul { list-style: none; padding-left: 0; }
         li { margin-bottom: 10px; padding: 8px; border-radius: 4px; transition: background 0.2s; }
         li:hover { background: rgba(0,0,0,0.03); }
@@ -79,11 +82,12 @@
             margin-bottom: 15px;
         }
 
+        /* Botón de Verificar */
         .btn-check-answer {
             background-color: #2c3e50;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 5px;
             font-weight: 600;
             transition: all 0.3s;
@@ -91,11 +95,10 @@
 
         .btn-check-answer:hover {
             background-color: #1a252f;
-            transform: scale(1.05);
         }
 
-        /* Feedback */
-        .idea-clave, .key-idea {
+        /* Contenedor de Idea Clave y Feedback */
+        .idea-clave {
             display: none;
             margin-top: 15px;
             padding: 15px;
@@ -103,154 +106,219 @@
             border-radius: 6px;
             border-left: 4px solid #6c757d;
             font-size: 0.95rem;
-            animation: fadeIn 0.5s;
+            animation: fadeIn 0.4s ease-in;
+        }
+        
+        .pista-calculo {
+            font-size: 0.85rem;
+            color: #d93025;
+            font-style: italic;
+            margin-bottom: 10px;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .correct-feedback { color: var(--success-green); font-weight: bold; margin-top: 10px; }
         .wrong-feedback { color: var(--numeric-red); font-weight: bold; margin-top: 10px; }
-
-        .summary-notes {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            border: 1px solid #e0e0e0;
-        }
     </style>
 </head>
 <body>
 
     <header class="header-section text-center">
         <div class="container">
-            <h1 class="display-4 fw-bold">Repaso Departamental de Mecánica</h1>
-            <p class="lead">Capítulos 4 - 8 | CUCEI - Universidad de Guadalajara</p>
+            <h1 class="fw-bold">Repaso de Teoría - Mecánica Clásica</h1>
+            <p class="lead mb-0">Cuestionario Interactivo - CUCEI</p>
         </div>
     </header>
 
     <main class="container">
         
-        <section class="summary-notes shadow-sm">
-            <h2 class="mb-4">Resumen de Conceptos Clave</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Leyes de Newton</h5>
-                    <p class="small">\( \sum \vec{F} = m\vec{a} \) | \( \vec{F}_{A \to B} = -\vec{F}_{B \to A} \)</p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Energía y Trabajo</h5>
-                    <p class="small">\( W = F d \cos\theta \) | \( K = \frac{1}{2}mv^2 \) | \( U = mgh \)</p>
-                </div>
-            </div>
-        </section>
+        <!-- ================= CAPÍTULO 4 ================= -->
+        <h2 class="mb-4 mt-5 text-secondary border-bottom pb-2">Capítulo 4: Leyes del Movimiento de Newton</h2>
 
-        <h2 class="mb-4 text-secondary">Banco de Preguntas</h2>
-
+        <!-- Teoría 1 -->
         <div class="problem-card" id="p4_1">
-            <p><strong>Pregunta 4.1 (Teoría):</strong> ¿Qué condición debe cumplirse para que un cuerpo sea considerado un marco de referencia inercial?</p>
+            <p><strong>Pregunta 4.1 (Teoría):</strong> ¿Qué característica define fundamentalmente a una fuerza en física?</p>
             <ul>
-                <li><input type="radio" name="q_p4_1" value="a"> a) Debe estar rotando a velocidad angular constante.</li>
-                <li><input type="radio" name="q_p4_1" value="b"> b) No debe tener aceleración respecto a otro marco inercial.</li>
-                <li><input type="radio" name="q_p4_1" value="c"> c) Debe estar estrictamente en reposo absoluto.</li>
-                <li><input type="radio" name="q_p4_1" value="d"> d) Debe moverse a la velocidad de la luz.</li>
+                <li><input type="radio" name="q_p4_1" value="a"> a) Es una cantidad escalar que mide la inercia.</li>
+                <li><input type="radio" name="q_p4_1" value="b"> b) Es una medida de la energía intrínseca de un cuerpo.</li>
+                <li><input type="radio" name="q_p4_1" value="c"> c) Es una interacción cualitativa entre dos cuerpos o un cuerpo y su entorno, representada como un vector.</li>
+                <li><input type="radio" name="q_p4_1" value="d"> d) Es la resistencia natural al cambio de movimiento en el vacío.</li>
             </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p4_1', 'b')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> \( \vec{a} = 0 \) respecto a un marco inercial primario. La Primera Ley de Newton solo es válida en marcos inerciales.</div>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_1', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fuerza es una interacción vectorial que empuja o tira de un objeto, cambiando su estado de movimiento.</div>
         </div>
 
+        <!-- Teoría 2 -->
         <div class="problem-card" id="p4_2">
-            <p><strong>Pregunta 4.2 (Teoría):</strong> ¿Cómo se define la masa inercial de un objeto según la segunda ley de Newton?</p>
+            <p><strong>Pregunta 4.2 (Teoría):</strong> Según la Primera Ley de Newton, si la fuerza neta sobre un cuerpo es cero:</p>
             <ul>
-                <li><input type="radio" name="q_p4_2" value="a"> a) Como la cantidad de materia en el objeto.</li>
-                <li><input type="radio" name="q_p4_2" value="b"> b) Como el peso del objeto dividido por la gravedad.</li>
-                <li><input type="radio" name="q_p4_2" value="c"> c) Como la constante de proporcionalidad entre la fuerza neta aplicada y la aceleración resultante.</li>
-                <li><input type="radio" name="q_p4_2" value="d"> d) Como la resistencia a cambiar de forma.</li>
+                <li><input type="radio" name="q_p4_2" value="a"> a) El cuerpo debe estar en reposo absoluto obligatoriamente.</li>
+                <li><input type="radio" name="q_p4_2" value="b"> b) El cuerpo puede estar en reposo o moviéndose con velocidad constante en línea recta.</li>
+                <li><input type="radio" name="q_p4_2" value="c"> c) El cuerpo necesariamente cambia su dirección gradualmente por la inercia.</li>
+                <li><input type="radio" name="q_p4_2" value="d"> d) El cuerpo experimenta una aceleración constante.</li>
             </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p4_2', 'c')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> \( m = \frac{|\sum \vec{F}|}{|\vec{a}|} \) representa la inercia del cuerpo.</div>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_2', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(\sum \vec{F} = 0 \implies \vec{v} = \text{constante}\) (lo que incluye el reposo, es decir, \(\vec{v} = 0\)).</div>
         </div>
 
+        <!-- Teoría 3 -->
         <div class="problem-card" id="p4_3">
-            <p><strong>Pregunta 4.3 (Teoría):</strong> De acuerdo con la Tercera Ley de Newton, las fuerzas de acción y reacción:</p>
+            <p><strong>Pregunta 4.3 (Teoría):</strong> ¿Qué es un marco de referencia inercial?</p>
             <ul>
-                <li><input type="radio" name="q_p4_3" value="a"> a) Se anulan entre sí porque actúan sobre el mismo cuerpo.</li>
-                <li><input type="radio" name="q_p4_3" value="b"> b) Tienen la misma magnitud, la misma dirección y el mismo sentido.</li>
-                <li><input type="radio" name="q_p4_3" value="c"> c) Actúan siempre sobre cuerpos diferentes y nunca pueden sumarse para dar cero.</li>
-                <li><input type="radio" name="q_p4_3" value="d"> d) Solo existen si los cuerpos están en contacto.</li>
+                <li><input type="radio" name="q_p4_3" value="a"> a) Un marco de referencia que acelera junto con el objeto.</li>
+                <li><input type="radio" name="q_p4_3" value="b"> b) Un marco de referencia donde no se cumple la primera ley de Newton.</li>
+                <li><input type="radio" name="q_p4_3" value="c"> c) Un marco de referencia que rota a velocidad angular constante.</li>
+                <li><input type="radio" name="q_p4_3" value="d"> d) Un marco de referencia en el cual es válida la primera ley de Newton (no está acelerado).</li>
             </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p4_3', 'c')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> \( \vec{F}_{A \to B} = -\vec{F}_{B \to A} \). Actúan en cuerpos distintos.</div>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_3', 'd')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Las leyes de Newton solo se aplican estrictamente en marcos que no aceleran respecto a las "estrellas fijas".</div>
         </div>
 
+        <!-- Teoría 4 -->
+        <div class="problem-card" id="p4_4">
+            <p><strong>Pregunta 4.4 (Teoría):</strong> De acuerdo con la Segunda Ley de Newton, la aceleración de un objeto es:</p>
+            <ul>
+                <li><input type="radio" name="q_p4_4" value="a"> a) Directamente proporcional a su masa e inversamente proporcional a la fuerza neta.</li>
+                <li><input type="radio" name="q_p4_4" value="b"> b) Directamente proporcional a la fuerza neta e inversamente proporcional a su masa.</li>
+                <li><input type="radio" name="q_p4_4" value="c"> c) Constante siempre y cuando la masa sea constante en el vacío.</li>
+                <li><input type="radio" name="q_p4_4" value="d"> d) Independiente de las fuerzas externas aplicadas sobre el sistema.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_4', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(\vec{a} = \frac{\sum \vec{F}}{m}\). A mayor fuerza neta, mayor aceleración; a mayor masa, menor aceleración.</div>
+        </div>
+
+        <!-- Teoría 5 -->
+        <div class="problem-card" id="p4_5">
+            <p><strong>Pregunta 4.5 (Teoría):</strong> El principio de superposición de fuerzas establece que:</p>
+            <ul>
+                <li><input type="radio" name="q_p4_5" value="a"> a) Varias fuerzas simultáneas tienen el mismo efecto que una sola fuerza igual a la suma vectorial de todas ellas.</li>
+                <li><input type="radio" name="q_p4_5" value="b"> b) La fuerza de gravedad siempre se superpone y anula a las demás fuerzas.</li>
+                <li><input type="radio" name="q_p4_5" value="c"> c) Las fuerzas internas de un sistema siempre superan a las externas en estado de equilibrio.</li>
+                <li><input type="radio" name="q_p4_5" value="d"> d) Una fuerza fundamental anula completamente a una fuerza macroscópica.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_5', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(\vec{R} = \vec{F}_1 + \vec{F}_2 + \dots = \sum \vec{F}\). La resultante es equivalente al sistema original.</div>
+        </div>
+
+        <!-- Teoría 6 -->
         <div class="problem-card" id="p4_6">
-            <p><strong>Pregunta 4.6 (Teoría):</strong> Un bloque descansa sobre una mesa horizontal. ¿Cuál es la fuerza de reacción al peso del bloque según la tercera ley de Newton?</p>
+            <p><strong>Pregunta 4.6 (Teoría):</strong> ¿Cuál es la diferencia principal entre masa y peso?</p>
             <ul>
-                <li><input type="radio" name="q_p4_6" value="a"> a) La fuerza normal que ejerce la mesa sobre el bloque.</li>
-                <li><input type="radio" name="q_p4_6" value="b"> b) La fuerza que ejerce el bloque sobre la mesa.</li>
-                <li><input type="radio" name="q_p4_6" value="c"> c) La fuerza gravitacional que el bloque ejerce sobre la Tierra.</li>
-                <li><input type="radio" name="q_p4_6" value="d"> d) La fricción estática entre el bloque y la mesa.</li>
+                <li><input type="radio" name="q_p4_6" value="a"> a) El peso se mide en kilogramos y la masa en newtons.</li>
+                <li><input type="radio" name="q_p4_6" value="b"> b) La masa es una medida de la inercia (escalar) y el peso es la fuerza gravitacional sobre el objeto (vector).</li>
+                <li><input type="radio" name="q_p4_6" value="c"> c) Son propiedades idénticas, solo dependen del sistema de unidades utilizado.</li>
+                <li><input type="radio" name="q_p4_6" value="d"> d) El peso es una constante universal, mientras que la masa depende de la gravedad local.</li>
             </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p4_6', 'c')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> El peso es \( \vec{F}_{\text{Tierra} \to \text{Bloque}} \), su reacción es \( \vec{F}_{\text{Bloque} \to \text{Tierra}} \).</div>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_6', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Masa \(m\) es constante en todo el universo. Peso \(\vec{w} = m\vec{g}\) varía según el campo gravitacional.</div>
         </div>
 
+        <!-- Teoría 7 -->
+        <div class="problem-card" id="p4_7">
+            <p><strong>Pregunta 4.7 (Teoría):</strong> En un diagrama de cuerpo libre (DCL) ideal, ¿qué fuerzas se deben incluir obligatoriamente?</p>
+            <ul>
+                <li><input type="radio" name="q_p4_7" value="a"> a) Las fuerzas que el cuerpo ejerce sobre otros cuerpos.</li>
+                <li><input type="radio" name="q_p4_7" value="b"> b) Solamente las fuerzas internas que mantienen unido al cuerpo.</li>
+                <li><input type="radio" name="q_p4_7" value="c"> c) Todas las fuerzas externas que actúan sobre el cuerpo analizado.</li>
+                <li><input type="radio" name="q_p4_7" value="d"> d) Tanto las fuerzas externas que actúan sobre el cuerpo como las de reacción en el entorno.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_7', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Para aplicar \(\sum \vec{F} = m\vec{a}\), aislamos el cuerpo y contabilizamos únicamente lo que el exterior le hace a él.</div>
+        </div>
+
+        <!-- Teoría 8 -->
+        <div class="problem-card" id="p4_8">
+            <p><strong>Pregunta 4.8 (Teoría):</strong> La Tercera Ley de Newton trata sobre fuerzas de "acción y reacción". ¿Por qué estas fuerzas no se cancelan entre sí para dar una aceleración neta de cero?</p>
+            <ul>
+                <li><input type="radio" name="q_p4_8" value="a"> a) Porque la fuerza de acción siempre es ligeramente mayor en el instante inicial.</li>
+                <li><input type="radio" name="q_p4_8" value="b"> b) Porque actúan durante intervalos de tiempo desfasados.</li>
+                <li><input type="radio" name="q_p4_8" value="c"> c) Porque tienen direcciones diferentes, pero no exactamente opuestas.</li>
+                <li><input type="radio" name="q_p4_8" value="d"> d) Porque siempre actúan sobre cuerpos diferentes.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_8', 'd')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Si A empuja a B, B empuja a A. Las fuerzas actúan en sistemas distintos y no se suman en el DCL de un solo cuerpo.</div>
+        </div>
+
+        <!-- Teoría 9 -->
+        <div class="problem-card" id="p4_9">
+            <p><strong>Pregunta 4.9 (Teoría):</strong> Si una mosca choca contra el parabrisas de un autobús a alta velocidad, ¿qué cuerpo experimenta una fuerza de mayor magnitud durante el impacto?</p>
+            <ul>
+                <li><input type="radio" name="q_p4_9" value="a"> a) La mosca, por tener una masa considerablemente menor.</li>
+                <li><input type="radio" name="q_p4_9" value="b"> b) El autobús, por poseer mayor velocidad relativa y cantidad de movimiento.</li>
+                <li><input type="radio" name="q_p4_9" value="c"> c) Ambos experimentan una fuerza de exactamente la misma magnitud.</li>
+                <li><input type="radio" name="q_p4_9" value="d"> d) Depende exclusivamente de si el autobús estaba acelerando o frenando.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_9', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Tercera Ley de Newton: \(|\vec{F}_{\text{Mosca} \to \text{Autobús}}| = |\vec{F}_{\text{Autobús} \to \text{Mosca}}|\). La mosca sufre más daño debido a que esa misma fuerza le provoca una aceleración inmensa.</div>
+        </div>
+
+        <!-- Teoría 10 -->
+        <div class="problem-card" id="p4_10">
+            <p><strong>Pregunta 4.10 (Teoría):</strong> ¿Qué ocurre con el peso y la masa de un astronauta que viaja de la superficie de la Tierra a la Luna?</p>
+            <ul>
+                <li><input type="radio" name="q_p4_10" value="a"> a) Su masa disminuye y su peso se mantiene constante.</li>
+                <li><input type="radio" name="q_p4_10" value="b"> b) Su masa se mantiene constante y su peso disminuye.</li>
+                <li><input type="radio" name="q_p4_10" value="c"> c) Ambos parámetros disminuyen drásticamente.</li>
+                <li><input type="radio" name="q_p4_10" value="d"> d) Ambos se mantienen constantes ya que es un sistema cerrado.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_10', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La masa es cantidad intrínseca. El peso depende de la gravedad local lunar (\(g_L \approx 1.62\) m/s²), que es menor a la terrestre.</div>
+        </div>
+
+        <!-- Teoría 11 -->
+        <div class="problem-card" id="p4_11">
+            <p><strong>Pregunta 4.11 (Teoría):</strong> ¿Cómo se relaciona la dirección de la aceleración resultante con la dirección de la fuerza neta aplicada sobre una partícula?</p>
+            <ul>
+                <li><input type="radio" name="q_p4_11" value="a"> a) Siempre son perpendiculares entre sí si hay movimiento circular.</li>
+                <li><input type="radio" name="q_p4_11" value="b"> b) Tienen direcciones opuestas si el objeto está frenando.</li>
+                <li><input type="radio" name="q_p4_11" value="c"> c) Siempre apuntan exactamente en la misma dirección y sentido.</li>
+                <li><input type="radio" name="q_p4_11" value="d"> d) El ángulo depende enteramente de la velocidad inicial del objeto.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p4_11', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Como la masa \(m\) es un escalar positivo, la ecuación vectorial \(\sum \vec{F} = m\vec{a}\) exige que ambos vectores sean paralelos y corradiantes.</div>
+        </div>
+
+        <!-- Práctica 1 -->
         <div class="numeric-card" id="p4_12">
-            <p><strong>Pregunta 4.12 (Numérica):</strong> Un astronauta tiene una masa de 85.0 kg. ¿Cuál es su peso en la Tierra? Usa g = 9.81 m/s².</p>
-            <input type="number" id="in_p4_12" placeholder="Respuesta en N">
-            <button class="btn-check-answer" onclick="checkNumeric('p4_12', 833.85, 0.1)">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> \( w = mg = (85.0 \, \text{kg})(9.81 \, \text{m/s}^2) = 833.85 \, \text{N} \)</div>
+            <p><strong>Pregunta 4.12 (Práctica):</strong> Un objeto de 4.0 kg experimenta una aceleración constante de 2.5 m/s². ¿Cuál es la magnitud de la fuerza neta que actúa sobre él?</p>
+            <input type="number" id="in_p4_12" placeholder="Respuesta en Newtons (N)">
+            <button class="btn-check-answer" onclick="checkNumeric('p4_12', 10.0, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(|\sum \vec{F}| = m|\vec{a}| = (4.0 \text{ kg})(2.5 \text{ m/s}^2) = 10.0 \text{ N}\)</div>
         </div>
 
-        <div class="problem-card" id="p5_2">
-            <p><strong>Pregunta 5.2 (Teoría):</strong> Para una partícula en movimiento circular uniforme, la fuerza neta está dirigida:</p>
-            <ul>
-                <li><input type="radio" name="q_p5_2" value="a"> a) Tangente a la trayectoria.</li>
-                <li><input type="radio" name="q_p5_2" value="b"> b) Hacia el exterior de la curva (fuerza centrífuga).</li>
-                <li><input type="radio" name="q_p5_2" value="c"> c) Hacia el centro de la trayectoria circular.</li>
-                <li><input type="radio" name="q_p5_2" value="d"> d) A 45° de la velocidad instantánea.</li>
-            </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p5_2', 'c')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> Fuerza centrípeta: \( \sum \vec{F}_{rad} = m\frac{v^2}{R} \) dirigida al centro.</div>
+        <!-- Práctica 2 -->
+        <div class="numeric-card" id="p4_13">
+            <p><strong>Pregunta 4.13 (Práctica):</strong> Una sonda espacial de prueba pesa 8500 N en la superficie de la Tierra (usar g = 9.8 m/s²). ¿Cuál es su masa en kilogramos?</p>
+            <input type="number" id="in_p4_13" placeholder="Respuesta en kg">
+            <button class="btn-check-answer" onclick="checkNumeric('p4_13', 867.3, 1.0)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(m = \frac{w}{g} = \frac{8500}{9.8} \approx 867.3 \text{ kg}\)</div>
         </div>
 
-        <div class="quiz-card" id="p6_1">
-            <h3>Pregunta 6.1 (Teoría)</h3>
-            <p>¿Qué condición debe cumplirse para que el trabajo realizado por una fuerza constante sobre un objeto sea igual a cero, asumiendo que hay desplazamiento?</p>
-            <ul>
-                <li><input type="radio" name="p6_1" value="A"> A) La fuerza debe ser paralela al desplazamiento.</li>
-                <li><input type="radio" name="p6_1" value="B"> B) La fuerza debe ser perpendicular al desplazamiento.</li>
-                <li><input type="radio" name="p6_1" value="C"> C) La fuerza debe ser antiparalela al desplazamiento.</li>
-                <li><input type="radio" name="p6_1" value="D"> D) La magnitud de la fuerza debe variar con el tiempo.</li>
-            </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p6_1', 'B')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> \( W = \vec{F} \cdot \Delta\vec{r} = F \Delta r \cos(90^\circ) = 0 \). Las fuerzas perpendiculares a la trayectoria no realizan trabajo.</div>
+        <!-- Práctica 3 -->
+        <div class="numeric-card" id="p4_14">
+            <p><strong>Pregunta 4.14 (Práctica):</strong> La velocidad de un bloque de 2.0 kg que se mueve a lo largo del eje x está dada por la ecuación cinemática \(v(t) = 4.0 t^2 + 2.0\) (donde v está en m/s y t en s). Calcula la fuerza neta (en Newtons) que actúa sobre el bloque exactamente en el instante \(t = 3.0\) s.</p>
+            <div class="pista-calculo">💡 Pista: Recuerda usar la definición de la derivada para obtener la aceleración instantánea a partir de la función de velocidad.</div>
+            <input type="number" id="in_p4_14" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p4_14', 48.0, 0.5)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(a(t) = \frac{dv}{dt} = 8.0t\). Evaluando en \(t=3.0\), \(a = 24.0 \text{ m/s}^2\). Luego, \(F = ma = (2.0)(24.0) = 48.0 \text{ N}\).</div>
         </div>
 
-        <div class="quiz-card" id="p8_3">
-            <h3>Pregunta 8.3 (Numérica)</h3>
-            <p>Un carrito de 2.0 kg que viaja a 3.0 m/s choca y se engancha con un carrito de 1.0 kg en reposo. ¿Cuál es la rapidez del conjunto?</p>
-            <ul>
-                <li><input type="radio" name="p8_3" value="A"> A) 1.0 m/s</li>
-                <li><input type="radio" name="p8_3" value="B"> B) 1.5 m/s</li>
-                <li><input type="radio" name="p8_3" value="C"> C) 2.0 m/s</li>
-                <li><input type="radio" name="p8_3" value="D"> D) 3.0 m/s</li>
-            </ul>
-            <button class="btn-check-answer" onclick="checkAnswer('p8_3', 'C')">Verificar</button>
-            <div class="idea-clave"><strong>Idea Clave:</strong> Conservación del momento: \( (2.0)(3.0) + 0 = (3.0)v_f \implies v_f = 2.0 \, \text{m/s} \).</div>
+        <!-- Práctica 4 -->
+        <div class="numeric-card" id="p4_15">
+            <p><strong>Pregunta 4.15 (Práctica):</strong> Una fuerza horizontal constante empuja una caja de 10.0 kg inicialmente en reposo sobre una superficie lisa (sin fricción). Si la caja logra recorrer 20.0 metros en 4.0 segundos, ¿cuál es la magnitud de la fuerza aplicada?</p>
+            <input type="number" id="in_p4_15" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p4_15', 25.0, 0.2)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> De la cinemática: \(x = x_0 + v_0 t + \frac{1}{2}at^2 \implies 20.0 = \frac{1}{2}a(4.0)^2 \implies a = 2.5 \text{ m/s}^2\). Por dinámica: \(F = ma = (10.0)(2.5) = 25.0 \text{ N}\).</div>
         </div>
 
     </main>
 
-    <footer class="text-center py-5 text-muted">
-        <p>&copy; 2024 Mecánica Clásica - CUCEI</p>
-    </footer>
-
     <script>
-        // Lógica Global para Preguntas de Opción Múltiple
+        // Función para Validar Preguntas de Opción Múltiple
         function checkAnswer(cardId, correctAnswer) {
             const card = document.getElementById(cardId);
             const inputs = card.querySelectorAll('input[type="radio"]');
@@ -260,7 +328,6 @@
                 if (input.checked) selectedValue = input.value;
             });
 
-            // Limpiar feedback previo
             const oldFeedback = card.querySelector('.feedback-msg');
             if (oldFeedback) oldFeedback.remove();
 
@@ -273,13 +340,13 @@
                 feedback.innerHTML = '<p class="correct-feedback">✅ ¡Correcto!</p>';
                 card.querySelector('.idea-clave').style.display = 'block';
             } else {
-                feedback.innerHTML = '<p class="wrong-feedback">❌ Incorrecto. Intenta de nuevo.</p>';
+                feedback.innerHTML = '<p class="wrong-feedback">❌ Incorrecto. Analiza de nuevo el concepto.</p>';
             }
 
             card.appendChild(feedback);
         }
 
-        // Lógica Global para Preguntas Numéricas
+        // Función para Validar Preguntas Numéricas de Ingreso de Texto
         function checkNumeric(cardId, targetValue, tolerance) {
             const card = document.getElementById(cardId);
             const input = card.querySelector('input[type="number"]');
@@ -297,7 +364,7 @@
                 feedback.innerHTML = '<p class="correct-feedback">✅ ¡Excelente! El valor es correcto.</p>';
                 card.querySelector('.idea-clave').style.display = 'block';
             } else {
-                feedback.innerHTML = '<p class="wrong-feedback">❌ Valor fuera de rango. Revisa tus cálculos.</p>';
+                feedback.innerHTML = '<p class="wrong-feedback">❌ Valor fuera del rango aceptado. Revisa tus cálculos.</p>';
             }
 
             card.appendChild(feedback);
@@ -305,3 +372,667 @@
     </script>
 </body>
 </html>
+
+<!-- ================= CAPÍTULO 5 ================= -->
+        <h2 class="mb-4 mt-5 text-secondary border-bottom pb-2">Capítulo 5: Aplicación de las Leyes de Newton</h2>
+
+        <!-- Teoría -->
+        <div class="problem-card" id="p5_1">
+            <p><strong>Pregunta 5.1 (Teoría):</strong> En el modelo de fricción seca, la relación típica entre el coeficiente de fricción cinética (\(\mu_k\)) y el estático (\(\mu_s\)) es:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_1" value="a"> a) \(\mu_k\) siempre es exactamente igual a \(\mu_s\).</li>
+                <li><input type="radio" name="q_p5_1" value="b"> b) \(\mu_k\) es mayor que \(\mu_s\), haciendo más difícil mantener el movimiento que iniciarlo.</li>
+                <li><input type="radio" name="q_p5_1" value="c"> c) \(\mu_k\) es menor que \(\mu_s\), por lo que es más fácil mantener un objeto en movimiento que sacarlo del reposo.</li>
+                <li><input type="radio" name="q_p5_1" value="d"> d) Depende exclusivamente de la masa del objeto, no de las superficies.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_1', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Las fuerzas intermoleculares ceden una vez que se rompe el agarre estático inicial.</div>
+        </div>
+
+        <div class="problem-card" id="p5_2">
+            <p><strong>Pregunta 5.2 (Teoría):</strong> La fuerza de fricción siempre actúa en una dirección que:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_2" value="a"> a) Es perpendicular al movimiento relativo de las superficies.</li>
+                <li><input type="radio" name="q_p5_2" value="b"> b) Se opone al movimiento relativo (o intento de movimiento) entre las dos superficies en contacto.</li>
+                <li><input type="radio" name="q_p5_2" value="c"> c) Apunta en la misma dirección que la fuerza normal.</li>
+                <li><input type="radio" name="q_p5_2" value="d"> d) Favorece la aceleración gravitacional.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_2', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fricción es una fuerza tangencial a la superficie de contacto que se resiste al deslizamiento.</div>
+        </div>
+
+        <div class="problem-card" id="p5_3">
+            <p><strong>Pregunta 5.3 (Teoría):</strong> Para un bloque en reposo sobre un plano inclinado un ángulo \(\theta\), la fuerza normal \(n\) equivale a:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_3" value="a"> a) \(mg \sin\theta\)</li>
+                <li><input type="radio" name="q_p5_3" value="b"> b) \(mg\)</li>
+                <li><input type="radio" name="q_p5_3" value="c"> c) \(mg \cos\theta\)</li>
+                <li><input type="radio" name="q_p5_3" value="d"> d) \(\mu_s mg\)</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_3', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> De \(\sum F_y = 0\) perpendicular al plano, obtenemos \(n - mg \cos\theta = 0\).</div>
+        </div>
+
+        <div class="problem-card" id="p5_4">
+            <p><strong>Pregunta 5.4 (Teoría):</strong> En dinámica del movimiento circular uniforme, la "fuerza centrípeta" es:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_4" value="a"> a) Una nueva fuerza de la naturaleza que empuja hacia afuera de la curva.</li>
+                <li><input type="radio" name="q_p5_4" value="b"> b) El nombre que se le da a la fuerza neta requerida para mantener a un objeto en una trayectoria circular, dirigida hacia el centro.</li>
+                <li><input type="radio" name="q_p5_4" value="c"> c) La resistencia inercial del objeto al cambio de dirección.</li>
+                <li><input type="radio" name="q_p5_4" value="d"> d) Solamente el efecto de la gravedad en sistemas en órbita.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_4', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> No es una fuerza separada (como la gravedad o la fricción), sino la suma de las fuerzas radiales (\(\sum F_{rad} = m\frac{v^2}{R}\)).</div>
+        </div>
+
+        <div class="problem-card" id="p5_5">
+            <p><strong>Pregunta 5.5 (Teoría):</strong> ¿Por qué se peraltan las curvas de las carreteras?</p>
+            <ul>
+                <li><input type="radio" name="q_p5_5" value="a"> a) Para que la componente horizontal de la fuerza normal proporcione parte de la aceleración centrípeta necesaria.</li>
+                <li><input type="radio" name="q_p5_5" value="b"> b) Para aumentar el peso efectivo de los vehículos y mejorar el desgaste del asfalto.</li>
+                <li><input type="radio" name="q_p5_5" value="c"> c) Para anular completamente la gravedad.</li>
+                <li><input type="radio" name="q_p5_5" value="d"> d) Para generar una fuerza centrífuga mayor.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_5', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> El peralte (\(\beta\)) permite que \(n \sin\beta\) actúe hacia el centro de la curva, reduciendo la dependencia de la fricción.</div>
+        </div>
+
+        <div class="problem-card" id="p5_6">
+            <p><strong>Pregunta 5.6 (Teoría):</strong> Cuando un objeto que cae en un fluido alcanza su velocidad terminal, ¿qué sucede?</p>
+            <ul>
+                <li><input type="radio" name="q_p5_6" value="a"> a) Su aceleración es máxima.</li>
+                <li><input type="radio" name="q_p5_6" value="b"> b) La fuerza de resistencia del fluido se vuelve cero.</li>
+                <li><input type="radio" name="q_p5_6" value="c"> c) La fuerza neta sobre el objeto es cero, logrando aceleración nula.</li>
+                <li><input type="radio" name="q_p5_6" value="d"> d) Cae en estado de ingravidez.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_6', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(mg - f_{arrastre} = 0 \implies \vec{a} = 0\), por lo que la velocidad deja de aumentar.</div>
+        </div>
+
+        <div class="problem-card" id="p5_7">
+            <p><strong>Pregunta 5.7 (Teoría):</strong> Según el modelo de resistencia de fluidos a velocidades bajas (como polvo en el aire), la fuerza de arrastre es proporcional a:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_7" value="a"> a) La velocidad (\(v\)).</li>
+                <li><input type="radio" name="q_p5_7" value="b"> b) El cuadrado de la velocidad (\(v^2\)).</li>
+                <li><input type="radio" name="q_p5_7" value="c"> c) La raíz cuadrada de la velocidad (\(\sqrt{v}\)).</li>
+                <li><input type="radio" name="q_p5_7" value="d"> d) La inversa de la velocidad (\(1/v\)).</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_7', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> A bajas velocidades, \(f = kv\). A altas velocidades (paracaidistas, autos), \(f = Dv^2\).</div>
+        </div>
+
+        <div class="problem-card" id="p5_8">
+            <p><strong>Pregunta 5.8 (Teoría):</strong> El peso aparente de una persona en un elevador que acelera hacia arriba es:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_8" value="a"> a) Mayor que su peso real \(mg\).</li>
+                <li><input type="radio" name="q_p5_8" value="b"> b) Igual a su peso real \(mg\).</li>
+                <li><input type="radio" name="q_p5_8" value="c"> c) Menor que su peso real \(mg\).</li>
+                <li><input type="radio" name="q_p5_8" value="d"> d) Cero.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_8', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fuerza normal (peso aparente) es \(n = m(g+a)\).</div>
+        </div>
+
+        <div class="problem-card" id="p5_9">
+            <p><strong>Pregunta 5.9 (Teoría):</strong> Si el mismo elevador desciende en caída libre (se rompe el cable), el peso aparente de la persona será:</p>
+            <ul>
+                <li><input type="radio" name="q_p5_9" value="a"> a) Mayor que \(mg\).</li>
+                <li><input type="radio" name="q_p5_9" value="b"> b) Igual a \(mg\).</li>
+                <li><input type="radio" name="q_p5_9" value="c"> c) Cero.</li>
+                <li><input type="radio" name="q_p5_9" value="d"> d) Infinito.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_9', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Si \(a = g\) hacia abajo, \(n = m(g - a) = m(g - g) = 0\). Sensación de ingravidez.</div>
+        </div>
+
+        <div class="problem-card" id="p5_10">
+            <p><strong>Pregunta 5.10 (Teoría):</strong> ¿Qué son las cuerdas y poleas "ideales" en problemas de dinámica clásica?</p>
+            <ul>
+                <li><input type="radio" name="q_p5_10" value="a"> a) Objetos que amplifican la fuerza mágicamente.</li>
+                <li><input type="radio" name="q_p5_10" value="b"> b) Cuerdas con masa despreciable y que no se estiran; poleas sin masa ni fricción.</li>
+                <li><input type="radio" name="q_p5_10" value="c"> c) Cuerdas que actúan como resortes puros.</li>
+                <li><input type="radio" name="q_p5_10" value="d"> d) Dispositivos que siempre reducen la aceleración del sistema a la mitad.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_10', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Esto garantiza que la Tensión \(T\) sea uniforme en todo el trayecto de la cuerda.</div>
+        </div>
+
+        <div class="problem-card" id="p5_11">
+            <p><strong>Pregunta 5.11 (Teoría):</strong> Para una partícula en equilibrio (dinámico o estático), ¿cuál afirmación es obligatoria?</p>
+            <ul>
+                <li><input type="radio" name="q_p5_11" value="a"> a) La velocidad debe ser estrictamente cero.</li>
+                <li><input type="radio" name="q_p5_11" value="b"> b) La suma vectorial de todas las fuerzas debe ser exactamente cero.</li>
+                <li><input type="radio" name="q_p5_11" value="c"> c) No debe existir ninguna fuerza actuando sobre ella.</li>
+                <li><input type="radio" name="q_p5_11" value="d"> d) Solo deben actuar fuerzas conservativas.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p5_11', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(\sum \vec{F} = 0\). Esto incluye objetos en reposo y objetos con velocidad constante.</div>
+        </div>
+
+        <!-- Práctica -->
+        <div class="numeric-card" id="p5_12">
+            <p><strong>Pregunta 5.12 (Práctica):</strong> Un bloque de 10.0 kg es empujado sobre un suelo horizontal. El coeficiente de fricción cinética es \(\mu_k = 0.30\). Calcula la fuerza de fricción cinética (en N). Usa g = 9.8 m/s².</p>
+            <input type="number" id="in_p5_12" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p5_12', 29.4, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(f_k = \mu_k n = \mu_k (mg) = (0.30)(10.0 \text{ kg})(9.8 \text{ m/s}^2) = 29.4 \text{ N}\)</div>
+        </div>
+
+        <div class="numeric-card" id="p5_13">
+            <p><strong>Pregunta 5.13 (Práctica):</strong> Un automóvil de 1200 kg toma una curva plana circular de 30.0 m de radio a una rapidez de 15.0 m/s. ¿Cuál es la magnitud de la fuerza de fricción estática requerida para que no derrape (en N)?</p>
+            <input type="number" id="in_p5_13" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p5_13', 9000, 1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(f_s = m \frac{v^2}{R} = 1200 \times \frac{(15.0)^2}{30.0} = 9000 \text{ N}\)</div>
+        </div>
+
+        <div class="numeric-card" id="p5_14">
+            <p><strong>Pregunta 5.14 (Práctica):</strong> Un paquete de 50.0 kg cuelga de un cable dentro de un elevador que acelera hacia arriba a 2.0 m/s². ¿Cuál es la tensión en el cable? Usa g = 9.8 m/s².</p>
+            <input type="number" id="in_p5_14" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p5_14', 590, 1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(T - mg = ma \implies T = m(g+a) = 50.0(9.8 + 2.0) = 590 \text{ N}\)</div>
+        </div>
+
+        <div class="numeric-card" id="p5_15">
+            <p><strong>Pregunta 5.15 (Práctica):</strong> Una pequeña esfera cae en un líquido denso. Su aceleración está modelada por \(a(v) = g - k v\), donde \(g = 9.8 \text{ m/s}^2\) y \(k = 0.40 \text{ s}^{-1}\). ¿Cuál será su velocidad terminal exacta en m/s?</p>
+            <div class="pista-calculo">💡 Pista: Recuerda que analíticamente, la velocidad terminal se alcanza cuando la aceleración (\(dv/dt\)) se vuelve exactamente cero.</div>
+            <input type="number" id="in_p5_15" placeholder="Respuesta en m/s">
+            <button class="btn-check-answer" onclick="checkNumeric('p5_15', 24.5, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Hacemos \(a = 0 \implies g - kv_t = 0 \implies v_t = \frac{g}{k} = \frac{9.8}{0.40} = 24.5 \text{ m/s}\)</div>
+        </div>
+
+        <!-- ================= CAPÍTULO 6 ================= -->
+        <h2 class="mb-4 mt-5 text-secondary border-bottom pb-2">Capítulo 6: Trabajo y Energía Cinética</h2>
+
+        <!-- Teoría -->
+        <div class="problem-card" id="p6_1">
+            <p><strong>Pregunta 6.1 (Teoría):</strong> El trabajo realizado por una fuerza constante \(\vec{F}\) sobre un objeto con desplazamiento \(\vec{s}\) se define matemáticamente como:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_1" value="a"> a) El producto cruz \(\vec{F} \times \vec{s}\).</li>
+                <li><input type="radio" name="q_p6_1" value="b"> b) El producto punto \(\vec{F} \cdot \vec{s}\).</li>
+                <li><input type="radio" name="q_p6_1" value="c"> c) El cociente \(F / s\).</li>
+                <li><input type="radio" name="q_p6_1" value="d"> d) La suma vectorial \(\vec{F} + \vec{s}\).</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_1', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W = \vec{F} \cdot \vec{s} = F s \cos\phi\). El trabajo es un escalar.</div>
+        </div>
+
+        <div class="problem-card" id="p6_2">
+            <p><strong>Pregunta 6.2 (Teoría):</strong> Si caminas sosteniendo horizontalmente a velocidad constante una caja pesada, el trabajo que hace la fuerza de tus manos sobre la caja es:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_2" value="a"> a) Cero, porque la fuerza es perpendicular al desplazamiento.</li>
+                <li><input type="radio" name="q_p6_2" value="b"> b) Positivo y muy grande debido a la fatiga.</li>
+                <li><input type="radio" name="q_p6_2" value="c"> c) Negativo, porque vas en contra de la gravedad.</li>
+                <li><input type="radio" name="q_p6_2" value="d"> d) Igual a la masa por la distancia recorrida.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_2', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Si \(\phi = 90^\circ\), entonces \(\cos(90^\circ) = 0\), por tanto \(W = 0\).</div>
+        </div>
+
+        <div class="problem-card" id="p6_3">
+            <p><strong>Pregunta 6.3 (Teoría):</strong> ¿Qué significa que una fuerza realice "trabajo negativo" sobre una partícula?</p>
+            <ul>
+                <li><input type="radio" name="q_p6_3" value="a"> a) Que la fuerza transfiere energía a la partícula.</li>
+                <li><input type="radio" name="q_p6_3" value="b"> b) Que la fuerza actúa en sentido contrario a la componente del movimiento, restándole energía cinética.</li>
+                <li><input type="radio" name="q_p6_3" value="c"> c) Que la fuerza simplemente apunta en el eje negativo de las "x".</li>
+                <li><input type="radio" name="q_p6_3" value="d"> d) Que es una fuerza imaginaria o aparente.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_3', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Si \(90^\circ < \phi \le 180^\circ\), \(\cos\phi\) es negativo. La fuerza frena al objeto.</div>
+        </div>
+
+        <div class="problem-card" id="p6_4">
+            <p><strong>Pregunta 6.4 (Teoría):</strong> La energía cinética (\(K\)) de un objeto:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_4" value="a"> a) Puede ser negativa si el objeto se mueve en sentido negativo.</li>
+                <li><input type="radio" name="q_p6_4" value="b"> b) Es un vector paralelo a la velocidad.</li>
+                <li><input type="radio" name="q_p6_4" value="c"> c) Siempre es un escalar positivo o nulo, sin importar la dirección del movimiento.</li>
+                <li><input type="radio" name="q_p6_4" value="d"> d) Es inversamente proporcional al cuadrado de su velocidad.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_4', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(K = \frac{1}{2}mv^2\). Como la masa y \(v^2\) son siempre positivas, la energía cinética nunca es negativa.</div>
+        </div>
+
+        <div class="problem-card" id="p6_5">
+            <p><strong>Pregunta 6.5 (Teoría):</strong> El Teorema del Trabajo y la Energía Cinética enuncia que:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_5" value="a"> a) \(W_{neto} = \Delta K\). El trabajo neto es igual al cambio en la energía cinética.</li>
+                <li><input type="radio" name="q_p6_5" value="b"> b) La energía nunca se destruye, solo se transforma.</li>
+                <li><input type="radio" name="q_p6_5" value="c"> c) El trabajo siempre produce calor debido a la fricción cinética.</li>
+                <li><input type="radio" name="q_p6_5" value="d"> d) \(W_{neto} = 0\) en todo proceso dinámico aislado.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_5', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Un trabajo neto positivo acelera la partícula (\(\Delta K > 0\)). Un trabajo neto negativo la frena (\(\Delta K < 0\)).</div>
+        </div>
+
+        <div class="problem-card" id="p6_6">
+            <p><strong>Pregunta 6.6 (Teoría):</strong> Si evaluamos una fuerza variable \(F_x\) que depende de la posición \(x\), ¿cómo obtenemos el trabajo geométricamente en una gráfica de \(F_x\) vs \(x\)?</p>
+            <ul>
+                <li><input type="radio" name="q_p6_6" value="a"> a) Es la pendiente de la recta tangente.</li>
+                <li><input type="radio" name="q_p6_6" value="b"> b) Es el área bajo la curva entre \(x_1\) y \(x_2\).</li>
+                <li><input type="radio" name="q_p6_6" value="c"> c) Es el inverso de la derivada de la curva.</li>
+                <li><input type="radio" name="q_p6_6" value="d"> d) Corresponde a la longitud de arco de la curva graficada.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_6', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W = \int_{x_1}^{x_2} F_x dx\). La integral definida representa el área bajo la curva.</div>
+        </div>
+
+        <div class="problem-card" id="p6_7">
+            <p><strong>Pregunta 6.7 (Teoría):</strong> Cuando estiras un resorte ideal desde su posición de equilibrio (\(x=0\)) hasta una posición \(x\), el trabajo realizado POR EL RESORTE sobre tu mano es:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_7" value="a"> a) Positivo, igual a \(+\frac{1}{2}kx^2\).</li>
+                <li><input type="radio" name="q_p6_7" value="b"> b) Cero, ya que es una fuerza restauradora interna.</li>
+                <li><input type="radio" name="q_p6_7" value="c"> c) Negativo, igual a \(-\frac{1}{2}kx^2\).</li>
+                <li><input type="radio" name="q_p6_7" value="d"> d) Igual a \(-kx\).</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_7', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> El resorte tira hacia adentro (fuerza opuesta al desplazamiento hacia afuera), por ende hace trabajo negativo.</div>
+        </div>
+
+        <div class="problem-card" id="p6_8">
+            <p><strong>Pregunta 6.8 (Teoría):</strong> La Potencia se define como:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_8" value="a"> a) La capacidad de una fuerza para deformar un objeto masivo.</li>
+                <li><input type="radio" name="q_p6_8" value="b"> b) El trabajo total realizado en un ciclo cerrado.</li>
+                <li><input type="radio" name="q_p6_8" value="c"> c) La tasa de variación del momento lineal respecto a la aceleración.</li>
+                <li><input type="radio" name="q_p6_8" value="d"> d) La rapidez con la que se efectúa trabajo (tasa temporal de transferencia de energía).</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_8', 'd')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(P = \frac{dW}{dt}\). Mide qué tan rápido se transfiere la energía.</div>
+        </div>
+
+        <div class="problem-card" id="p6_9">
+            <p><strong>Pregunta 6.9 (Teoría):</strong> Para una fuerza actuando sobre una partícula con velocidad instantánea \(\vec{v}\), la potencia instantánea es:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_9" value="a"> a) \(P = \vec{F} \times \vec{v}\)</li>
+                <li><input type="radio" name="q_p6_9" value="b"> b) \(P = \frac{F}{v}\)</li>
+                <li><input type="radio" name="q_p6_9" value="c"> c) \(P = \vec{F} \cdot \vec{v}\)</li>
+                <li><input type="radio" name="q_p6_9" value="d"> d) \(P = \frac{1}{2} F v^2\)</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_9', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Como \(dW = \vec{F} \cdot d\vec{s}\), entonces \(P = \frac{\vec{F} \cdot d\vec{s}}{dt} = \vec{F} \cdot \vec{v}\).</div>
+        </div>
+
+        <div class="problem-card" id="p6_10">
+            <p><strong>Pregunta 6.10 (Teoría):</strong> Si sobre un objeto actúan múltiples fuerzas, el trabajo total es igual a:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_10" value="a"> a) Solamente el trabajo de la fuerza de fricción restando a las demás.</li>
+                <li><input type="radio" name="q_p6_10" value="b"> b) La suma escalar de los trabajos individuales efectuados por cada fuerza separadamente.</li>
+                <li><input type="radio" name="q_p6_10" value="c"> c) El producto vectorial de la fuerza neta por el desplazamiento.</li>
+                <li><input type="radio" name="q_p6_10" value="d"> d) Siempre cero si hay equilibrio dinámico constante.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_10', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W_{tot} = W_1 + W_2 + \dots = (\sum \vec{F}) \cdot \vec{s}\).</div>
+        </div>
+
+        <div class="problem-card" id="p6_11">
+            <p><strong>Pregunta 6.11 (Teoría):</strong> El Joule (J), unidad del SI para energía y trabajo, equivale dimensionalmente a:</p>
+            <ul>
+                <li><input type="radio" name="q_p6_11" value="a"> a) Newton por metro (\(\text{N}\cdot\text{m}\)) o \(\text{kg}\cdot\text{m}^2/\text{s}^2\).</li>
+                <li><input type="radio" name="q_p6_11" value="b"> b) Watt por segundo (\(\text{W/s}\)).</li>
+                <li><input type="radio" name="q_p6_11" value="c"> c) Newton dividido por metro (\(\text{N/m}\)).</li>
+                <li><input type="radio" name="q_p6_11" value="d"> d) Kilogramo metro por segundo (\(\text{kg}\cdot\text{m/s}\)).</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p6_11', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(1 \text{ J} = (1 \text{ N})(1 \text{ m})\).</div>
+        </div>
+
+        <!-- Práctica -->
+        <div class="numeric-card" id="p6_12">
+            <p><strong>Pregunta 6.12 (Práctica):</strong> Se jala un bloque con una fuerza constante de 50.0 N a un ángulo de 60.0° con la horizontal a lo largo de 4.0 m en el piso plano. Calcula el trabajo realizado por esa fuerza (en Joules).</p>
+            <input type="number" id="in_p6_12" placeholder="Respuesta en J">
+            <button class="btn-check-answer" onclick="checkNumeric('p6_12', 100, 1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W = F s \cos\phi = (50.0)(4.0)\cos(60^\circ) = 200(0.5) = 100 \text{ J}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p6_13">
+            <p><strong>Pregunta 6.13 (Práctica):</strong> ¿Cuál es la energía cinética de un proyectil de 2.0 kg que viaja a una velocidad de 3.0 m/s?</p>
+            <input type="number" id="in_p6_13" placeholder="Respuesta en J">
+            <button class="btn-check-answer" onclick="checkNumeric('p6_13', 9.0, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(K = \frac{1}{2}mv^2 = 0.5(2.0)(3.0)^2 = 9.0 \text{ J}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p6_14">
+            <p><strong>Pregunta 6.14 (Práctica):</strong> Una máquina realiza un trabajo total de 600.0 J al levantar una caja durante un lapso de 3.0 segundos. ¿Cuál fue su potencia media en Watts?</p>
+            <input type="number" id="in_p6_14" placeholder="Respuesta en W">
+            <button class="btn-check-answer" onclick="checkNumeric('p6_14', 200, 1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(P_{med} = \frac{\Delta W}{\Delta t} = \frac{600.0}{3.0} = 200 \text{ W}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p6_15">
+            <p><strong>Pregunta 6.15 (Práctica):</strong> Una partícula experimenta una fuerza unidimensional variable dada por \(F_x(x) = 6.0x^2\), donde x está en metros y F en Newtons. ¿Qué trabajo realiza esta fuerza al mover la partícula desde \(x = 0\) hasta \(x = 2.0\) m?</p>
+            <div class="pista-calculo">💡 Pista: Usa la integral definida del trabajo para fuerzas variables: \(W = \int_{x_1}^{x_2} F_x dx\).</div>
+            <input type="number" id="in_p6_15" placeholder="Respuesta en J">
+            <button class="btn-check-answer" onclick="checkNumeric('p6_15', 16.0, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W = \int_{0}^{2} 6x^2 dx = \left[ 2x^3 \right]_0^2 = 2(2)^3 - 0 = 16.0 \text{ J}\).</div>
+        </div>
+
+        <!-- ================= CAPÍTULO 7 ================= -->
+        <h2 class="mb-4 mt-5 text-secondary border-bottom pb-2">Capítulo 7: Energía Potencial y Conservación de la Energía</h2>
+
+        <!-- Teoría -->
+        <div class="problem-card" id="p7_1">
+            <p><strong>Pregunta 7.1 (Teoría):</strong> La energía potencial gravitacional (\(U_{grav} = mgy\)) depende de:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_1" value="a"> a) La trayectoria tomada para llegar a la altura \(y\).</li>
+                <li><input type="radio" name="q_p7_1" value="b"> b) Solamente de la velocidad final del objeto.</li>
+                <li><input type="radio" name="q_p7_1" value="c"> c) La posición vertical \(y\) y del punto de referencia arbitrario \(y=0\).</li>
+                <li><input type="radio" name="q_p7_1" value="d"> d) El tiempo total que duró el desplazamiento vertical.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_1', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La energía potencial es una función de estado; su valor depende del nivel de referencia escogido, pero su *cambio* (\(\Delta U\)) siempre es el mismo.</div>
+        </div>
+
+        <div class="problem-card" id="p7_2">
+            <p><strong>Pregunta 7.2 (Teoría):</strong> ¿Qué característica define a una fuerza conservativa (como la gravedad o la fuerza de un resorte ideal)?</p>
+            <ul>
+                <li><input type="radio" name="q_p7_2" value="a"> a) El trabajo que realiza es siempre directamente proporcional a la fricción.</li>
+                <li><input type="radio" name="q_p7_2" value="b"> b) El trabajo que efectúa sobre un objeto a través de una trayectoria cerrada es cero.</li>
+                <li><input type="radio" name="q_p7_2" value="c"> c) Siempre aumenta la energía cinética neta del sistema cerrado.</li>
+                <li><input type="radio" name="q_p7_2" value="d"> d) Nunca puede expresarse mediante una función de energía potencial.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_2', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> En una fuerza conservativa, el trabajo es independiente de la trayectoria; ir y volver al mismo punto resulta en \(W=0\).</div>
+        </div>
+
+        <div class="problem-card" id="p7_3">
+            <p><strong>Pregunta 7.3 (Teoría):</strong> La fuerza de fricción cinética es un ejemplo clásico de fuerza "no conservativa". Esto se debe a que:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_3" value="a"> a) Su trabajo no es reversible y convierte la energía mecánica en energía interna (calor).</li>
+                <li><input type="radio" name="q_p7_3" value="b"> b) Crea energía mecánica de la nada en largas distancias.</li>
+                <li><input type="radio" name="q_p7_3" value="c"> c) Es una fuerza repulsiva de la interacción nuclear fuerte.</li>
+                <li><input type="radio" name="q_p7_3" value="d"> d) Conserva estrictamente toda la energía potencial sin modificar la cinética.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_3', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fricción disipa energía macroscópica transformándola en movimiento microscópico caótico (temperatura).</div>
+        </div>
+
+        <div class="problem-card" id="p7_4">
+            <p><strong>Pregunta 7.4 (Teoría):</strong> En un sistema aislado donde SOLO actúan fuerzas conservativas, la Energía Mecánica Total (\(E = K + U\)):</p>
+            <ul>
+                <li><input type="radio" name="q_p7_4" value="a"> a) Disminuye con el cuadrado del tiempo.</li>
+                <li><input type="radio" name="q_p7_4" value="b"> b) Permanece constante en todo momento.</li>
+                <li><input type="radio" name="q_p7_4" value="c"> c) Oscila entre valores positivos y negativos continuamente.</li>
+                <li><input type="radio" name="q_p7_4" value="d"> d) Aumenta al descender de una colina.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_4', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Principio de conservación de la energía mecánica: \(\Delta K + \Delta U = 0 \implies E_1 = E_2\).</div>
+        </div>
+
+        <div class="problem-card" id="p7_5">
+            <p><strong>Pregunta 7.5 (Teoría):</strong> Matemáticamente, ¿cómo se relaciona una fuerza conservativa \(F_x\) con su energía potencial \(U(x)\)?</p>
+            <ul>
+                <li><input type="radio" name="q_p7_5" value="a"> a) \(F_x = U(x) / x\)</li>
+                <li><input type="radio" name="q_p7_5" value="b"> b) \(F_x = -\frac{dU}{dx}\)</li>
+                <li><input type="radio" name="q_p7_5" value="c"> c) \(F_x = \int U(x) dx\)</li>
+                <li><input type="radio" name="q_p7_5" value="d"> d) \(F_x = m \cdot U(x)\)</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_5', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fuerza apunta hacia donde la energía potencial disminuye más rápido ("cuesta abajo" en un diagrama de energía).</div>
+        </div>
+
+        <div class="problem-card" id="p7_6">
+            <p><strong>Pregunta 7.6 (Teoría):</strong> En un diagrama de energía (gráfica de \(U\) vs \(x\)), un punto donde \(U\) tiene un "mínimo local" (forma de valle) corresponde a:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_6" value="a"> a) Un punto de equilibrio inestable.</li>
+                <li><input type="radio" name="q_p7_6" value="b"> b) Un punto de aceleración máxima e infinita.</li>
+                <li><input type="radio" name="q_p7_6" value="c"> c) Un punto de equilibrio estable.</li>
+                <li><input type="radio" name="q_p7_6" value="d"> d) Un punto donde la fuerza neta es máxima.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_6', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> En un mínimo, \(dU/dx = 0\) (la fuerza es cero). Si se desplaza levemente, las fuerzas restauradoras lo regresan al valle.</div>
+        </div>
+
+        <div class="problem-card" id="p7_7">
+            <p><strong>Pregunta 7.7 (Teoría):</strong> Por otro lado, un "máximo local" en un diagrama de energía representa:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_7" value="a"> a) Una posición imposible físicamente.</li>
+                <li><input type="radio" name="q_p7_7" value="b"> b) Equilibrio inestable.</li>
+                <li><input type="radio" name="q_p7_7" value="c"> c) Equilibrio estable absoluto.</li>
+                <li><input type="radio" name="q_p7_7" value="d"> d) Una zona de energía cinética infinita.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_7', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La fuerza es nula en el pico, pero al moverse ligeramente, la fuerza resultante alejará al objeto cada vez más del punto.</div>
+        </div>
+
+        <div class="problem-card" id="p7_8">
+            <p><strong>Pregunta 7.8 (Teoría):</strong> La ecuación general ampliada que incluye el trabajo de otras fuerzas (no conservativas) es:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_8" value="a"> a) \(K_1 + U_1 = K_2 + U_2 + W_{otras}\)</li>
+                <li><input type="radio" name="q_p7_8" value="b"> b) \(K_1 + U_1 + W_{otras} = K_2 + U_2\)</li>
+                <li><input type="radio" name="q_p7_8" value="c"> c) \(W_{otras} = K_1 - U_1\)</li>
+                <li><input type="radio" name="q_p7_8" value="d"> d) \(W_{otras} = 0\) siempre.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_8', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> El trabajo no conservativo inyecta o retira energía del presupuesto mecánico total.</div>
+        </div>
+
+        <div class="problem-card" id="p7_9">
+            <p><strong>Pregunta 7.9 (Teoría):</strong> La fuerza de un resorte ideal es conservativa. La energía potencial almacenada en él se calcula como:</p>
+            <ul>
+                <li><input type="radio" name="q_p7_9" value="a"> a) \(kx\)</li>
+                <li><input type="radio" name="q_p7_9" value="b"> b) \(-\frac{1}{2}kx^2\)</li>
+                <li><input type="radio" name="q_p7_9" value="c"> c) \(\frac{1}{2}kx^2\)</li>
+                <li><input type="radio" name="q_p7_9" value="d"> d) \(\frac{1}{2}mv^2\)</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_9', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Siempre es \(\ge 0\). Estirar o comprimir el resorte cuesta la misma cantidad de energía potencial \(\frac{1}{2}kx^2\).</div>
+        </div>
+
+        <div class="problem-card" id="p7_10">
+            <p><strong>Pregunta 7.10 (Teoría):</strong> Si dos trayectorias unen los mismos dos puntos A y B, ¿el trabajo de la gravedad será distinto por cada trayectoria?</p>
+            <ul>
+                <li><input type="radio" name="q_p7_10" value="a"> a) Sí, la trayectoria más larga tendrá más trabajo por gravedad.</li>
+                <li><input type="radio" name="q_p7_10" value="b"> b) Sí, si hay curvas bruscas en medio.</li>
+                <li><input type="radio" name="q_p7_10" value="c"> c) No, el trabajo de la gravedad depende solo de las elevaciones inicial y final.</li>
+                <li><input type="radio" name="q_p7_10" value="d"> d) Imposible saberlo sin conocer la velocidad.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_10', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Propiedad fundamental de las fuerzas conservativas: la independencia de la trayectoria (\(W = -\Delta U\)).</div>
+        </div>
+
+        <div class="problem-card" id="p7_11">
+            <p><strong>Pregunta 7.11 (Teoría):</strong> ¿Qué pasa con la "energía perdida" debida a la fricción?</p>
+            <ul>
+                <li><input type="radio" name="q_p7_11" value="a"> a) Se destruye rompiendo la ley de conservación universal.</li>
+                <li><input type="radio" name="q_p7_11" value="b"> b) Se disipa como energía interna elevando la temperatura de los objetos.</li>
+                <li><input type="radio" name="q_p7_11" value="c"> c) Se transforma instantáneamente en energía potencial elástica.</li>
+                <li><input type="radio" name="q_p7_11" value="d"> d) Es contrarrestada por la energía oscura.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p7_11', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La energía total del universo es constante. La "pérdida" mecánica se va a las vibraciones atómicas aleatorias (calor).</div>
+        </div>
+
+        <!-- Práctica -->
+        <div class="numeric-card" id="p7_12">
+            <p><strong>Pregunta 7.12 (Práctica):</strong> Una canica de 1.0 kg se suelta del reposo desde una azotea de 5.0 m de altura. Sin resistencia del aire y usando g = 9.8 m/s², calcula su rapidez al llegar al suelo en m/s.</p>
+            <input type="number" id="in_p7_12" placeholder="Respuesta en m/s">
+            <button class="btn-check-answer" onclick="checkNumeric('p7_12', 9.9, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(mgh = \frac{1}{2}mv^2 \implies v = \sqrt{2gh} = \sqrt{2(9.8)(5.0)} = \sqrt{98} \approx 9.899 \text{ m/s}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p7_13">
+            <p><strong>Pregunta 7.13 (Práctica):</strong> Un bloque de 2.0 kg que desliza por hielo sin fricción a 4.0 m/s choca contra un resorte horizontal ideal (\(k = 800 \text{ N/m}\)). ¿Cuál es la compresión máxima del resorte en metros?</p>
+            <input type="number" id="in_p7_13" placeholder="Respuesta en m">
+            <button class="btn-check-answer" onclick="checkNumeric('p7_13', 0.20, 0.02)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Toda la \(K\) se vuelve \(U_{el}\): \(\frac{1}{2}mv^2 = \frac{1}{2}kx^2 \implies x = \sqrt{\frac{mv^2}{k}} = \sqrt{\frac{2.0(16.0)}{800}} = \sqrt{0.04} = 0.20 \text{ m}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p7_14">
+            <p><strong>Pregunta 7.14 (Práctica):</strong> Un fardo de 2.0 kg se deja caer desde 10.0 m de altura. Al llegar al piso, su velocidad es de sólo 12.0 m/s por culpa del arrastre del aire. Calcula el trabajo \(W_{otras}\) realizado por la fricción del aire (en J). Usa g = 9.8 m/s².</p>
+            <input type="number" id="in_p7_14" placeholder="Respuesta en J">
+            <button class="btn-check-answer" onclick="checkNumeric('p7_14', -52.0, 1.0)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(W_{otras} = (K_f + U_f) - (K_i + U_i) = (\frac{1}{2}(2.0)(12.0)^2 + 0) - (0 + (2.0)(9.8)(10.0)) = 144 - 196 = -52.0 \text{ J}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p7_15">
+            <p><strong>Pregunta 7.15 (Práctica):</strong> La energía potencial de una partícula a lo largo del eje x está dada por la ecuación \(U(x) = 3.0x^2 - 2.0x^3\) (U en Joules, x en metros). Determina el valor exacto de la fuerza \(F_x\) sobre la partícula en la coordenada \(x = 2.0\) m.</p>
+            <div class="pista-calculo">💡 Pista: Usa el gradiente unidimensional de la energía potencial: \(F_x = -\frac{dU}{dx}\).</div>
+            <input type="number" id="in_p7_15" placeholder="Respuesta en N">
+            <button class="btn-check-answer" onclick="checkNumeric('p7_15', 12.0, 0.2)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(F_x = - \frac{d}{dx}(3x^2 - 2x^3) = - (6x - 6x^2) = -6x + 6x^2\). Evaluado en \(x = 2.0\): \(-6(2) + 6(4) = -12 + 24 = 12.0 \text{ N}\).</div>
+        </div>
+
+        <!-- ================= CAPÍTULO 8 ================= -->
+        <h2 class="mb-4 mt-5 text-secondary border-bottom pb-2">Capítulo 8: Momento Lineal, Impulso y Colisiones</h2>
+
+        <!-- Teoría -->
+        <div class="problem-card" id="p8_1">
+            <p><strong>Pregunta 8.1 (Teoría):</strong> El momento lineal (\(\vec{p}\)) de una partícula se define como:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_1" value="a"> a) El producto escalar entre su masa y su aceleración (\(m \cdot \vec{a}\)).</li>
+                <li><input type="radio" name="q_p8_1" value="b"> b) La integral de la posición en el tiempo.</li>
+                <li><input type="radio" name="q_p8_1" value="c"> c) El producto de su masa (escalar) por su velocidad (vector) \(\vec{p} = m\vec{v}\).</li>
+                <li><input type="radio" name="q_p8_1" value="d"> d) Su energía cinética dividida entre su masa.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_1', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Es una cantidad vectorial y apunta exactamente en la misma dirección que la velocidad del objeto.</div>
+        </div>
+
+        <div class="problem-card" id="p8_2">
+            <p><strong>Pregunta 8.2 (Teoría):</strong> El Impulso (\(\vec{J}\)) impartido por una fuerza neta a lo largo de un lapso de tiempo representa físicamente:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_2" value="a"> a) El cambio directo en la energía cinética de la partícula.</li>
+                <li><input type="radio" name="q_p8_2" value="b"> b) El cambio en el momento lineal de la partícula (\(\vec{J} = \Delta \vec{p}\)).</li>
+                <li><input type="radio" name="q_p8_2" value="c"> c) La tasa estática de disipación térmica en choques de metales.</li>
+                <li><input type="radio" name="q_p8_2" value="d"> d) El trabajo total multiplicado por el tiempo de contacto.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_2', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Teorema del Impulso y el Momento Lineal. Impulso fuerte y breve causa un gran cambio en el momento (\(\Delta p\)).</div>
+        </div>
+
+        <div class="problem-card" id="p8_3">
+            <p><strong>Pregunta 8.3 (Teoría):</strong> El principio de conservación del momento lineal es válido para un sistema de partículas SÍ Y SOLO SÍ:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_3" value="a"> a) El choque entre las partículas es perfectamente elástico.</li>
+                <li><input type="radio" name="q_p8_3" value="b"> b) La suma vectorial de las fuerzas externas netas sobre el sistema es cero.</li>
+                <li><input type="radio" name="q_p8_3" value="c"> c) Los objetos están todos en reposo inicial.</li>
+                <li><input type="radio" name="q_p8_3" value="d"> d) Los cuerpos no sufren deformaciones.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_3', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Si \(\sum \vec{F}_{ext} = 0\), entonces \(\frac{d\vec{P}}{dt} = 0 \implies \vec{P} = \text{constante}\). Las fuerzas internas no alteran el momento total.</div>
+        </div>
+
+        <div class="problem-card" id="p8_4">
+            <p><strong>Pregunta 8.4 (Teoría):</strong> Durante CUALQUIER tipo de colisión ordinaria (aislada) entre dos autos:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_4" value="a"> a) Se conserva tanto la energía cinética como el momento lineal.</li>
+                <li><input type="radio" name="q_p8_4" value="b"> b) Se conserva el momento lineal, pero NO necesariamente la energía cinética.</li>
+                <li><input type="radio" name="q_p8_4" value="c"> c) Se conserva la energía cinética pero no el momento lineal.</li>
+                <li><input type="radio" name="q_p8_4" value="d"> d) No se conserva ninguna propiedad debido a los daños de la carrocería.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_4', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> En cualquier choque en un sistema cerrado se conserva el momento (\(\vec{P}\)). La \(K\) sólo se conserva si es elástico ideal.</div>
+        </div>
+
+        <div class="problem-card" id="p8_5">
+            <p><strong>Pregunta 8.5 (Teoría):</strong> En una colisión "totalmente inelástica" o "perfectamente inelástica":</p>
+            <ul>
+                <li><input type="radio" name="q_p8_5" value="a"> a) Los objetos rebotan conservando toda su rapidez relativa original.</li>
+                <li><input type="radio" name="q_p8_5" value="b"> b) Las partículas colisionantes quedan unidas (pegadas) y se mueven juntas como un solo cuerpo.</li>
+                <li><input type="radio" name="q_p8_5" value="c"> c) La energía cinética total del sistema misteriosamente aumenta.</li>
+                <li><input type="radio" name="q_p8_5" value="d"> d) Es imposible la conservación del momento lineal porque la masa colapsa.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_5', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Tienen una misma velocidad final \(v_f\). Es el tipo de choque con máxima disipación de energía cinética macroscópica permisible.</div>
+        </div>
+
+        <div class="problem-card" id="p8_6">
+            <p><strong>Pregunta 8.6 (Teoría):</strong> En contraparte, en una colisión verdaderamente "elástica" (como el choque entre canicas de vidrio endurecido o átomos ideales):</p>
+            <ul>
+                <li><input type="radio" name="q_p8_6" value="a"> a) La suma de la energía cinética de todas las partículas es idéntica antes y después del choque.</li>
+                <li><input type="radio" name="q_p8_6" value="b"> b) Se disipa el 50% de la energía original mediante calor o sonido.</li>
+                <li><input type="radio" name="q_p8_6" value="c"> c) La fuerza en el impacto transfiere masa entre las esferas.</li>
+                <li><input type="radio" name="q_p8_6" value="d"> d) Se requiere que ambas masas sean estrictamente idénticas.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_6', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Idealización límite. Las fuerzas de interacción son estrictamente conservativas (como resortes que no pierden tensión).</div>
+        </div>
+
+        <div class="problem-card" id="p8_7">
+            <p><strong>Pregunta 8.7 (Teoría):</strong> ¿Cómo se comporta el momento de partículas individuales vs sistema global tras el choque en una mesa de billar ideal?</p>
+            <ul>
+                <li><input type="radio" name="q_p8_7" value="a"> a) Las bolas pierden el momento y el sistema lo compensa.</li>
+                <li><input type="radio" name="q_p8_7" value="b"> b) El momento de cada bola individual cambia (\(\Delta \vec{p}_1 = -\Delta \vec{p}_2\)), pero el momento del sistema completo es el mismo.</li>
+                <li><input type="radio" name="q_p8_7" value="c"> c) Cada bola en lo individual conserva intacta su cantidad de movimiento y su dirección.</li>
+                <li><input type="radio" name="q_p8_7" value="d"> d) Ambos momentos se vuelven cero después del chasquido.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_7', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La interacción mutua redistribuye la cantidad de movimiento entre los miembros, dejando al gran total (\(\vec{P}\)) inmutado.</div>
+        </div>
+
+        <div class="problem-card" id="p8_8">
+            <p><strong>Pregunta 8.8 (Teoría):</strong> El Centro de Masa de un sistema de partículas es un punto en el espacio que:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_8" value="a"> a) Siempre coincide forzosamente con el interior de algún material físico.</li>
+                <li><input type="radio" name="q_p8_8" value="b"> b) Se mueve como si toda la masa del sistema se encontrara concentrada ahí y la fuerza neta externa se aplicara en él.</li>
+                <li><input type="radio" name="q_p8_8" value="c"> c) Mide la energía total del grupo de masa, despreciando su inercia.</li>
+                <li><input type="radio" name="q_p8_8" value="d"> d) Representa el centro geométrico de gravedad universal de la Vía Láctea.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_8', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Es una abstracción poderosísima: \(\sum \vec{F}_{ext} = M\vec{a}_{cm}\). Facilita el trato de sistemas complejos de partículas múltiples como llaves inglesas en el aire.</div>
+        </div>
+
+        <div class="problem-card" id="p8_9">
+            <p><strong>Pregunta 8.9 (Teoría):</strong> Si enciendes un petardo o explota una granada en el aire fragmentándose en el espacio, ¿qué ocurre con el Centro de Masa de esos fragmentos?</p>
+            <ul>
+                <li><input type="radio" name="q_p8_9" value="a"> a) El Centro de Masa detiene su avance al no haber un cuerpo central visible.</li>
+                <li><input type="radio" name="q_p8_9" value="b"> b) Desciende inmediatamente hacia abajo en caída vertical repentina.</li>
+                <li><input type="radio" name="q_p8_9" value="c"> c) Sigue describiendo suavemente la misma trayectoria parabólica que tenía proyectada originalmente (despreciando el aire).</li>
+                <li><input type="radio" name="q_p8_9" value="d"> d) Se desvanece de las ecuaciones de Newton.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_9', 'c')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> La explosión involucra fuerzas puramente "internas", lo que no altera el movimiento del CM.</div>
+        </div>
+
+        <div class="problem-card" id="p8_10">
+            <p><strong>Pregunta 8.10 (Teoría):</strong> En la dinámica de un cohete que acelera en el vacío, el origen del "empuje" se explica fundamentalmente por:</p>
+            <ul>
+                <li><input type="radio" name="q_p8_10" value="a"> a) Empujar los gases contra la atmósfera de la tierra, sirviendo de base sólida.</li>
+                <li><input type="radio" name="q_p8_10" value="b"> b) La conservación del momento lineal continuo debido a la expulsión de gases quemados de masa continua hacia atrás.</li>
+                <li><input type="radio" name="q_p8_10" value="c"> c) El campo magnético terrestre y la levitación electrostática de motores iónicos a baja altura.</li>
+                <li><input type="radio" name="q_p8_10" value="d"> d) El gradiente de gravedad solar.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_10', 'b')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Un cohete es un objeto cuya masa \(m\) disminuye constantemente. Al expulsar gas \(\Delta m\) con gran rapidez \(v_{ex}\), este adquiere momento en la dirección contraria.</div>
+        </div>
+
+        <div class="problem-card" id="p8_11">
+            <p><strong>Pregunta 8.11 (Teoría):</strong> En un tiro de billar donde no hay fuerzas externas asimétricas al contacto (sistema aislado), el vector del momento total del sistema...</p>
+            <ul>
+                <li><input type="radio" name="q_p8_11" value="a"> a) Es igual a la masa sumada por la velocidad combinada original \(\vec{P} = \vec{p}_A + \vec{p}_B\), y es una constante.</li>
+                <li><input type="radio" name="q_p8_11" value="b"> b) Se aniquila en el instante del impacto y luego renace después de \(1 \text{ ms}\).</li>
+                <li><input type="radio" name="q_p8_11" value="c"> c) Se desvía un ligero porcentaje proporcional al sonido del golpe.</li>
+                <li><input type="radio" name="q_p8_11" value="d"> d) Siempre cuadriplica el ángulo saliente.</li>
+            </ul>
+            <button class="btn-check-answer" onclick="checkAnswer('p8_11', 'a')">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> Conservación vectorial rigurosa en el plano bidimensional en ausencia de rotación externa fuerte o fricción notable instantánea.</div>
+        </div>
+
+        <!-- Práctica -->
+        <div class="numeric-card" id="p8_12">
+            <p><strong>Pregunta 8.12 (Práctica):</strong> Un bate golpea una pelota ejerciendo una fuerza promedio de 500.0 N en un diminuto intervalo de tiempo de 0.20 segundos. ¿Cuál es la magnitud del Impulso transferido a la pelota en N·s?</p>
+            <input type="number" id="in_p8_12" placeholder="Respuesta en N·s">
+            <button class="btn-check-answer" onclick="checkNumeric('p8_12', 100, 1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(J = F_{med} \Delta t = (500.0 \text{ N})(0.20 \text{ s}) = 100 \text{ N}\cdot\text{s}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p8_13">
+            <p><strong>Pregunta 8.13 (Práctica):</strong> Un carrito (\(m_1 = 2.0\) kg) que se mueve a 3.0 m/s en una vía recta y sin fricción choca y se engancha con otro carrito (\(m_2 = 4.0\) kg) inicialmente en reposo. ¿Cuál es su velocidad final conjunta en m/s?</p>
+            <input type="number" id="in_p8_13" placeholder="Respuesta en m/s">
+            <button class="btn-check-answer" onclick="checkNumeric('p8_13', 1.0, 0.05)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(m_1 v_1 + m_2 v_2 = (m_1 + m_2)v_f \implies (2.0)(3.0) + 0 = (6.0)v_f \implies v_f = 6.0/6.0 = 1.0 \text{ m/s}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p8_14">
+            <p><strong>Pregunta 8.14 (Práctica):</strong> En un riel unidimensional (eje x), la masa \(m_1 = 1.0\) kg se localiza en \(x = 0\) y la masa \(m_2 = 3.0\) kg se localiza en \(x = 4.0\) m. Encuentra la coordenada x del centro de masa del sistema de dos cuerpos.</p>
+            <input type="number" id="in_p8_14" placeholder="Respuesta en m">
+            <button class="btn-check-answer" onclick="checkNumeric('p8_14', 3.0, 0.1)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(x_{cm} = \frac{m_1 x_1 + m_2 x_2}{m_1 + m_2} = \frac{(1.0)(0) + (3.0)(4.0)}{1.0 + 3.0} = \frac{12.0}{4.0} = 3.0 \text{ m}\).</div>
+        </div>
+
+        <div class="numeric-card" id="p8_15">
+            <p><strong>Pregunta 8.15 (Práctica):</strong> Una fuerza impulsiva temporal que actúa en línea recta está gobernada por la ecuación \(F(t) = 4.0t + 2.0\) (con F en Newtons y t en segundos). Calcula el Impulso (en N·s) desde \(t=0\) hasta \(t=2.0\) s.</p>
+            <div class="pista-calculo">💡 Pista: Usa la forma integral del Impulso: \(J = \int_{t_1}^{t_2} F(t) dt\).</div>
+            <input type="number" id="in_p8_15" placeholder="Respuesta en N·s">
+            <button class="btn-check-answer" onclick="checkNumeric('p8_15', 12.0, 0.2)">Verificar</button>
+            <div class="idea-clave"><strong>Idea Clave:</strong> \(J = \int_0^2 (4t + 2) dt = \left[ 2t^2 + 2t \right]_0^2 = (2(4) + 2(2)) - 0 = 8 + 4 = 12.0 \text{ N}\cdot\text{s}\).</div>
+        </div>
